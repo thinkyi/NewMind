@@ -1,0 +1,582 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>新创网站管理后台</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <link href="~/Content/themes/redmond/jquery-ui-1.10.3.custom.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Scripts/zTree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css" />
+    @*<link href="~/Scripts/layout/css/layout-default.css" rel="stylesheet" type="text/css" />*@
+    <link href="~/Scripts/layout/css/layout-custom.css" rel="stylesheet" type="text/css" />
+    <link href="~/Scripts/jqGrid/css/ui.jqgrid.css" rel="stylesheet" type="text/css" />
+    <link href="~/Scripts/colpick/css/colpick.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/styles/manage.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/jqueryui/redmond/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/layout/js/jquery.layout.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/zTree/js/jquery.ztree.all-3.5.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/jqGrid/js/i18n/grid.locale-en.js" type="text/javascript"></script>
+    <script src="~/Scripts/jqGrid/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/json/json2.js" type="text/javascript"></script>
+    <script src="~/Scripts/colpick/js/colpick.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery-ajaxfileupload.js" type="text/javascript"></script>
+    <script src="~/Scripts/csl-manage-index.js" type="text/javascript"></script>
+</head>
+<body>
+    @***********north start*****************@
+    <div class="ui-layout-north">
+        <div style="float: right; padding: 5px 5px 0px 0px; font-size: 12px;">
+            @*<div style="float: right;">
+                    [<a style="color: Blue; padding: 0px 3px;" href="Home">Home</a>]
+                </div>*@
+            <div style="float: right; margin-right: 5px;">
+                <strong>User:</strong> <span>@ViewData["UserName"]</span>
+            </div>
+            <div style="float: right; margin-right: 5px;">
+                <strong>Domain:</strong> <span>@ViewData["Domain"]</span>
+            </div>
+        </div>
+        <div id="logo">
+            <img src="~/Content/Images/logo.png" alt="" />
+            <span class="product">PO Excel Web Platform</span>
+        </div>
+        <div id="navigation">
+        </div>
+    </div>
+    @***********north end*******************@
+    @***********center start****************@
+    <div class="ui-layout-center">
+        <div id="tabs-center">
+            <ul>
+                <li><a href="#tabs-c-1">Cell</a></li>
+                <li><a href="#tabs-c-2">Range</a></li>
+                <li><a href="#tabs-c-3">Row</a></li>
+                <li><a href="#tabs-c-4">Column</a></li>
+            </ul>
+            <div id="tabs-c-1" style="padding: 0px;">
+                <table id="cellgrid"></table>
+                <div id="cellpager">
+                </div>
+            </div>
+            <div id="tabs-c-2" style="padding: 0px;">
+                <table id="rangegrid"></table>
+                <div id="rangepager">
+                </div>
+            </div>
+            <div id="tabs-c-3" style="padding: 0px;">
+                <table id="rowgrid"></table>
+                <div id="rowpager">
+                </div>
+            </div>
+            <div id="tabs-c-4" style="padding: 0px;">
+                <table id="columngrid"></table>
+                <div id="columnpager">
+                </div>
+            </div>
+        </div>
+    </div>
+    @***********center start****************@
+    @***********west start******************@
+    <div id="tabs-west" class="ui-layout-west">
+        <ul>
+            <li><a href="#tabs-w-1">Excel Tree</a></li>
+        </ul>
+        <div class="ui-layout-content">
+            <div id="tabs-w-1" style="padding: 0px;">
+                <ul id="excel-tree" class="ztree"></ul>
+            </div>
+        </div>
+    </div>
+    @***********west end********************@
+    @***********east start******************@
+    <div id="tabs-east" class="ui-layout-east">
+        <ul>
+            <li><a href="#tabs-e-1">Private Format</a></li>
+            <li><a href="#tabs-e-2">Public Format</a></li>
+        </ul>
+        <div class="ui-layout-content">
+            <div id="tabs-e-1" style="padding: 0px;">
+                <div id="private-format" class="ui-widget">
+                    <p>
+                        <span>Alignment</span>
+                        <input type="hidden" id="AlignmentID" name="AlignmentID" />
+                    </p>
+                    <ul>
+                        <li>
+                            <span>Horizontal Align</span>
+                            <select id="Horizontal" name="Horizontal" class="form-element ui-widget-content ui-corner-all">
+                                <option value=""></option>
+                                <option value="-4131">Left</option>
+                                <option value="-4108">Center</option>
+                                <option value="-4152">Right</option>
+                                <option value="-4130">Justify</option>
+                                <option value="-4117">Distribute</option>
+                                <option value="1">General</option>
+                                <option value="5">Fill</option>
+                                <option value="7">CenterAcrossSelection</option>
+                            </select>
+                        </li>
+                        <li>
+                            <span>Vertical Align</span>
+                            <select id="Vertical" name="Vertical" class="form-element ui-widget-content ui-corner-all">
+                                <option value=""></option>
+                                <option value="-4160">Top</option>
+                                <option value="-4108">Center</option>
+                                <option value="-4107">Bottom</option>
+                                <option value="-4130">Justify</option>
+                                <option value="-4117">Distribute</option>
+                            </select>
+                        </li>
+                        <li>
+                            <span>Text Control</span>
+                            <select id="TextControl" name="TextControl" class="form-element ui-widget-content ui-corner-all">
+                                <option value=""></option>
+                                <option value="true,false">Wrap text</option>
+                                <option value="false,true">Shrink to fit</option>
+                            </select>
+                        </li>
+                        <li>
+                            <span>Text direction</span>
+                            <select id="TextDirection" name="TextDirection" class="form-element ui-widget-content ui-corner-all">
+                                <option value=""></option>
+                                <option value="-5002">Context</option>
+                                <option value="-5003">Left-to-Right</option>
+                                <option value="-5004">Right-to-Left</option>
+                            </select>
+                        </li>
+                    </ul>
+                    <div style="clear: both;">
+                    </div>
+                    <p>
+                        <span>Font</span>
+                        <input type="hidden" id="FontID" name="FontID" />
+                    </p>
+                    <ul>
+                        <li>
+                            <span>Font</span>
+                            <input type="text" id="FontName" name="FontName" class="form-element ui-widget-content ui-corner-all" />
+                        </li>
+                        <li>
+                            <span>Style</span>
+                            <select id="FontStyle" name="FontStyle" class="form-element ui-widget-content ui-corner-all">
+                                <option value=""></option>
+                                <option value="Regular">Regular</option>
+                                <option value="Italic">Italic</option>
+                                <option value="Bold">Bold</option>
+                                <option value="Bold Italic">Bold Italic</option>
+                            </select>
+                        </li>
+                        <li>
+                            <span>Size</span>
+                            <input type="text" id="FontSize" name="FontSize" class="form-element ui-widget-content ui-corner-all" />
+                        </li>
+                        <li>
+                            <span>Underline</span>
+                            <select id="FontUnderline" name="FontUnderline" class="form-element ui-widget-content ui-corner-all">
+                                <option value=""></option>
+                                <option value="-4142">None</option>
+                                <option value="2">Single</option>
+                                <option value="-4119">Double</option>
+                                <option value="4">Single Accounting</option>
+                                <option value="5">Double Accounting</option>
+                            </select>
+                        </li>
+                        <li>
+                            <span>Color</span>
+                            <input type="text" id="FontColor" name="FontColor" class="form-element ui-widget-content ui-corner-all color"
+                                   style="width: 72px;" />
+                        </li>
+                        <li>
+                            <span style="height: 61px; line-height: 54px;">Effects</span>
+                            <div style="margin: 3px">
+                                <input type="checkbox" id="FontStrikethrough" name="FontStrikethrough" class="ui-widget-content"
+                                       style="padding: 0px; margin: 0px;" />
+                                <label for='FontStrikethrough'>
+                                    Strikethrough
+                                </label>
+                            </div>
+                            <div style="margin: 3px;">
+                                <input type="checkbox" id="FontSuperscript" name="FontSuperscript" onclick="MutexCheckBox(this,'FontSubscript')"
+                                       class="ui-widget-content" style="padding: 0px; margin: 0px;" />
+                                <label for='FontSuperscript'>
+                                    Superscript
+                                </label>
+                            </div>
+                            <div style="margin: 3px;">
+                                <input type="checkbox" id="FontSubscript" name="FontSubscript" onclick="MutexCheckBox(this,'FontSuperscript')"
+                                       class="ui-widget-content" style="padding: 0px; margin: 0px;" />
+                                <label for='FontSubscript'>
+                                    Subscript
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                    <div style="clear: both;">
+                    </div>
+                    <p>
+                        <span>Border</span>
+                        <input type="hidden" id="BorderID" name="BorderID" />
+                    </p>
+                    <ul>
+                        <li>
+                            <span>EdgeTop</span>
+                            <select id="BETStyle" name="BETStyle" class="form-element ui-widget-content ui-corner-all"
+                                    style="width: 75px;">
+                                <option value=""></option>
+                                <option value="1,1">Hairline Continuous</option>
+                                <option value="2,-4118">Thin Dot</option>
+                                <option value="2,5">Thin DashDotDot</option>
+                                <option value="2,4">Thin DashDot</option>
+                                <option value="2,-4115">Thin Dash</option>
+                                <option value="2,1">Thin Continuous</option>
+                                <option value="-4138,5">Medium DashDotDot</option>
+                                <option value="-4138,13">Medium SlantDashDot</option>
+                                <option value="-4138,4">Medium DashDot</option>
+                                <option value="-4138,-4115">Medium Dash</option>
+                                <option value="-4138,1">Medium Continuous</option>
+                                <option value="4,1">Thick Continuous</option>
+                                <option value="4,-4119">Thick Double</option>
+                            </select>
+                            <input type="text" id="BETColor" name="BETColor" maxlength="9" class="form-element ui-widget-content ui-corner-all color"
+                                   style="width: 72px;" />
+                        </li>
+                        <li>
+                            <span>EdgeRight</span>
+                            <select id="BERStyle" name="BERStyle" class="form-element ui-widget-content ui-corner-all"
+                                    style="width: 75px;">
+                                <option value=""></option>
+                                <option value="1,1">Hairline Continuous</option>
+                                <option value="2,-4118">Thin Dot</option>
+                                <option value="2,5">Thin DashDotDot</option>
+                                <option value="2,4">Thin DashDot</option>
+                                <option value="2,-4115">Thin Dash</option>
+                                <option value="2,1">Thin Continuous</option>
+                                <option value="-4138,5">Medium DashDotDot</option>
+                                <option value="-4138,13">Medium SlantDashDot</option>
+                                <option value="-4138,4">Medium DashDot</option>
+                                <option value="-4138,-4115">Medium Dash</option>
+                                <option value="-4138,1">Medium Continuous</option>
+                                <option value="4,1">Thick Continuous</option>
+                                <option value="4,-4119">Thick Double</option>
+                            </select>
+                            <input type="text" id="BERColor" name="BERColor" maxlength="9" class="form-element ui-widget-content ui-corner-all color"
+                                   style="width: 72px;" />
+                        </li>
+                        <li>
+                            <span>EdgeBottom</span>
+                            <select id="BEBStyle" name="BEBStyle" class="form-element ui-widget-content ui-corner-all"
+                                    style="width: 75px;">
+                                <option value=""></option>
+                                <option value="1,1">Hairline Continuous</option>
+                                <option value="2,-4118">Thin Dot</option>
+                                <option value="2,5">Thin DashDotDot</option>
+                                <option value="2,4">Thin DashDot</option>
+                                <option value="2,-4115">Thin Dash</option>
+                                <option value="2,1">Thin Continuous</option>
+                                <option value="-4138,5">Medium DashDotDot</option>
+                                <option value="-4138,13">Medium SlantDashDot</option>
+                                <option value="-4138,4">Medium DashDot</option>
+                                <option value="-4138,-4115">Medium Dash</option>
+                                <option value="-4138,1">Medium Continuous</option>
+                                <option value="4,1">Thick Continuous</option>
+                                <option value="4,-4119">Thick Double</option>
+                            </select>
+                            <input type="text" id="BEBColor" name="BEBColor" maxlength="9" class="form-element ui-widget-content ui-corner-all color"
+                                   style="width: 72px;" />
+                        </li>
+                        <li>
+                            <span>EdgeLeft</span>
+                            <select id="BELStyle" name="BELStyle" class="form-element ui-widget-content ui-corner-all"
+                                    style="width: 75px;">
+                                <option value=""></option>
+                                <option value="1,1">Hairline Continuous</option>
+                                <option value="2,-4118">Thin Dot</option>
+                                <option value="2,5">Thin DashDotDot</option>
+                                <option value="2,4">Thin DashDot</option>
+                                <option value="2,-4115">Thin Dash</option>
+                                <option value="2,1">Thin Continuous</option>
+                                <option value="-4138,5">Medium DashDotDot</option>
+                                <option value="-4138,13">Medium SlantDashDot</option>
+                                <option value="-4138,4">Medium DashDot</option>
+                                <option value="-4138,-4115">Medium Dash</option>
+                                <option value="-4138,1">Medium Continuous</option>
+                                <option value="4,1">Thick Continuous</option>
+                                <option value="4,-4119">Thick Double</option>
+                            </select>
+                            <input type="text" id="BELColor" name="BELColor" maxlength="9" class="form-element ui-widget-content ui-corner-all color"
+                                   style="width: 72px;" />
+                        </li>
+                        <li>
+                            <span>InsideHorizontal</span>
+                            <select id="BIHStyle" name="BIHStyle" class="form-element ui-widget-content ui-corner-all"
+                                    style="width: 75px;">
+                                <option value=""></option>
+                                <option value="1,1">Hairline Continuous</option>
+                                <option value="2,-4118">Thin Dot</option>
+                                <option value="2,5">Thin DashDotDot</option>
+                                <option value="2,4">Thin DashDot</option>
+                                <option value="2,-4115">Thin Dash</option>
+                                <option value="2,1">Thin Continuous</option>
+                                <option value="-4138,5">Medium DashDotDot</option>
+                                <option value="-4138,13">Medium SlantDashDot</option>
+                                <option value="-4138,4">Medium DashDot</option>
+                                <option value="-4138,-4115">Medium Dash</option>
+                                <option value="-4138,1">Medium Continuous</option>
+                                <option value="4,1">Thick Continuous</option>
+                                <option value="4,-4119">Thick Double</option>
+                            </select>
+                            <input type="text" id="BIHColor" name="BIHColor" maxlength="9" class="form-element ui-widget-content ui-corner-all color"
+                                   style="width: 72px;" />
+                        </li>
+                        <li>
+                            <span>InsideVertical</span>
+                            <select id="BIVStyle" name="BIVStyle" class="form-element ui-widget-content ui-corner-all"
+                                    style="width: 75px;">
+                                <option value=""></option>
+                                <option value="1,1">Hairline Continuous</option>
+                                <option value="2,-4118">Thin Dot</option>
+                                <option value="2,5">Thin DashDotDot</option>
+                                <option value="2,4">Thin DashDot</option>
+                                <option value="2,-4115">Thin Dash</option>
+                                <option value="2,1">Thin Continuous</option>
+                                <option value="-4138,5">Medium DashDotDot</option>
+                                <option value="-4138,13">Medium SlantDashDot</option>
+                                <option value="-4138,4">Medium DashDot</option>
+                                <option value="-4138,-4115">Medium Dash</option>
+                                <option value="-4138,1">Medium Continuous</option>
+                                <option value="4,1">Thick Continuous</option>
+                                <option value="4,-4119">Thick Double</option>
+                            </select>
+                            <input type="text" id="BIVColor" name="BIVColor" maxlength="9" class="form-element ui-widget-content ui-corner-all color"
+                                   style="width: 72px;" />
+                        </li>
+                        <li>
+                            <span>DiagonalUp</span>
+                            <select id="BDUStyle" name="BDUStyle" class="form-element ui-widget-content ui-corner-all"
+                                    style="width: 75px;">
+                                <option value=""></option>
+                                <option value="1,1">Hairline Continuous</option>
+                                <option value="2,-4118">Thin Dot</option>
+                                <option value="2,5">Thin DashDotDot</option>
+                                <option value="2,4">Thin DashDot</option>
+                                <option value="2,-4115">Thin Dash</option>
+                                <option value="2,1">Thin Continuous</option>
+                                <option value="-4138,5">Medium DashDotDot</option>
+                                <option value="-4138,13">Medium SlantDashDot</option>
+                                <option value="-4138,4">Medium DashDot</option>
+                                <option value="-4138,-4115">Medium Dash</option>
+                                <option value="-4138,1">Medium Continuous</option>
+                                <option value="4,1">Thick Continuous</option>
+                                <option value="4,-4119">Thick Double</option>
+                            </select>
+                            <input type="text" id="BDUColor" name="BDUColor" maxlength="9" class="form-element ui-widget-content ui-corner-all color"
+                                   style="width: 72px;" />
+                        </li>
+                        <li>
+                            <span>DiagonalDown</span>
+                            <select id="BDDStyle" name="BDDStyle" class="form-element ui-widget-content ui-corner-all"
+                                    style="width: 75px;">
+                                <option value=""></option>
+                                <option value="1,1">Hairline Continuous</option>
+                                <option value="2,-4118">Thin Dot</option>
+                                <option value="2,5">Thin DashDotDot</option>
+                                <option value="2,4">Thin DashDot</option>
+                                <option value="2,-4115">Thin Dash</option>
+                                <option value="2,1">Thin Continuous</option>
+                                <option value="-4138,5">Medium DashDotDot</option>
+                                <option value="-4138,13">Medium SlantDashDot</option>
+                                <option value="-4138,4">Medium DashDot</option>
+                                <option value="-4138,-4115">Medium Dash</option>
+                                <option value="-4138,1">Medium Continuous</option>
+                                <option value="4,1">Thick Continuous</option>
+                                <option value="4,-4119">Thick Double</option>
+                            </select>
+                            <input type="text" id="BDDColor" name="BDDColor" maxlength="9" class="form-element ui-widget-content ui-corner-all color"
+                                   style="width: 72px;" />
+                        </li>
+                    </ul>
+                    <div style="clear: both;">
+                    </div>
+                    <div style="height: 38px;">
+                    </div>
+                    <div style="background-color: White; border-top: 3px solid #a6c9e2; text-align: right;
+                        position: fixed; width: 280px; right: 20px; bottom: 0px; padding: 3px 0px;">
+                        <button id="btnSave" type="button">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="tabs-e-2" style="padding: 0px;">
+            </div>
+        </div>
+    </div>
+    @***********east end********************@
+    @***********right menu start************@
+    <div id="rmenu">
+        <ul id="menu">
+            <li id="add-book">
+                <a href="javascript:void(0);">
+                    <span class="ui-icon ui-icon-plus"></span>
+                    add book
+                </a>
+            </li>
+            <li id="add-sheet">
+                <a href="javascript:void(0);">
+                    <span class="ui-icon ui-icon-plus"></span>
+                    add sheet
+                </a>
+            </li>
+            <li id="modify-book">
+                <a href="javascript:void(0);">
+                    <span class="ui-icon ui-icon-wrench"></span>
+                    modify
+                </a>
+            </li>
+            <li id="remove-book">
+                <a href="javascript:void(0);">
+                    <span class="ui-icon ui-icon-trash"></span>
+                    remove
+                </a>
+            </li>
+            <li id="modify-sheet">
+                <a href="javascript:void(0);">
+                    <span class="ui-icon ui-icon-pencil"></span>
+                    modify
+                </a>
+            </li>
+            <li id="template-sheet">
+                <a href="javascript:void(0);">
+                    <span class="ui-icon ui-icon-document"></span>
+                    Template
+                </a>
+            </li>
+            <li id="remove-sheet">
+                <a href="javascript:void(0);">
+                    <span class="ui-icon ui-icon-trash"></span>
+                    remove
+                </a>
+            </li>
+        </ul>
+    </div>
+    @***********right menu end**************@
+    @***********excel tree update statr*****@
+    <div id="dialog-form" title="Add book">
+        <p class="validateTips">
+        </p>
+        <input type="hidden" id="OperateType" name="OperateType" />
+        <div map="add-book|add-sheet|modify-book|modify-sheet">
+            <label for="Name">
+                Name:
+            </label>
+            <input type="text" name="Name" id="Name" style="width: 216px; margin-bottom: 4px;"
+                   class="form-element ui-widget-content ui-corner-all" />
+        </div>
+        <div map="add-book|modify-book">
+            <label for="TypeID">
+                Book Type:
+            </label>
+            <select id="TypeID" name="TypeID" class="form-element ui-widget-content ui-corner-all"
+                    style="width: 223px; margin-bottom: 4px;">
+                <option value="0">DB</option>
+                <option value="1">SAP</option>
+            </select>
+        </div>
+        <div map="add-book|modify-book">
+            <label for="Connection">
+                Connection Name:
+            </label>
+            <input type="text" name="Connection" id="Connection" style="width: 216px; margin-bottom: 4px;"
+                   class="form-element ui-widget-content ui-corner-all" />
+        </div>
+        <div map="add-sheet|modify-sheet">
+            <label for="RFCFunction">
+                RFCFunction Name:
+            </label>
+            <input type="text" name="RFCFunction" id="RFCFunction" style="width: 216px; margin-bottom: 4px;"
+                   class="form-element ui-widget-content ui-corner-all" />
+        </div>
+        <div map="add-sheet|modify-sheet">
+            <label for="CommandText">
+                Command Text:
+            </label>
+            <textarea name="CommandText" id="CommandText" rows="5" style="width: 216px; margin-bottom: 4px;"
+                      class="form-element ui-widget-content ui-corner-all"></textarea>
+        </div>
+        <div map="add-sheet|modify-sheet">
+            <label for="Parameters">
+                Parameter List:
+            </label>
+            <input type="text" name="Parameters" id="Parameters" style="width: 216px; margin-bottom: 4px;"
+                   class="form-element ui-widget-content ui-corner-all" />
+        </div>
+        <div map="add-sheet|modify-sheet">
+            <label for="PrintArea">
+                Print Area:
+            </label>
+            <input type="text" name="PrintArea" id="PrintArea" style="width: 216px; margin-bottom: 4px;"
+                   class="form-element ui-widget-content ui-corner-all" />
+        </div>
+        <div map="add-sheet|modify-sheet">
+            <label for="IsGroup">
+                IsGroup:
+            </label>
+            <select id="IsGroup" name="IsGroup" class="form-element ui-widget-content ui-corner-all"
+                    style="width: 223px; margin-bottom: 4px;">
+                <option value="true">True</option>
+                <option value="false">False</option>
+            </select>
+        </div>
+        <div map="add-book|modify-book|add-sheet|modify-sheet">
+            <label for="OrderID">
+                Order Index:
+            </label>
+            <input type="text" name="OrderID" id="OrderID" style="width: 216px;"
+                   class="form-element ui-widget-content ui-corner-all" />
+        </div>
+    </div>
+    @***********excel tree update end*******@
+    @***********sheet template statr********@
+    <div id="dialog-form-template" title="Sheet template">
+        <div>
+            <label for="SheetName">
+                Sheet Name:
+            </label>
+            <br />
+            <input type="text" id="SheetName" name="SheetName" disabled="disabled" class="form-element ui-widget-content ui-corner-all" style="width:100%;" />
+        </div>
+        <div style="margin-top:5px;">
+            <label for="SheetTemplate">
+                Select Template:
+            </label>
+            <br />
+            <input type="file" id="SheetTemplate" name="SheetTemplate" style="width: 100%;" />
+        </div>
+        <div style="margin-top: 5px;">
+            <label for="RowStartNumber" style="float: left; width: 142px;">
+                Row start number:
+            </label>
+            <label for="RowEndNumber" style="float: left; width: 141px;">
+                Row end number:
+            </label>
+            <label for="ColumnStartCode" style="float: left; width: 141px; ">
+                Column start code:
+            </label>
+            <label for="ColumnEndCode" style="float: left; width: 141px; ">
+                Column end code:
+            </label>
+            <br />
+            <input type="text" id="RowStartNumber" name="RowStartNumber" class="form-element ui-widget-content ui-corner-all" style="width: 110px; margin-right: 20px;" />
+            <input type="text" id="RowEndNumber" name="RowEndNumber" class="form-element ui-widget-content ui-corner-all" style="width: 110px; margin-right: 20px; " />
+            <input type="text" id="ColumnStartCode" name="ColumnStartCode" class="form-element ui-widget-content ui-corner-all" style="width: 110px; margin-right: 20px; " />
+            <input type="text" id="ColumnEndCode" name="ColumnEndCode" class="form-element ui-widget-content ui-corner-all" style="width: 110px; " />
+        </div>
+    </div>
+    @***********sheet template end**********@
+    @***********account management start****@
+
+    @***********account management end******@
+</body>
+</html>

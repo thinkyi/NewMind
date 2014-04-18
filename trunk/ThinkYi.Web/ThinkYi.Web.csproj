@@ -78,6 +78,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\layout\css\layout-custom.css" />
+    <Content Include="Scripts\layout\css\layout-default.css" />
+    <Content Include="Scripts\layout\images\layout-north-background.gif" />
+    <Content Include="Scripts\layout\images\resizable-e.gif" />
+    <Content Include="Scripts\layout\images\resizable-n.gif" />
+    <Content Include="Scripts\layout\images\resizable-s.gif" />
+    <Content Include="Scripts\layout\images\resizable-w.gif" />
+    <Content Include="Scripts\layout\images\toggle-dn.gif" />
+    <Content Include="Scripts\layout\images\toggle-lt.gif" />
+    <Content Include="Scripts\layout\images\toggle-rt.gif" />
+    <Content Include="Scripts\layout\images\toggle-up.gif" />
+    <Content Include="Scripts\layout\js\jquery.layout.js" />
+    <Content Include="Scripts\layout\js\jquery.layout.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -90,6 +106,8 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Admin\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
