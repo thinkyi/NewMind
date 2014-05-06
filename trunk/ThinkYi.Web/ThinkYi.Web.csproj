@@ -198,6 +198,7 @@
     <Content Include="Content\themes\redmond\jquery-ui-1.10.3.custom.css" />
     <Content Include="Content\themes\redmond\jquery-ui-1.10.3.custom.min.css" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\admin-language.js" />
     <Content Include="Scripts\admin-index - Copy.js" />
     <Content Include="Scripts\admin-index.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -228,6 +229,8 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Product\_TypePartial.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Admin\Language.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
