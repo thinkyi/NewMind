@@ -9,6 +9,6 @@ namespace ThinkYi.Service
 {
     public interface IProductService
     {
-        IQueryable<ProductType> GetProductTypes(string code);
+        IQueryable<ProductType> GetProductTypes(string lCode);
     }
 }

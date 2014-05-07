@@ -20,9 +20,9 @@ namespace ThinkYi.Service.Impl
         [Dependency]
         public IUnitOfWork UnitOfWork { get; set; }
 
-        public IQueryable<ProductType> GetProductTypes(string code)
+        public IQueryable<ProductType> GetProductTypes(string lCode)
         {
-            IQueryable<ProductType> productTypes = ProducTypeRepository.Entities.Where(p => p.Language.Code.Equals(code));
+            IQueryable<ProductType> productTypes = ProducTypeRepository.Entities.Where(p => p.Language.Code.Equals(lCode));
             return productTypes;
         }
     }

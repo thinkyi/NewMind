@@ -56,6 +56,7 @@
     <Compile Include="NewMindContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\LanguageRepository.cs" />
+    <Compile Include="Repositories\I18N.cs" />
     <Compile Include="Repositories\ProductTypeRepository.cs" />
     <Compile Include="Repositories\MenuRepository.cs" />
   </ItemGroup>

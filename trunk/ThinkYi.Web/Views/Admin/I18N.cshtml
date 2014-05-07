@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "I18N";
+}
+@section javascript{
+    <script src="@Url.Content("~/Scripts/admin-i18n.js")" type="text/javascript"></script>
+}
+<div>
+    <table id="i18nGrid"></table>
+    <div id="i18nPager">
+    </div>
+</div>

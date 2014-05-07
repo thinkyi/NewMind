@@ -16,6 +16,7 @@ namespace ThinkYi.Data
         public DbSet<Language> Languages { get; set; }
         public DbSet<Menu> Menus { get; set; }
         public DbSet<ProductType> ProductTypes { get; set; }
+        public DbSet<I18N> I18Ns { get; set; }
 
         public virtual void Commit()
         {

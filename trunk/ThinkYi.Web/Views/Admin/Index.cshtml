@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<ThinkYi.Domain.Language>
+@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -18,12 +19,9 @@
 <body>
     @***********north start*****************@
     <div class="ui-layout-north">
-        <div style="float: right; padding: 5px 5px 0px 0px; font-size: 12px;">
+        <div style="float: right; padding: 5px 5px 0px 0px; font-size: 12px; color:white;">
             <div style="float: right; margin-right: 5px;">
-                <strong>User:</strong> <span>@ViewData["UserName"]</span>
-            </div>
-            <div style="float: right; margin-right: 5px;">
-                <strong>Domain:</strong> <span>@ViewData["Domain"]</span>
+                <strong>用户：</strong> <span>管理员</span>
             </div>
         </div>
         <div id="logo">
@@ -40,10 +38,10 @@
             <div>
                 <ul class="menuItem">
                     <li>
-                        <div class="selected" code="language">
+                        <div class="selected" title="I18N">
                             <a href="javascript:void(0);">
                                 <img src="~/Content/images/admin/bricks.png">
-                                <span class="nav">语言类别</span>
+                                <span class="nav">语言设置</span>
                             </a>
                         </div>
                     </li>
@@ -75,6 +73,16 @@
             </div>
             <h3>产品管理</h3>
             <div>
+                <ul class="menuItem">
+                    <li>
+                        <div title="ProductType">
+                            <a href="javascript:void(0);">
+                                <img src="~/Content/images/admin/chart_organisation.png">
+                                <span class="nav">类别管理</span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
             </div>
             <h3>新闻管理</h3>
             <div>
@@ -87,9 +95,21 @@
     @***********west end********************@
     @***********center start****************@
     <div class="ui-layout-center">
-        <div style="border-bottom: 1px solid #79b7e7; background: #3682dd; color: white; height:30px; line-height: 30px; font-size: 13px; padding-left:10px;">后台首页 > 语言类别</div>
+        <div style="border-bottom: 1px solid #79b7e7; background: #3682dd; color: white; height:30px; line-height: 30px; font-size: 13px; padding-left:10px; margin-bottom:2px;">
+            <div style="float:left;">
+                后台首页 > 语言设置
+            </div>
+            <div class="language">
+                @foreach (var l in Model)
+                {
+                    <a href="javascript:void(0);" name="@l.Code" title="@l.LanguageID">
+                        @l.Text
+                    </a>
+                }
+            </div>
+        </div>
         <iframe id="mainFrame" name="mainFrame" class="ui-layout-content" width="100%" frameborder="0" scrolling="auto"
-                src="@Url.Action("Language")"></iframe>
+                src="@Url.Action("I18N")"></iframe>
     </div>
     @***********center start****************@
 </body>

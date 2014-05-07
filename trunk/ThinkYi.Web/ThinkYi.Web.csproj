@@ -198,10 +198,69 @@
     <Content Include="Content\themes\redmond\jquery-ui-1.10.3.custom.css" />
     <Content Include="Content\themes\redmond\jquery-ui-1.10.3.custom.min.css" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\admin-language.js" />
+    <Content Include="Scripts\admin-producttype.js" />
+    <Content Include="Scripts\admin-i18n.js" />
     <Content Include="Scripts\admin-index - Copy.js" />
     <Content Include="Scripts\admin-index.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jqGrid\css\ellipsis-xbl.xml" />
+    <Content Include="Scripts\jqGrid\css\ui.jqgrid.css" />
+    <Content Include="Scripts\jqGrid\js\Changes.txt" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-ar.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-bg.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-bg1251.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-cat.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-cn.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-cs.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-da.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-de.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-dk.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-el.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-en.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-es.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-fa.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-fi.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-fr.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-gl.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-he.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-hr.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-hr1250.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-hu.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-id.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-is.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-it.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-ja.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-kr.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-lt.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-mne.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-nl.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-no.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-pl.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-pt-br.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-pt.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-ro.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-ru.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-sk.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-sr-latin.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-sr.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-sv.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-th.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-tr.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-tw.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-ua.js" />
+    <Content Include="Scripts\jqGrid\js\i18n\grid.locale-vi.js" />
+    <Content Include="Scripts\jqGrid\js\install.txt" />
+    <Content Include="Scripts\jqGrid\js\jquery.jqGrid.min.js" />
+    <Content Include="Scripts\jqGrid\js\jquery.jqGrid.src.js" />
+    <Content Include="Scripts\jqGrid\plugins\grid.addons.js" />
+    <Content Include="Scripts\jqGrid\plugins\grid.postext.js" />
+    <Content Include="Scripts\jqGrid\plugins\grid.setcolumns.js" />
+    <Content Include="Scripts\jqGrid\plugins\jquery.contextmenu.js" />
+    <Content Include="Scripts\jqGrid\plugins\jquery.searchFilter.js" />
+    <Content Include="Scripts\jqGrid\plugins\jquery.tablednd.js" />
+    <Content Include="Scripts\jqGrid\plugins\searchFilter.css" />
+    <Content Include="Scripts\jqGrid\plugins\ui.multiselect.css" />
+    <Content Include="Scripts\jqGrid\plugins\ui.multiselect.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jqueryui\redmond\jquery-ui-1.10.3.js" />
@@ -230,7 +289,8 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Product\_TypePartial.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
-    <Content Include="Views\Admin\Language.cshtml" />
+    <Content Include="Views\Admin\I18N.cshtml" />
+    <Content Include="Views\Admin\ProductType.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -251,6 +311,10 @@
     <ProjectReference Include="..\ThinkYi.Service\ThinkYi.Service.csproj">
       <Project>{c9fbdd11-91c5-4d31-bf72-15ac0701f9ed}</Project>
       <Name>ThinkYi.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ThinkYi.Tools\ThinkYi.Tools.csproj">
+      <Project>{76871797-21f7-4f80-9742-68cca82b665f}</Project>
+      <Name>ThinkYi.Tools</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

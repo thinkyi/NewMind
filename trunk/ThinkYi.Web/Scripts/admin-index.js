@@ -1,4 +1,9 @@
-﻿jQuery(document).ready(function () {
+﻿var g_languageCode = "cn";
+//jqGridRowID,jqGridWidth,jqGridHeight
+var g_jqGridCount = 0, g_jqGridHeight = 300, g_jqGridWidth = 500;
+var pageLayout;
+
+jQuery(document).ready(function () {
 
     //#region create page layout
 
@@ -25,11 +30,18 @@
         layout name - If a 'name' was specified when creating the layout, else returns an empty string.
         */
         onresize: function (n, e, s) {
+            $("#accordion").accordion("refresh");
             if (n == "center") {
+                g_jqGridHeight = s.innerHeight;
+                g_jqGridWidth = s.innerWidth;
+                if (g_jqGridCount > 0) {
+                    mainFrame.setJqgridSize(g_jqGridHeight, g_jqGridWidth);
+                }
             }
         }
     });
-
+    g_jqGridHeight = pageLayout.state.center.innerHeight;
+    g_jqGridWidth = pageLayout.state.center.innerWidth;
     //#endregion
 
     //#region jquery ui
@@ -38,6 +50,7 @@
         activeHeader: "ui-icon-circle-arrow-s"
     };
     $("#accordion").accordion({
+        heightStyle: "fill",
         icons: icons
     });
 
@@ -47,6 +60,23 @@
     $("#accordion li div").bind("click", function () {
         $("#accordion li div").removeClass("selected");
         $(this).addClass("selected");
+        $("#mainFrame").attr("src", "Admin/" + $(this).attr("title"));
     });
     //#endregion
+
+    SetLanguage();
+    $(".language a").bind("click", function () {
+        $(".language a").removeClass("active");
+        $(this).addClass("active");
+        g_languageCode = $(this).attr("name");
+        mainFrame.location.reload();
+    });
 });
+
+function SetLanguage() {
+    $(".language a").each(function () {
+        if ($(this).attr("name") == g_languageCode) {
+            $(this).addClass("active");
+        }
+    });
+}

@@ -42,9 +42,11 @@ namespace ThinkYi.Web
                 .RegisterType<IUnitOfWork, UnitOfWork>(new HttpContextLifetimeManager<IUnitOfWork>())
                 .RegisterType<ILanguageRepository, LanguageRepository>(new HttpContextLifetimeManager<ILanguageRepository>())
                 .RegisterType<IMenuRepository, MenuRepository>(new HttpContextLifetimeManager<IMenuRepository>())
+                .RegisterType<II18NRepository, I18NRepository>(new HttpContextLifetimeManager<II18NRepository>())
                 .RegisterType<IProducTypeRepository, ProductTypeRepository>(new HttpContextLifetimeManager<IProducTypeRepository>())
                 .RegisterType<IPartialService, PartialService>(new HttpContextLifetimeManager<IPartialService>())
-                .RegisterType<IProductService, ProductService>(new HttpContextLifetimeManager<IProductService>());
+                .RegisterType<IProductService, ProductService>(new HttpContextLifetimeManager<IProductService>())
+                .RegisterType<IAdminService, AdminService>(new HttpContextLifetimeManager<IAdminService>());
             return container;
         }
     }

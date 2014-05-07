@@ -55,8 +55,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Impl\AdminService.cs" />
     <Compile Include="Impl\PartialService.cs" />
     <Compile Include="Impl\ProductService.cs" />
+    <Compile Include="IAdminService.cs" />
     <Compile Include="IProductService.cs" />
     <Compile Include="IPartialService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

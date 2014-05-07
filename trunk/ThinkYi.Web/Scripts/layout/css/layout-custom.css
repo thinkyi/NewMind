@@ -18,7 +18,7 @@
     background-color: #FFF;
     border: 1px solid #79b7e7;
     border-left: 0;
-    overflow: auto;
+    overflow: hidden;
     /*border-radius: 5px;*/
 }
 
@@ -101,4 +101,10 @@
 
 .ui-layout-toggler-east-open, .ui-layout-toggler-west-closed {
     background: url(../images/toggle-rt.gif) no-repeat center left;
+}
+
+/* (scrolling) content-div inside pane allows for fixed header(s) and/or footer(s) */
+.ui-layout-content {
+    position: relative; /* contain floated or positioned elements */
+    overflow: auto; /* add scrolling to content-div */
 }
