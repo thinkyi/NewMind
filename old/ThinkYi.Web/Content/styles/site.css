@@ -1,0 +1,72 @@
+﻿/* Date:2014/04/23 */
+*{padding:0; margin:0;}
+img{border:none;}
+ul,li{list-style-type:none;}
+.fc{clear:both;}
+body{font-size:12px; line-height:22px;}
+a,a:link,a:visited{ color:#515151; text-decoration:none;}
+a:hover,a:active{ color:#f60; text-decoration:none;}
+a.a_white,a.a_white:link,a.a_white:visited{ color:#fff; text-decoration:none;}
+a.a_white:hover,a.a_white:active{ color:#ff0; text-decoration:none;}
+
+/*-- header -------------------------------------------------------------*/
+#header{background:url(../images/topbg.jpg) no-repeat; width:998px; margin:0 auto;}
+#header .top{height:102px; padding-left:650px; text-align:left;}
+#header .langbox{ padding-top:10px; height:20px; line-height:20px;}
+
+.banner{margin:10px 0;}
+.img_txt{vertical-align:middle; padding-right:10px;}
+#header .telbox{margin-top:7px;}
+#header .telbox .tel{height:28px; line-height:28px; background:url(../images/icon_tel.png) left center no-repeat; padding-left:60px; font-size:18px; font-weight:bold; font-family:Arial, Helvetica, sans-serif; display:inline-block; color:#f00;}
+#header .searchbox{background:#62ab00; width:230px; height:24px; line-height:24px; margin-top:5px;}
+#header .searchbox .input1{background:#ffffcc; margin:2px 0 2px 2px; color:#515151; border:none;height:20px; line-height:20px; padding:0 4px;vertical-align:middle;width:170px; }
+#header .searchbox .input2{background:#62ab00;text-align:center; color:#fff; border:none; width:50px; height:20px; line-height:20px; vertical-align:middle; cursor:pointer;}
+
+#header .menu{background:url(../images/menubg.jpg) repeat-x; height:38px; line-height:38px; font-family:"Microsoft YaHei","微软雅黑"; font-size:14px;}
+#header .menu ul li{float:left; text-align:center; font-size:14px; font-weight:bold; margin:0 30px; color:#fff;}
+#header .menu ul li a{color:#fff; text-decoration:none;}
+#header .menu ul li a:hover{color:#ff0; text-decoration:none;}
+#header .menu ul li.menu_fg{width:5px;display:block; margin:0;}
+
+/*-- main -------------------------------------------------------------*/
+#main{width:998px; margin:10px auto;}
+#main .leftbar{width:204px; float:left;}
+#main .rightbar{width:782px; float:right;}
+.probox{}
+.probox .protop{background:url(../images/lmtop1.png) no-repeat; height:32px; line-height:32px; width:204px;}
+.probox .protop h3{color:#fff; padding-left:15px;font-family:"Microsoft YaHei","微软雅黑"; font-size:15px;}
+.probox .promid{background:url(../images/lmbg1.png) no-repeat; height:340px; padding:0 10px;}
+
+.prolist{ padding-top:5px; line-height:24px;}
+.prolist ul li{background:url(../images/icon_dian.png) no-repeat left 6px; padding-left:20px; font-size:12px; font-weight:bold; border-bottom:1px solid #99cc00;}
+.prolist ul li a{color:#ff6100; text-decoration:none;}
+.prolist ul li a:hover{color:#f00; text-decoration:none;}
+.prolist ul li ul li{ background:none; border:none; line-height:20px; padding-left:0px; color:#515151; font-size:12px; font-weight:normal;}
+.picbox{margin-top:10px;}
+
+.bannerbox{ margin-bottom:10px;}
+.bannerbox .top{background:url(../images/lmtop2.png) no-repeat; height:34px; line-height:34px;}
+.bannerbox .top h3{color:#fff; padding-left:15px; font-family:"Microsoft YaHei","微软雅黑"; font-size:15px;}
+.bannerbox .mid{ background:none;}
+
+.productbox{}
+.productbox .top{background:url(../images/lmtop2.png) no-repeat; height:34px; line-height:34px;}
+.productbox .top h3{color:#fff; padding-left:15px; font-family:"Microsoft YaHei","Microsoft YaHei","微软雅黑"; font-size:15px; float:left;}
+.productbox .top span{color:#fff; float:right; padding-right:20px;}
+.productbox .mid{ background:url(../images/lmbg2.png) repeat-y; padding:10px;}
+.productbox .di{ background:url(../images/lmdi2.png) no-repeat; height:12px; width:782px; overflow:hidden;}
+.pick{padding:10px 0;}
+.pick li{margin:0 10px; width:164px;display:inline-block;}
+.pick li .pick_img{border:1px solid #ccc; display:inline-block;}
+.pick li .pick_name{height:30px; line-height:30px; text-align:center;}
+
+.pagebox{text-align:center; height:35px; line-height:35px; background:#eee; border:1px solid #ccc; margin:0 10px; color:#666666;}
+.pagebox a{margin:0 5px; color:#666; text-decoration:none;}
+.pagebox a:hover{margin:0 5px; color:#f00; text-decoration:none;}
+
+/*-- footer -------------------------------------------------------------*/
+#footer{ background:url(../images/footerbg.png) #fff bottom repeat-x; width:998px; margin:0 auto;}
+#footer .links{background:#99cc00; height:30px; line-height:30px; text-align:center;color:#fff;}
+#footer .links a{ margin:0 20px; color:#fff; text-decoration:none;}
+#footer .links a:hover{ margin:0 20px; color:#f00; text-decoration:none;}
+#footer .copyright{ text-align:center; line-height:22px; background:url(../images/logo2.png) 40px center no-repeat; padding-left:60px; padding-top:10px; height:90px;}

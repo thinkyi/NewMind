@@ -1,0 +1,127 @@
+﻿html, body {
+    height: 100%;
+    width: 100%;
+    font-family: "Microsoft YaHei","微软雅黑",Lucida Grande,Lucida Sans,Arial,sans-serif;
+    font-size: 12px;
+    color: #444;
+    margin: 0px;
+    padding: 0px;
+    background-color: #EEE !important;
+    overflow: hidden !important;
+}
+
+a {
+    color: Black;
+    text-decoration: none;
+}
+
+    a:hover {
+        color: Red;
+        text-decoration: underline;
+    }
+
+ul {
+    padding: 0px;
+    margin: 0px;
+}
+
+li {
+    list-style-type: none;
+}
+
+img {
+    border: none;
+    display: block;
+}
+
+#logo {
+    margin-left: 12px;
+    margin-top: 4px;
+    height: 80px;
+    background: url('../images/logo.png');
+    background-repeat: no-repeat;
+}
+
+    #logo .big {
+        font-size: 25px;
+        font-weight: bold;
+        padding-top: 6px;
+        margin-left: 84px;
+        display: block;
+        color: white;
+    }
+
+    #logo .small {
+        font-size: 13px;
+        padding-top: 6px;
+        margin-left: 84px;
+        display: block;
+        color: white;
+    }
+
+/*jqgrid*/
+#gbox_cellgrid, #gbox_rangegrid, #gbox_rowgrid, #gbox_columngrid {
+    border-left: none;
+    border-top: none;
+    border-right: none;
+}
+/*jquery ui*/
+.ui-accordion-remove-border {
+    border-left: 0px;
+    border-right: 0px;
+}
+
+#accordion div.ui-accordion-content {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+
+.accordion ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 10px;
+}
+
+    .accordion ul li {
+        padding: 0px;
+        text-align: center;
+        margin: 5px 0px;
+    }
+
+        .accordion ul li a {
+            line-height: 24px;
+            cursor: pointer;
+        }
+
+        .accordion ul li div {
+            margin: 2px 0px;
+            padding-top: 2px;
+            border: 1px solid transparent;
+        }
+
+.menuItem li div:hover {
+    border: 1px dashed #D69C00;
+    background: #FFE88C;
+    cursor: pointer;
+}
+
+.accordion ul li div.hover a {
+    color: #D16C00;
+    text-decoration: none;
+}
+
+.accordion ul li div.selected {
+    border: 1px solid #D69C00;
+    background: #FFE88C;
+    cursor: default;
+}
+
+    .accordion ul li div.selected a {
+        color: #D16C00;
+        font-weight: bold;
+    }
+
+.menuItem img {
+    margin: 0px auto;
+}

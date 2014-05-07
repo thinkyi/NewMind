@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/styles/site.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="container">
+        @Html.RenderAction("","")
+        @RenderBody()
+        <div id="main">
+            <div class="leftbar">
+                <div class="probox">
+                    <div class="protop"><h3>产品分类</h3></div>
+                    <div class="promid">
+                        <div class="prolist">
+                            <ul>
+                                <li>
+                                    <a href="#">商务办公系列</a>
+                                    <ul>
+                                        <li>
+                                            名片·单据·表格·不干胶
+                                            单张·折页·海报·杂志
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">海报书刊系列</a>
+                                    <ul>
+                                        <li>
+                                            名片·单据·表格·不干胶
+                                            单张·折页·海报·杂志
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">产品包装系列</a>
+                                    <ul>
+                                        <li>
+                                            名片·单据·表格·不干胶
+                                            单张·折页·海报·杂志
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">节日礼品系列</a>
+                                    <ul>
+                                        <li>
+                                            名片·单据·表格·不干胶
+                                            单张·折页·海报·杂志
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">少儿益智系列</a>
+                                    <ul>
+                                        <li>
+                                            名片·单据·表格·不干胶
+                                            单张·折页·海报·杂志
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="picbox">
+                    <img src="~/Content/images/links1.png" width="204" height="74" />
+                </div>
+                <div class="picbox">
+                    <img src="~/Content/images/links2.png" width="204" height="74" />
+                </div>
+                <div class="picbox">
+                    <img src="~/Content/images/links3.png" width="204" height="74" />
+                </div>
+            </div>
+            <div class="rightbar">
+                <div class="bannerbox">
+                    <div class="top">
+                        <h3>产品推荐</h3>
+                    </div>
+                    <div class="mid"><img src="~/Content/images/banner.jpg" width="782" height="339" /> </div>
+                </div>
+                <div class="productbox">
+                    <div class="top">
+                        <h3>产品展示</h3><span><a href="#" class="a_white">更多产品请点击</a>>></span>
+                    </div>
+                    <div class="mid">
+                        <ul class="pick">
+                            <li>
+                                <a href="#" class="pick_img"><img src="~/Content/images/001.jpg" width="164" height="122" /></a>
+                                <p class="pick_name"><a href="#">产品名称</a></p>
+                            </li>
+                            <li>
+                                <a href="#" class="pick_img"><img src="~/Content/images/001.jpg" width="164" height="122" /></a>
+                                <p class="pick_name"><a href="#">产品名称</a></p>
+                            </li>
+                            <li>
+                                <a href="#" class="pick_img"><img src="~/Content/images/001.jpg" width="164" height="122" /></a>
+                                <p class="pick_name"><a href="#">产品名称</a></p>
+                            </li>
+                            <li>
+                                <a href="#" class="pick_img"><img src="~/Content/images/001.jpg" width="164" height="122" /></a>
+                                <p class="pick_name"><a href="#">产品名称</a></p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="di"></div>
+                </div>
+            </div>
+            <div class="fc"></div>
+        </div>
+        <div id="footer">
+            <div class="links">
+                <a href="#">首页</a> | <a href="#">关于新创</a> | <a href="#">产品价格</a> | <a href="#">生产设备</a> | <a href="#">产品展示</a> | <a href="#">行业知识</a> | <a href="#">招聘信息</a> | <a href="#">联系我们</a>
+            </div>
+            <div class="copyright">
+                HongKong Address:Unit C,20/F.,Nathan Commercial Building, 430-436 Nathan Road,Yaumatei,Kowloon.   Tel: +852 3621 0809    +852 6915 2564<br />
+                东莞公司地址: 东莞市长安镇厦岗福海路华盛大厦五楼    电话: 0769-3321 8944   传真: 0769-8275 0856<br />
+                专营: 名片，海报，说明书，彩卡，彩盒，手工盒，手挽袋，挂历，利是封，贺卡等纸类印刷
+            </div>
+        </div>
+    </div>
+</body>
+</html>
