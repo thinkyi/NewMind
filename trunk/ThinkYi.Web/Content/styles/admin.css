@@ -10,6 +10,24 @@
     /*overflow: hidden !important;*/
 }
 
+input {
+    padding: 4px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    line-height: 19px;
+    font-weight: 400;
+    font-size: 13px;
+    color: #333;
+    text-align: left;
+}
+
+    label.title {
+        font-weight: bold;
+    }
+
 a {
     color: Black;
     text-decoration: none;
@@ -60,11 +78,7 @@ img {
     }
 
 /*jqgrid*/
-#gbox_cellgrid, #gbox_rangegrid, #gbox_rowgrid, #gbox_columngrid {
-    border-left: none;
-    border-top: none;
-    border-right: none;
-}
+
 /*jquery ui*/
 .ui-accordion-remove-border {
     border-left: 0px;
@@ -76,12 +90,12 @@ img {
     padding-bottom: 0px;
 }
 
-.ui-widget-content-remove-border{
+.ui-widget-content-remove-border {
     border-left: 0px;
     border-right: 0px;
 }
 
-.ui-widget-content-remove-border1{
+.ui-widget-content-remove-border1 {
     border-left: 0px;
 }
 
@@ -155,3 +169,13 @@ img {
             color: black;
             background-color: white;
         }
+
+/*UEditor*/
+/* 这个ID为编辑器的ID */
+#edui1 {
+    width: 100% !important;
+}
+/* 这个ID为编辑器可编辑区域的ID */
+#edui1_iframeholder {
+    width: 100% !important;
+}

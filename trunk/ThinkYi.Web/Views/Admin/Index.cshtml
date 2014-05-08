@@ -82,6 +82,22 @@
                             </a>
                         </div>
                     </li>
+                    <li>
+                        <div title="ProductAdd">
+                            <a href="javascript:void(0);">
+                                <img src="~/Content/images/admin/note.png">
+                                <span class="nav">添加产品</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div title="Product">
+                            <a href="javascript:void(0);">
+                                <img src="~/Content/images/admin/sitemap_color.png">
+                                <span class="nav">产品列表</span>
+                            </a>
+                        </div>
+                    </li>
                 </ul>
             </div>
             <h3>新闻管理</h3>
@@ -103,7 +119,7 @@
                 @foreach (var l in Model)
                 {
                     <a href="javascript:void(0);" name="@l.Code" title="@l.LanguageID">
-                        @l.Text
+                        @l.Name
                     </a>
                 }
             </div>

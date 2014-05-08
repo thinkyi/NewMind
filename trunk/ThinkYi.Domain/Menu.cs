@@ -11,7 +11,7 @@ namespace ThinkYi.Domain
         public int MenuID { get; set; }
         public int LanguageID { get; set; }
         public string Code { get; set; }
-        public string Text { get; set; }
+        public string Name { get; set; }
 
         public virtual Language Language { get; set; }
     }

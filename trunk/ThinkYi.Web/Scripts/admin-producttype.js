@@ -1,6 +1,6 @@
 ﻿var languageCode = parent.g_languageCode;
 var productTypeID = 0;
-parent.g_jqGridCount = 2;
+parent.g_isSetSize = true;
 
 jQuery(document).ready(function () {
     jQuery("#pt1Grid").jqGrid({
@@ -13,10 +13,10 @@ jQuery(document).ready(function () {
    		            { name: 'LanguageID', index: 'LanguageID', width: 30, hidden: true },
    		            { name: 'ParentTypeID', index: 'OrderID', width: 30, hidden: true },
    		            { name: 'Code', index: 'Code', editable: true, width: 50 },
-                    { name: 'Text', index: 'Text', editable: true, width: 160 },
+                    { name: 'Name', index: 'Name', editable: true, width: 160 },
                     { name: 'Remark', index: 'Remark', editable: true, hidden: true }
         ],
-        height: parent.g_jqGridHeight - 86,
+        height: parent.g_layoutCenterHeight - 86,
         rowNum: 500,
         pager: '#pt1Pager',
         pgbuttons: false,
@@ -46,10 +46,10 @@ jQuery(document).ready(function () {
    		            { name: 'LanguageID', index: 'LanguageID', width: 30, hidden: true },
    		            { name: 'ParentTypeID', index: 'OrderID', width: 30, hidden: true },
    		            { name: 'Code', index: 'Code', editable: true, width: 50 },
-                    { name: 'Text', index: 'Text', editable: true, width: 160 },
+                    { name: 'Name', index: 'Name', editable: true, width: 160 },
                     { name: 'Remark', index: 'Remark', editable: true, hidden: true }
         ],
-        height: parent.g_jqGridHeight - 86,
+        height: parent.g_layoutCenterHeight - 86,
         rowNum: 500,
         pager: '#pt2Pager',
         pgbuttons: false,
@@ -71,6 +71,7 @@ jQuery(document).ready(function () {
 });
 
 
-function setJqgridSize(h, w) {
+function SetSize(h, w) {
     $("#pt1Grid").setGridHeight(h - 86);
+    $("#pt2Grid").setGridHeight(h - 86);
 }

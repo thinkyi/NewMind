@@ -16,7 +16,9 @@ namespace ThinkYi.Service.Impl
         [Dependency]
         public ILanguageRepository LanguageRepository { get; set; }
         [Dependency]
-        public IProducTypeRepository ProducTypeRepository { get; set; }
+        public IProductTypeRepository ProducTypeRepository { get; set; }
+        [Dependency]
+        public IProductRepository ProducRepository { get; set; }
         [Dependency]
         public IUnitOfWork UnitOfWork { get; set; }
 
@@ -24,6 +26,11 @@ namespace ThinkYi.Service.Impl
         {
             IQueryable<ProductType> productTypes = ProducTypeRepository.Entities.Where(p => p.Language.Code.Equals(lCode));
             return productTypes;
+        }
+        public IQueryable<Product> GetProducts(string lCode)
+        {
+            IQueryable<Product> products = ProducRepository.Entities.Where(p => p.Language.Code.Equals(lCode));
+            return products;
         }
     }
 }

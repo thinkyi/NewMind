@@ -13,7 +13,7 @@ namespace ThinkYi.Domain
         public int OrderID { get; set; }
         public string Type { get; set; }
         public string Code { get; set; }
-        public string Text { get; set; }
+        public string Name { get; set; }
         public string Remark { get; set; }
 
         public virtual Language Language { get; set; }

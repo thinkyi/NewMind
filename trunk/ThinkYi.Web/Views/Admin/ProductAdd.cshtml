@@ -1,0 +1,50 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "ProductAdd";
+}
+@section javascript{
+    <script src="@Url.Content("~/Scripts/admin-productadd.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/UEditor/ueditor.config.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/UEditor/ueditor.all.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/UEditor/lang/zh-cn/zh-cn.js")" type="text/javascript"></script>
+}
+<div style="border-top:1px solid #a6c9e2; padding:10px;">
+    <ul>
+        <li>
+            <label class="title">产品编码</label>
+            <label>
+                <input type="text" class="text ui-widget-content ui-corner-all" style="width:30%" />
+            </label>
+        </li>
+        <li>
+            <label class="title">产品名称</label>
+            <label>
+                <input type="text" class="text ui-widget-content ui-corner-all" style="width:30%" />
+            </label>
+        </li>
+        <li>
+            <label class="title">是否首页推荐</label>
+            <label>
+                <input type="checkbox" class="text ui-widget-content ui-corner-all" />
+                勾选则在首页产品推荐处显示大图
+            </label>
+        </li>
+        <li>
+            <label class="title">是否首页展示</label>
+            <label>
+                <input type="checkbox" class="text ui-widget-content ui-corner-all" />
+                勾选则在首页产品展示处显示小图
+            </label>
+        </li>
+        <li>
+            <label class="title">产品内容</label>
+            <label>
+                <script id="editor" name="editor" type="text/plain" style="height:300px;">
+                </script>
+            </label>
+        </li>
+    </ul>
+    <button style="position:fixed; top:10px; right:10px;" id="btnSave" type="button">
+        Save
+    </button>
+</div>

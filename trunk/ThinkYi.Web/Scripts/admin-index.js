@@ -1,6 +1,6 @@
 ﻿var g_languageCode = "cn";
 //jqGridRowID,jqGridWidth,jqGridHeight
-var g_jqGridCount = 0, g_jqGridHeight = 300, g_jqGridWidth = 500;
+var g_isSetSize = false, g_layoutCenterHeight = 300, g_layoutCenterWidth = 500;
 var pageLayout;
 
 jQuery(document).ready(function () {
@@ -32,16 +32,16 @@ jQuery(document).ready(function () {
         onresize: function (n, e, s) {
             $("#accordion").accordion("refresh");
             if (n == "center") {
-                g_jqGridHeight = s.innerHeight;
-                g_jqGridWidth = s.innerWidth;
-                if (g_jqGridCount > 0) {
-                    mainFrame.setJqgridSize(g_jqGridHeight, g_jqGridWidth);
+                g_layoutCenterHeight = s.innerHeight;
+                g_layoutCenterWidth = s.innerWidth;
+                if (g_isSetSize) {
+                    mainFrame.SetSize(g_layoutCenterHeight, g_layoutCenterWidth);
                 }
             }
         }
     });
-    g_jqGridHeight = pageLayout.state.center.innerHeight;
-    g_jqGridWidth = pageLayout.state.center.innerWidth;
+    g_layoutCenterHeight = pageLayout.state.center.innerHeight;
+    g_layoutCenterWidth = pageLayout.state.center.innerWidth;
     //#endregion
 
     //#region jquery ui

@@ -1,5 +1,5 @@
 ﻿var languageCode = parent.g_languageCode;
-parent.g_jqGridCount = 1;
+parent.g_isSetSize = true;
 
 jQuery(document).ready(function () {
     jQuery("#i18nGrid").jqGrid({
@@ -13,14 +13,16 @@ jQuery(document).ready(function () {
    		            { name: 'OrderID', index: 'OrderID', width: 30 },
    		            { name: 'Type', index: 'Type', width: 30 },
    		            { name: 'Code', index: 'Code', editable: true, width: 50 },
-                    { name: 'Text', index: 'Text', editable: true, width: 60 },
+                    { name: 'Name', index: 'Name', editable: true, width: 60 },
                     { name: 'Remark', index: 'Remark', editable: true }
         ],
-        height: parent.g_jqGridHeight - 86,
+        height: parent.g_layoutCenterHeight - 86,
         autowidth: true,
         rownumbers: true,
+        altRows: true,
+        altclass: 'altclass',
         rowNum: 50,
-        rowList: [10, 20, 50, 100, 500],
+        rowList: [50, 100, 200],
         pager: '#i18nPager',
         viewrecords: true
 
@@ -40,7 +42,7 @@ jQuery(document).ready(function () {
 });
 
 
-function setJqgridSize(h, w) {
+function SetSize(h, w) {
     //set height
     $("#i18nGrid").setGridHeight(h - 86);
     //set width

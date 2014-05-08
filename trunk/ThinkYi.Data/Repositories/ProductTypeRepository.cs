@@ -7,7 +7,7 @@ using ThinkYi.Data.Infrastructure;
 
 namespace ThinkYi.Data.Repositories
 {
-    public class ProductTypeRepository : RepositoryBase<ProductType>, IProducTypeRepository
+    public class ProductTypeRepository : RepositoryBase<ProductType>, IProductTypeRepository
     {
         public ProductTypeRepository(IDatabaseFactory databaseFactory)
             : base(databaseFactory)
@@ -15,7 +15,7 @@ namespace ThinkYi.Data.Repositories
         }
     }
 
-    public interface IProducTypeRepository : IRepository<ProductType>
+    public interface IProductTypeRepository : IRepository<ProductType>
     {
     }
 }

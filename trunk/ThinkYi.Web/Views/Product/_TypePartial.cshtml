@@ -12,12 +12,12 @@
                         var childTypes = Model.Where(p => p.ParentTypeID == ptid).ToList();
                         int count = childTypes.Count;
                         <li>
-                            <a href="#">@pt.Text</a>
+                            <a href="#">@pt.Name</a>
                             <ul>
                                 <li>
                                     @for (int i = 0; i < count; i++)
                                     {
-                                        <span>@childTypes[i].Text</span>
+                                        <span>@childTypes[i].Name</span>
                                         if (i < count - 1)
                                         {
                                             <span>·</span>

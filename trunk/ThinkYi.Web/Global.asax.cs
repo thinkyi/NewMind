@@ -43,7 +43,8 @@ namespace ThinkYi.Web
                 .RegisterType<ILanguageRepository, LanguageRepository>(new HttpContextLifetimeManager<ILanguageRepository>())
                 .RegisterType<IMenuRepository, MenuRepository>(new HttpContextLifetimeManager<IMenuRepository>())
                 .RegisterType<II18NRepository, I18NRepository>(new HttpContextLifetimeManager<II18NRepository>())
-                .RegisterType<IProducTypeRepository, ProductTypeRepository>(new HttpContextLifetimeManager<IProducTypeRepository>())
+                .RegisterType<IProductTypeRepository, ProductTypeRepository>(new HttpContextLifetimeManager<IProductTypeRepository>())
+                .RegisterType<IProductRepository, ProductRepository>(new HttpContextLifetimeManager<IProductRepository>())
                 .RegisterType<IPartialService, PartialService>(new HttpContextLifetimeManager<IPartialService>())
                 .RegisterType<IProductService, ProductService>(new HttpContextLifetimeManager<IProductService>())
                 .RegisterType<IAdminService, AdminService>(new HttpContextLifetimeManager<IAdminService>());
