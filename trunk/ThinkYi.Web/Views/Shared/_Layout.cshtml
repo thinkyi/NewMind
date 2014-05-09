@@ -9,13 +9,13 @@
 <body>
     <div id="container">
         @{
-            Html.RenderAction("_Header", "Partial", new { code = ViewContext.RouteData.Values["language"] });
+            Html.RenderAction("_Header", "Partial", new { lCode = ViewContext.RouteData.Values["language"] });
         }
         @RenderBody()
         <div id="main">
             <div class="leftbar">
                 @{
-                    Html.RenderAction("_TypePartial", "Product", new { code = ViewContext.RouteData.Values["language"] });
+                    Html.RenderAction("_TypePartial", "Product", new { lCode = ViewContext.RouteData.Values["language"] });
                 }
                 <div class="picbox">
                     <img src="~/Content/images/links1.png" width="204" height="74" />
@@ -32,7 +32,10 @@
                     <div class="top">
                         <h3>产品推荐</h3>
                     </div>
-                    <div class="mid"><img src="~/Content/images/banner.jpg" width="782" height="339" /> </div>
+                    <div class="mid">
+                        <img src="~/Content/images/banner.jpg" width="782" height="339" />
+                    </div>
+                    <div class="di"></div>
                 </div>
                 <div class="productbox">
                     <div class="top">
@@ -64,7 +67,7 @@
             <div class="fc"></div>
         </div>
         @{
-            Html.RenderAction("_Footer", "Partial", new { code = ViewContext.RouteData.Values["language"] });
+            Html.RenderAction("_Footer", "Partial", new { lCode = ViewContext.RouteData.Values["language"] });
         }
     </div>
 </body>

@@ -5,27 +5,24 @@ using System.Web;
 using System.Web.Mvc;
 using ThinkYi.Domain;
 using ThinkYi.Service;
+using Microsoft.Practices.Unity;
 
 namespace ThinkYi.Web.Controllers
 {
     public class PartialController : Controller
     {
-        private readonly IPartialService partialService;
+        [Dependency]
+        public II18NService I18NService { get; set; }
 
-        public PartialController(IPartialService partialService)
+        public ActionResult _Header(string lCode)
         {
-            this.partialService = partialService;
-        }
-
-        public ActionResult _Header(string code)
-        {
-            var menus = partialService.GetMenus(code).ToList();
+            var menus = I18NService.GetI18Ns(lCode).Where(i => i.I18NType.Code.Equals("menu")).ToList();
             return PartialView(menus);
         }
 
-        public ActionResult _Footer(string code)
+        public ActionResult _Footer(string lCode)
         {
-            var menus = partialService.GetMenus(code).ToList();
+            var menus = I18NService.GetI18Ns(lCode).Where(i => i.I18NType.Code.Equals("menu")).ToList();
             return PartialView(menus);
         }
     }

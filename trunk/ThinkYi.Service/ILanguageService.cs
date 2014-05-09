@@ -7,9 +7,8 @@ using ThinkYi.Domain;
 
 namespace ThinkYi.Service
 {
-    public interface IAdminService
+    public interface ILanguageService
     {
         IQueryable<Language> GetLanguages();
-        IQueryable<I18N> GetI18Ns(string lCode);
     }
 }

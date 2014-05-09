@@ -7,8 +7,8 @@ using ThinkYi.Domain;
 
 namespace ThinkYi.Service
 {
-    public interface IPartialService
+    public interface IProductTypeService
     {
-        IQueryable<Menu> GetMenus(string code);
+        IQueryable<ProductType> GetProductTypes(string lCode);
     }
 }

@@ -12,8 +12,8 @@ jQuery(document).ready(function () {
    		            { name: 'ProductTypeID', index: 'I18NID', width: 20, hidden: true },
    		            { name: 'LanguageID', index: 'LanguageID', width: 30, hidden: true },
    		            { name: 'ParentTypeID', index: 'OrderID', width: 30, hidden: true },
-   		            { name: 'Code', index: 'Code', editable: true, width: 50 },
-                    { name: 'Name', index: 'Name', editable: true, width: 160 },
+   		            { name: 'Code', index: 'Code', editable: true, width: 100 },
+                    { name: 'Name', index: 'Name', editable: true, width: 200 },
                     { name: 'Remark', index: 'Remark', editable: true, hidden: true }
         ],
         height: parent.g_layoutCenterHeight - 86,
@@ -45,8 +45,8 @@ jQuery(document).ready(function () {
    		            { name: 'ProductTypeID', index: 'I18NID', width: 20, hidden: true },
    		            { name: 'LanguageID', index: 'LanguageID', width: 30, hidden: true },
    		            { name: 'ParentTypeID', index: 'OrderID', width: 30, hidden: true },
-   		            { name: 'Code', index: 'Code', editable: true, width: 50 },
-                    { name: 'Name', index: 'Name', editable: true, width: 160 },
+   		            { name: 'Code', index: 'Code', editable: true, width: 100 },
+                    { name: 'Name', index: 'Name', editable: true, width: 200 },
                     { name: 'Remark', index: 'Remark', editable: true, hidden: true }
         ],
         height: parent.g_layoutCenterHeight - 86,

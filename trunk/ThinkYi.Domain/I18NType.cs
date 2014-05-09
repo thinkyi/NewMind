@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ThinkYi.Domain
 {
-    public class Menu
+    public class I18NType
     {
-        public int MenuID { get; set; }
+        public int I18NTypeID { get; set; }
         public int LanguageID { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }

@@ -41,13 +41,15 @@ namespace ThinkYi.Web
                 .RegisterType<IDatabaseFactory, DatabaseFactory>(new HttpContextLifetimeManager<IDatabaseFactory>())
                 .RegisterType<IUnitOfWork, UnitOfWork>(new HttpContextLifetimeManager<IUnitOfWork>())
                 .RegisterType<ILanguageRepository, LanguageRepository>(new HttpContextLifetimeManager<ILanguageRepository>())
-                .RegisterType<IMenuRepository, MenuRepository>(new HttpContextLifetimeManager<IMenuRepository>())
+                .RegisterType<ILanguageService, LanguageService>(new HttpContextLifetimeManager<ILanguageService>())
                 .RegisterType<II18NRepository, I18NRepository>(new HttpContextLifetimeManager<II18NRepository>())
+                .RegisterType<II18NService, I18NService>(new HttpContextLifetimeManager<II18NService>())
+                .RegisterType<II18NTypeRepository, I18NTypeRepository>(new HttpContextLifetimeManager<II18NTypeRepository>())
+                .RegisterType<II18NTypeService, I18NTypeService>(new HttpContextLifetimeManager<II18NTypeService>())
                 .RegisterType<IProductTypeRepository, ProductTypeRepository>(new HttpContextLifetimeManager<IProductTypeRepository>())
+                .RegisterType<IProductTypeService, ProductTypeService>(new HttpContextLifetimeManager<IProductTypeService>())
                 .RegisterType<IProductRepository, ProductRepository>(new HttpContextLifetimeManager<IProductRepository>())
-                .RegisterType<IPartialService, PartialService>(new HttpContextLifetimeManager<IPartialService>())
-                .RegisterType<IProductService, ProductService>(new HttpContextLifetimeManager<IProductService>())
-                .RegisterType<IAdminService, AdminService>(new HttpContextLifetimeManager<IAdminService>());
+                .RegisterType<IProductService, ProductService>(new HttpContextLifetimeManager<IProductService>());
             return container;
         }
     }

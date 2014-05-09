@@ -41,10 +41,11 @@ public class imageUp : IHttpHandler
             return;
         }
 
-        info = up.upFile(context, path + '/', filetype, size);                   //获取上传状态
-
-        string title = up.getOtherInfo(context, "pictitle");                   //获取图片描述
-        string oriName = up.getOtherInfo(context, "fileName");                //获取原始文件名
+        //info = up.upFile(context, path + '/', filetype, size);      //获取上传状态
+        info = up.upFile(context, path + '/' + DateTime.Now.ToString("yyyy-MM-dd") + "/", filetype, size);  //获取上传状态
+        
+        string title = up.getOtherInfo(context, "pictitle");        //获取图片描述
+        string oriName = up.getOtherInfo(context, "fileName");      //获取原始文件名
 
 
         HttpContext.Current.Response.Write("{'url':'" + info["url"] + "','title':'" + title + "','original':'" + oriName + "','state':'" + info["state"] + "'}");  //向浏览器返回数据json数据

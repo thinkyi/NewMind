@@ -14,10 +14,10 @@ namespace ThinkYi.Data
             Database.SetInitializer<NewMindContext>(null);
         }
         public DbSet<Language> Languages { get; set; }
-        public DbSet<Menu> Menus { get; set; }
+        public DbSet<I18N> I18Ns { get; set; }
+        public DbSet<I18NType> I18NTypes { get; set; }
         public DbSet<ProductType> ProductTypes { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<I18N> I18Ns { get; set; }
 
         public virtual void Commit()
         {

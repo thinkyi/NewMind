@@ -56,10 +56,10 @@
     <Compile Include="NewMindContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\LanguageRepository.cs" />
-    <Compile Include="Repositories\I18N.cs" />
+    <Compile Include="Repositories\I18NRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\ProductTypeRepository.cs" />
-    <Compile Include="Repositories\MenuRepository.cs" />
+    <Compile Include="Repositories\I18NTypeRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

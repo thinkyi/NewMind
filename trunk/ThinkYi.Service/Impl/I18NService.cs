@@ -11,19 +11,21 @@ using ThinkYi.Data.Repositories;
 
 namespace ThinkYi.Service.Impl
 {
-    public class PartialService : IPartialService
+    public class I18NService : II18NService
     {
         [Dependency]
-        public ILanguageRepository LanguageRepository { get; set; }
-        [Dependency]
-        public IMenuRepository MenuRepository { get; set; }
+        public II18NRepository I18NRepository { get; set; }
         [Dependency]
         public IUnitOfWork UnitOfWork { get; set; }
 
-        public IQueryable<Menu> GetMenus(string code)
+        /// <summary>
+        /// Get i18n list
+        /// </summary>
+        /// <param name="lCode">language code</param>
+        /// <returns></returns>
+        public IQueryable<I18N> GetI18Ns(string lCode)
         {
-            IQueryable<Menu> menus = MenuRepository.Entities.Where(m => m.Language.Code.Equals(code));
-            return menus;
+            return I18NRepository.Entities.Where(i => i.Language.Code.Equals(lCode));
         }
     }
 }

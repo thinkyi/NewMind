@@ -55,12 +55,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Impl\AdminService.cs" />
-    <Compile Include="Impl\PartialService.cs" />
+    <Compile Include="II18NTypeService.cs" />
+    <Compile Include="Impl\I18NTypeService.cs" />
+    <Compile Include="Impl\I18NService.cs" />
+    <Compile Include="Impl\LanguageService.cs" />
+    <Compile Include="Impl\ProductTypeService.cs" />
     <Compile Include="Impl\ProductService.cs" />
-    <Compile Include="IAdminService.cs" />
+    <Compile Include="II18NService.cs" />
+    <Compile Include="IProductTypeService.cs" />
     <Compile Include="IProductService.cs" />
-    <Compile Include="IPartialService.cs" />
+    <Compile Include="ILanguageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

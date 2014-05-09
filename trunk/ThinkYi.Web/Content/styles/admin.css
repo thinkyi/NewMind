@@ -172,10 +172,10 @@ img {
 
 /*UEditor*/
 /* 这个ID为编辑器的ID */
-#edui1 {
+#Text div.edui-editor {
     width: 100% !important;
 }
 /* 这个ID为编辑器可编辑区域的ID */
-#edui1_iframeholder {
+#Text div.edui-editor-iframeholder {
     width: 100% !important;
 }

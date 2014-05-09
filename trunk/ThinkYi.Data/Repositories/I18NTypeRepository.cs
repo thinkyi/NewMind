@@ -7,15 +7,15 @@ using ThinkYi.Data.Infrastructure;
 
 namespace ThinkYi.Data.Repositories
 {
-    public class MenuRepository : RepositoryBase<Menu>, IMenuRepository
+    public class I18NTypeRepository : RepositoryBase<I18NType>, II18NTypeRepository
     {
-        public MenuRepository(IDatabaseFactory databaseFactory)
+        public I18NTypeRepository(IDatabaseFactory databaseFactory)
             : base(databaseFactory)
         {
         }
     }
 
-    public interface IMenuRepository : IRepository<Menu>
+    public interface II18NTypeRepository : IRepository<I18NType>
     {
     }
 }

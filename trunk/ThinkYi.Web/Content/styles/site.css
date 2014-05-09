@@ -48,6 +48,8 @@ a.a_white:hover,a.a_white:active{ color:#ff0; text-decoration:none;}
 .bannerbox .top{background:url(../images/lmtop2.png) no-repeat; height:34px; line-height:34px;}
 .bannerbox .top h3{color:#fff; padding-left:15px; font-family:"Microsoft YaHei","微软雅黑"; font-size:15px;}
 .bannerbox .mid{ background:none;}
+/*.bannerbox .mid{ background:url(../images/lmbg2.png) repeat-y; padding:0px 1px;}
+.bannerbox .di{ background:url(../images/lmdi2.png) no-repeat; height:12px; width:782px; overflow:hidden;}*/
 
 .productbox{}
 .productbox .top{background:url(../images/lmtop2.png) no-repeat; height:34px; line-height:34px;}

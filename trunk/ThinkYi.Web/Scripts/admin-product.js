@@ -39,7 +39,7 @@ jQuery(document).ready(function () {
 });
 
 function AddFunc() {
-    alert("a");
+    window.location.href = "ProductAdd";
 }
 
 function SetSize(h, w) {

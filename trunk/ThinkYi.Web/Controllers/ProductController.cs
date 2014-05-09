@@ -11,15 +11,17 @@ namespace ThinkYi.Web.Controllers
     public class ProductController : Controller
     {
         private readonly IProductService productService;
+        private readonly IProductTypeService productTypeService;
 
-        public ProductController(IProductService productService)
+        public ProductController(IProductService productService, IProductTypeService productTypeService)
         {
             this.productService = productService;
+            this.productTypeService = productTypeService;
         }
 
-        public ActionResult _TypePartial(string code)
+        public ActionResult _TypePartial(string lCode)
         {
-            var productTypes = productService.GetProductTypes(code).ToList();
+            var productTypes = productTypeService.GetProductTypes(lCode).ToList();
             return PartialView(productTypes);
         }
 
