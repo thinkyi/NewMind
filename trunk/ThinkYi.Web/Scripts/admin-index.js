@@ -61,6 +61,8 @@ jQuery(document).ready(function () {
         $("#accordion li div").removeClass("selected");
         $(this).addClass("selected");
         $("#mainFrame").attr("src", "Admin/" + $(this).attr("title"));
+
+        SetNav($(this).find(".nav").text());
     });
     //#endregion
 
@@ -79,4 +81,13 @@ function SetLanguage() {
             $(this).addClass("active");
         }
     });
+}
+
+function SetNav(text) {
+    $(".ribbon").text(text);
+}
+
+function SetNavSelected(dtitle) {
+    $("#accordion li div").removeClass("selected");
+    $("#accordion li div[title='" + dtitle + "']").addClass("selected");
 }

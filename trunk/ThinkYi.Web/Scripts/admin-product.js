@@ -10,15 +10,15 @@ jQuery(document).ready(function () {
         colModel: [
    		            { name: 'ProductID', index: 'ProductID', hidden: true },
                     { name: 'ProductTypeID', index: 'ProductTypeID', hidden: true },
-                    { name: 'BType', index: 'BType' },
-                    { name: 'SType', index: 'SType' },
+                    { name: 'BType', index: 'BType', width: 80 },
+                    { name: 'SType', index: 'SType', width: 80 },
    		            { name: 'LanguageID', index: 'LanguageID', hidden: true },
-   		            { name: 'Code', index: 'Code' },
+   		            { name: 'Code', index: 'Code', width: 50 },
    		            { name: 'Name', index: 'Name' },
-                    { name: 'SmallPic', index: 'SmallPic' },
-                    { name: 'BigPic', index: 'BigPic' },
-                    { name: 'IsRecommend', index: 'IsRecommend' },
-                    { name: 'IsShow', index: 'IsShow' }
+                    { name: 'SmallPic', index: 'SmallPic', align: 'center', width: 60, formatter: ImageIcoFormatter },
+                    { name: 'BigPic', index: 'BigPic', align: 'center', width: 60, formatter: ImageIcoFormatter },
+                    { name: 'IsRecommend', index: 'IsRecommend', align: 'center', width: 60, formatter: YNFormatter },
+                    { name: 'IsShow', index: 'IsShow', align: 'center', width: 60, formatter: YNFormatter }
         ],
         height: parent.g_layoutCenterHeight - 86,
         autowidth: true,
@@ -39,9 +39,12 @@ jQuery(document).ready(function () {
 });
 
 function AddFunc() {
+    parent.SetNav("添加产品");
+    parent.SetNavSelected("ProductAdd");
     window.location.href = "ProductAdd";
 }
 
 function SetSize(h, w) {
-    
+    $("#productGrid").setGridHeight(h - 86);
+    $("#productGrid").setGridWidth(w);
 }

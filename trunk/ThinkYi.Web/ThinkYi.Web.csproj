@@ -141,8 +141,17 @@
     <Compile Include="IoC\UnityControllerFactory .cs" />
     <Compile Include="IoC\UnityDependencyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Content Include="Content\images\admin\temp.jpg" />
+    <Content Include="Content\images\admin\image_ico.png" />
+    <Content Include="Content\images\admin\temp.png" />
     <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\lightbox\css\lightbox.css" />
+    <Content Include="Scripts\lightbox\css\screen.css" />
+    <Content Include="Scripts\lightbox\img\close.png" />
+    <Content Include="Scripts\lightbox\img\loading.gif" />
+    <Content Include="Scripts\lightbox\img\next.png" />
+    <Content Include="Scripts\lightbox\img\prev.png" />
+    <Content Include="Scripts\lightbox\js\lightbox.js" />
+    <Content Include="Scripts\lightbox\js\lightbox.min.js" />
     <Content Include="UEditor\net\Config.cs" />
     <Content Include="UEditor\net\Uploader.cs" />
   </ItemGroup>
@@ -545,6 +554,8 @@
     <Content Include="UEditor\third-party\video-js\font\vjs.eot" />
     <Content Include="UEditor\third-party\video-js\font\vjs.ttf" />
     <Content Include="UEditor\third-party\video-js\font\vjs.woff" />
+    <Content Include="Scripts\lightbox\js\.DS_Store" />
+    <Content Include="Scripts\lightbox\js\lightbox.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

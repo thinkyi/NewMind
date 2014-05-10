@@ -10,13 +10,13 @@
     /*overflow: hidden !important;*/
 }
 
-input {
+.form input {
     padding: 4px;
 }
 
 label {
     display: block;
-    margin-bottom: 6px;
+    margin: 6px 0px 3px;
     line-height: 19px;
     font-weight: 400;
     font-size: 13px;

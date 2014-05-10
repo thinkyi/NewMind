@@ -41,3 +41,19 @@ function BindSmallType(pt, ptid, json) {
         }
     }
 }
+
+function ImageIcoFormatter(cellvalue, options, rowdata) {
+    if (cellvalue) {
+        return '<a style="margin:0px; padding:0px;" class="example-image-link" href="' + cellvalue + '" data-lightbox="' + options.colModel.name + options.rowId + '"><img style="margin:0px auto;" src="../Content/images/admin/image_ico.png" alt="点击查看" /></a>';
+    }
+    else
+        return cellvalue;
+}
+
+function YNFormatter(cellvalue, options, rowdata) {
+    if (cellvalue == "True") {
+        return '<span style="color:green;">是</span>';
+    }
+    else
+        return '<span>否</span>';
+}
