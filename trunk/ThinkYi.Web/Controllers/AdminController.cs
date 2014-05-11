@@ -5,10 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using Microsoft.Practices.Unity;
+using VB = Microsoft.VisualBasic;
 using ThinkYi.Domain;
 using ThinkYi.Service;
 using ThinkYi.Tools.jqGrid;
-using Microsoft.VisualBasic;
 
 namespace ThinkYi.Web.Controllers
 {
@@ -22,6 +22,8 @@ namespace ThinkYi.Web.Controllers
         public IProductTypeService ProductTypeService { get; set; }
         [Dependency]
         public IProductService ProductService { get; set; }
+        [Dependency]
+        public IInformationService InformationService { get; set; }
 
         public ActionResult Index()
         {
@@ -42,6 +44,38 @@ namespace ThinkYi.Web.Controllers
         public ActionResult Product()
         {
             return View();
+        }
+
+        public ActionResult Information(string lCode, string code)
+        {
+            Information info = null;
+            if (!string.IsNullOrEmpty(lCode))
+                info = InformationService.GetInformations(lCode).Where(i => i.Code.Equals(code)).FirstOrDefault();
+            JsonResult json = new JsonResult();
+            json.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+            json.Data = info;
+            if (info == null)
+                return View();
+            else
+                return json;
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public string InfoAdd(int id, string text)
+        {
+            string result = "s";
+            try
+            {
+                Information info = InformationService.GetInformation(id);
+                info.Text = text;
+                InformationService.EditInformation(info);
+            }
+            catch (Exception e)
+            {
+                result = e.Message;
+            }
+            return result;
         }
 
         public ActionResult ProductAdd()
@@ -90,13 +124,13 @@ namespace ThinkYi.Web.Controllers
                         {
                             case "cn":
                                 product.LanguageID = languages.Where(l => l.Code.Equals("big5")).FirstOrDefault().LanguageID;
-                                product.Name = Strings.StrConv(product.Name, VbStrConv.TraditionalChinese, 0);
-                                product.Text = Strings.StrConv(product.Text, VbStrConv.TraditionalChinese, 0);
+                                product.Name = VB.Strings.StrConv(product.Name, VB.VbStrConv.TraditionalChinese, 0);
+                                product.Text = VB.Strings.StrConv(product.Text, VB.VbStrConv.TraditionalChinese, 0);
                                 break;
                             case "big5":
                                 product.LanguageID = languages.Where(l => l.Code.Equals("cn")).FirstOrDefault().LanguageID;
-                                product.Name = Strings.StrConv(product.Name, VbStrConv.SimplifiedChinese, 0);
-                                product.Text = Strings.StrConv(product.Text, VbStrConv.SimplifiedChinese, 0);
+                                product.Name = VB.Strings.StrConv(product.Name, VB.VbStrConv.SimplifiedChinese, 0);
+                                product.Text = VB.Strings.StrConv(product.Text, VB.VbStrConv.SimplifiedChinese, 0);
                                 break;
                         }
                         ProductService.AddProduct(product);

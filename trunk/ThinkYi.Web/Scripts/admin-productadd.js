@@ -49,7 +49,6 @@ function ProductAdd() {
         ProductTypeID: $("#PType2").val(),
         Code: $("#Code").val(),
         Name: $("#Name").val(),
-        Code: $("#Code").val(),
         Text: editor.getContent(),
         BigPic:$("#BigPicPreview").attr("src"),
         SmallPic: $("#SmallPicPreview").attr("src"),

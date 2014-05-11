@@ -10,9 +10,8 @@ namespace ThinkYi.Web.Controllers
     {
         //
         // GET: /Home/
-        public ActionResult Index(string language)
+        public ActionResult Index()
         {
-            string s = language;
             return View();
         }
     }

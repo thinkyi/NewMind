@@ -64,7 +64,7 @@ namespace ThinkYi.Data.Infrastructure
                 dbset.Remove(obj);
         }
 
-        public virtual T GetByGuid(int id)
+        public virtual T GetByID(int id)
         {
             return dbset.Find(id);
         }

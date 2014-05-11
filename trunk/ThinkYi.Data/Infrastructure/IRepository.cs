@@ -15,6 +15,6 @@ namespace ThinkYi.Data.Infrastructure
         void Update(T entity);
         void Delete(T entity);
         void Delete(Expression<Func<T, bool>> where);
-        T GetByGuid(int id);
+        T GetByID(int id);
     }
 }

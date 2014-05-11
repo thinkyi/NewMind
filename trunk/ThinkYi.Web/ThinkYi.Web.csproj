@@ -140,9 +140,11 @@
     <Compile Include="IoC\CustomControllerActivator.cs" />
     <Compile Include="IoC\UnityControllerFactory .cs" />
     <Compile Include="IoC\UnityDependencyResolver.cs" />
+    <Compile Include="Models\PartialFooter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Content\images\admin\image_ico.png" />
     <Content Include="Content\images\admin\temp.png" />
+    <Content Include="Scripts\admin-i18n.js" />
     <Content Include="Scripts\common.js" />
     <Content Include="Scripts\lightbox\css\lightbox.css" />
     <Content Include="Scripts\lightbox\css\screen.css" />
@@ -215,7 +217,7 @@
     <Content Include="Scripts\admin-productadd.js" />
     <Content Include="Scripts\admin-product.js" />
     <Content Include="Scripts\admin-producttype.js" />
-    <Content Include="Scripts\admin-i18n.js" />
+    <Content Include="Scripts\admin-information.js" />
     <Content Include="Scripts\admin-index - Copy.js" />
     <Content Include="Scripts\admin-index.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -556,10 +558,11 @@
     <Content Include="UEditor\third-party\video-js\font\vjs.woff" />
     <Content Include="Scripts\lightbox\js\.DS_Store" />
     <Content Include="Scripts\lightbox\js\lightbox.min.map" />
+    <Content Include="Views\Admin\Information.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\Information\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

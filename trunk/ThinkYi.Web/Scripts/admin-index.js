@@ -1,4 +1,5 @@
 ﻿var g_languageCode = "cn";
+var g_navCode;
 //jqGridRowID,jqGridWidth,jqGridHeight
 var g_isSetSize = false, g_layoutCenterHeight = 300, g_layoutCenterWidth = 500;
 var pageLayout;
@@ -60,7 +61,8 @@ jQuery(document).ready(function () {
     $("#accordion li div").bind("click", function () {
         $("#accordion li div").removeClass("selected");
         $(this).addClass("selected");
-        $("#mainFrame").attr("src", "Admin/" + $(this).attr("title"));
+        g_navCode = $(this).attr("code");
+        $("#mainFrame").attr("src", "Admin/" + $(this).attr("action"));
 
         SetNav($(this).find(".nav").text());
     });
