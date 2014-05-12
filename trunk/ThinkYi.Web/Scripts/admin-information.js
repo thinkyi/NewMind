@@ -31,10 +31,6 @@ function InfoInit(code) {
         }
     });
 }
-function abc()
-{
-
-}
 
 function InfoEdit() {
     var info = {
