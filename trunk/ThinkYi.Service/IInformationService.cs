@@ -10,7 +10,7 @@ namespace ThinkYi.Service
     public interface IInformationService
     {
         Information GetInformation(int id);
-        IQueryable<Information> GetInformations(string lCode);
+        IQueryable<Information> GetInformations();
         void EditInformation(Information info);
     }
 }

@@ -3,7 +3,7 @@
 img{border:none;}
 ul,li{list-style-type:none;}
 .fc{clear:both;}
-body{font-size:12px; line-height:22px;}
+body{font-size:12px; background:url(../images/bg1.jpg) center top no-repeat #eadcbf;}
 a,a:link,a:visited{ color:#515151; text-decoration:none;}
 a:hover,a:active{ color:#f60; text-decoration:none;}
 a.a_white,a.a_white:link,a.a_white:visited{ color:#fff; text-decoration:none;}
@@ -23,16 +23,17 @@ a.a_white:hover,a.a_white:active{ color:#ff0; text-decoration:none;}
 #header .searchbox .input2{background:#62ab00;text-align:center; color:#fff; border:none; width:50px; height:20px; line-height:20px; vertical-align:middle; cursor:pointer;}
 
 #header .menu{background:url(../images/menubg.jpg) repeat-x; height:38px; line-height:38px; font-family:"Microsoft YaHei","微软雅黑"; font-size:14px;}
-#header .menu ul li{width:58px;float:left; text-align:center; font-size:14px; font-weight:bold; margin:0 30px; color:#fff;}
+#header .menu ul li{float:left; font-size:14px; width:118px; text-align:center; font-weight:bold; color:#fff;}
 #header .menu ul li a{color:#fff; text-decoration:none;}
 #header .menu ul li a:hover{color:#ff0; text-decoration:none;}
-#header .menu ul li.menu_fg{width:5px;display:block; margin:0;}
+#header .menu ul li.menu_fg{width:5px; display:block; margin:0;}
 
 /*-- main -------------------------------------------------------------*/
-#main{width:998px; margin:10px auto;}
+#main{width:998px; margin:10px auto 0px;}
 #main .leftbar{width:204px; float:left;}
 #main .rightbar{width:782px; float:right;}
-.probox{}
+#main2{width:998px; margin:0px auto 10px;}
+.probox{margin-bottom:10px;}
 .probox .protop{background:url(../images/lmtop1.png) no-repeat; height:32px; line-height:32px; width:204px;}
 .probox .protop h3{color:#fff; padding-left:15px;font-family:"Microsoft YaHei","微软雅黑"; font-size:15px;}
 .probox .promid{background:url(../images/lmbg1.png) no-repeat; height:340px; padding:0 10px;}
@@ -42,33 +43,52 @@ a.a_white:hover,a.a_white:active{ color:#ff0; text-decoration:none;}
 .prolist ul li a{color:#ff6100; text-decoration:none;}
 .prolist ul li a:hover{color:#f00; text-decoration:none;}
 .prolist ul li ul li{ background:none; border:none; line-height:20px; padding-left:0px; color:#515151; font-size:12px; font-weight:normal;}
-.picbox{margin-top:10px;}
+.picbox{margin-bottom:6px;}
 
-.bannerbox{ margin-bottom:10px;}
+.bannerbox{ margin-bottom:6px;}
 .bannerbox .top{background:url(../images/lmtop2.png) no-repeat; height:34px; line-height:34px;}
 .bannerbox .top h3{color:#fff; padding-left:15px; font-family:"Microsoft YaHei","微软雅黑"; font-size:15px;}
 .bannerbox .mid{ background:none;}
 /*.bannerbox .mid{ background:url(../images/lmbg2.png) repeat-y; padding:0px 1px;}
 .bannerbox .di{ background:url(../images/lmdi2.png) no-repeat; height:12px; width:782px; overflow:hidden;}*/
 
-.productbox{}
+.productbox{line-height:0px;}
 .productbox .top{background:url(../images/lmtop2.png) no-repeat; height:34px; line-height:34px;}
 .productbox .top h3{color:#fff; padding-left:15px; font-family:"Microsoft YaHei","Microsoft YaHei","微软雅黑"; font-size:15px; float:left;}
 .productbox .top span{color:#fff; float:right; padding-right:20px;}
-.productbox .mid{ background:url(../images/lmbg2.png) repeat-y; padding:10px;}
+.productbox .mid{ background:url(../images/lmbg2.png) repeat-y; padding:10px; height:175px;}
 .productbox .di{ background:url(../images/lmdi2.png) no-repeat; height:12px; width:782px; overflow:hidden;}
-.pick{padding:10px 0;}
-.pick li{margin:0 10px; width:164px;display:inline-block;}
-.pick li .pick_img{border:1px solid #ccc; display:inline-block;}
+.pick{padding:18px 0;}
+.pick li{margin:0px 12px; width:164px; display:block; float:left;  }
+.pick li .pick_img{border:1px solid #ccc; display:block; float:left;}
 .pick li .pick_name{height:30px; line-height:30px; text-align:center;}
+
+.lcbox{ margin-top:1px;}
+.lcbox .top{background:url(../images/lmtop3.png) no-repeat; height:34px; line-height:34px;}
+.lcbox .top h3{color:#fff; padding-left:15px; font-family:"微软雅黑"; font-size:15px; float:left;}
+.lcbox .top span{color:#fff; float:right; padding-right:20px;}
+.lcbox .mid{ background:url(../images/lmbg3.png) repeat-y; padding:10px;}
+.lcbox .di{ background:url(../images/lmdi3.png) no-repeat; height:12px; width:998px; overflow:hidden;}
+
+.flbox{float:left; width:116px; margin:0 2px; text-align:center;}
+.flbox h3{font-size:12px; font-weight:bold; color:#515151;}
+.flbox p{line-height:18px; height:60px; margin-top:10px; color:#999999;}
+.flbox img {text-align:center;}
+.fl_jt{float:left; background:url(../images/jt.png) no-repeat; width:22px; height:20px; margin-top:120px;}
+/* test 11*/
+.fl_jt{float:left; background:url(../images/jt.png) no-repeat; width:22px; height:20px; margin-top:50px;}
+.pagebox{text-align:center; height:35px; line-height:35px; background:#eee; border:1px solid #ccc; margin:0 10px; color:#666666;}
+.pagebox a{margin:0 5px; color:#666; text-decoration:none;}
+.pagebox a:hover{margin:0 5px; color:#f00; text-decoration:none;}
 
 .pagebox{text-align:center; height:35px; line-height:35px; background:#eee; border:1px solid #ccc; margin:0 10px; color:#666666;}
 .pagebox a{margin:0 5px; color:#666; text-decoration:none;}
 .pagebox a:hover{margin:0 5px; color:#f00; text-decoration:none;}
 
+
 /*-- footer -------------------------------------------------------------*/
-#footer{ background:url(../images/footerbg.png) #fff bottom repeat-x; width:998px; margin:0 auto;}
-#footer .links{background:#99cc00; height:30px; line-height:30px; text-align:center;color:#fff;}
-#footer .links a{margin:0 20px; color:#fff; text-decoration:none;}
+#footer{ width:998px; margin:0 auto;}
+#footer .links{background:#669900; height:30px; line-height:30px; text-align:center;color:#fff;}
+#footer .links a{ margin:0 20px; color:#fff; text-decoration:none;}
 #footer .links a:hover{ margin:0 20px; color:#f00; text-decoration:none;}
-#footer .copyright{ text-align:center; line-height:22px; background:url(../images/logo2.png) 40px center no-repeat; padding-left:60px; padding-top:10px; height:90px;}
+#footer .copyright{ text-align:center; line-height:22px; background:url(../images/logo2.png) 40px center no-repeat; padding-left:60px; padding-top:10px; height:90px; color:#515151;}

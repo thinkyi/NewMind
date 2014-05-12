@@ -11,7 +11,7 @@ namespace ThinkYi.Domain
         public int I18NID { get; set; }
         public int I18NTypeID { get; set; }
         public int LanguageID { get; set; }
-        public int OrderID { get; set; }
+        public int? OrderID { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
         public string Remark { get; set; }

@@ -62,7 +62,7 @@ jQuery(document).ready(function () {
         $("#accordion li div").removeClass("selected");
         $(this).addClass("selected");
         g_navCode = $(this).attr("code");
-        $("#mainFrame").attr("src", "Admin/" + $(this).attr("action"));
+        $("#mainFrame").attr("src", "Admin/Nav?viewName=" + $(this).attr("view"));
 
         SetNav($(this).find(".nav").text());
     });

@@ -5,7 +5,7 @@ jQuery(document).ready(function () {
     jQuery("#i18nGrid").jqGrid({
         url: 'I18NGrid?lCode=' + languageCode,
         datatype: 'json',
-        sortname: 'OrderID',
+        sortname: 'I18NID',
         colNames: ['序号', '语言', '排序', '类型', '编码', '文本', '备注'],
         colModel: [
    		            { name: 'I18NID', index: 'I18NID', width: 20, hidden: true },

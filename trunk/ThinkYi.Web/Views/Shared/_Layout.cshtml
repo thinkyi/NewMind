@@ -12,60 +12,6 @@
             Html.RenderAction("_Header", "Partial", new { lCode = ViewContext.RouteData.Values["language"] });
         }
         @RenderBody()
-        <div id="main">
-            <div class="leftbar">
-                @{
-                    Html.RenderAction("_TypePartial", "Product", new { lCode = ViewContext.RouteData.Values["language"] });
-                }
-                <div class="picbox">
-                    <img src="~/Content/images/links1.png" width="204" height="74" />
-                </div>
-                <div class="picbox">
-                    <img src="~/Content/images/links2.png" width="204" height="74" />
-                </div>
-                <div class="picbox">
-                    <img src="~/Content/images/links3.png" width="204" height="74" />
-                </div>
-            </div>
-            <div class="rightbar">
-                <div class="bannerbox">
-                    <div class="top">
-                        <h3>产品推荐</h3>
-                    </div>
-                    <div class="mid">
-                        <img src="~/Content/images/banner.jpg" width="782" height="339" />
-                    </div>
-                    <div class="di"></div>
-                </div>
-                <div class="productbox">
-                    <div class="top">
-                        <h3>产品展示</h3><span><a href="#" class="a_white">更多产品请点击</a>>></span>
-                    </div>
-                    <div class="mid">
-                        <ul class="pick">
-                            <li>
-                                <a href="#" class="pick_img"><img src="~/Content/images/001.jpg" width="164" height="122" /></a>
-                                <p class="pick_name"><a href="#">产品名称</a></p>
-                            </li>
-                            <li>
-                                <a href="#" class="pick_img"><img src="~/Content/images/001.jpg" width="164" height="122" /></a>
-                                <p class="pick_name"><a href="#">产品名称</a></p>
-                            </li>
-                            <li>
-                                <a href="#" class="pick_img"><img src="~/Content/images/001.jpg" width="164" height="122" /></a>
-                                <p class="pick_name"><a href="#">产品名称</a></p>
-                            </li>
-                            <li>
-                                <a href="#" class="pick_img"><img src="~/Content/images/001.jpg" width="164" height="122" /></a>
-                                <p class="pick_name"><a href="#">产品名称</a></p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="di"></div>
-                </div>
-            </div>
-            <div class="fc"></div>
-        </div>
         @{
             Html.RenderAction("_Footer", "Partial", new { lCode = ViewContext.RouteData.Values["language"] });
         }

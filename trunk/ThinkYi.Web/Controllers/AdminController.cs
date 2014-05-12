@@ -31,38 +31,53 @@ namespace ThinkYi.Web.Controllers
             return View(data);
         }
 
-        public ActionResult I18N()
+        public ActionResult Nav(string viewName)
         {
-            return View();
-        }
-
-        public ActionResult ProductType()
-        {
-            return View();
-        }
-
-        public ActionResult Product()
-        {
-            return View();
+            return View(viewName);
         }
 
         public ActionResult Information(string lCode, string code)
         {
             Information info = null;
             if (!string.IsNullOrEmpty(lCode))
-                info = InformationService.GetInformations(lCode).Where(i => i.Code.Equals(code)).FirstOrDefault();
+                info = InformationService.GetInformations().Where(i => i.Language.Code.Equals(lCode) && i.Code.Equals(code)).FirstOrDefault();
             JsonResult json = new JsonResult();
             json.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
             json.Data = info;
-            if (info == null)
-                return View();
-            else
-                return json;
+            return json;
         }
 
         [HttpPost]
         [ValidateInput(false)]
-        public string InfoAdd(int id, string text)
+        public string BannerEdit(int id, string bannerPic, bool isClone)
+        {
+            string result = "s";
+            try
+            {
+                Information info = InformationService.GetInformation(id);
+                info.BannerPic = bannerPic;
+                InformationService.EditInformation(info);
+
+                if (isClone)
+                {
+                    List<Information> infos = InformationService.GetInformations().Where(i => i.Code.Equals(info.Code) && i.LanguageID != info.LanguageID).ToList();
+                    foreach (Information i in infos)
+                    {
+                        i.BannerPic = bannerPic;
+                        InformationService.EditInformation(i);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                result = e.Message;
+            }
+            return result;
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public string InfoEdit(int id, string text)
         {
             string result = "s";
             try
@@ -76,11 +91,6 @@ namespace ThinkYi.Web.Controllers
                 result = e.Message;
             }
             return result;
-        }
-
-        public ActionResult ProductAdd()
-        {
-            return View();
         }
 
         [HttpPost]

@@ -132,6 +132,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InformationController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\PartialController.cs" />
     <Compile Include="Global.asax.cs">
@@ -140,11 +141,24 @@
     <Compile Include="IoC\CustomControllerActivator.cs" />
     <Compile Include="IoC\UnityControllerFactory .cs" />
     <Compile Include="IoC\UnityDependencyResolver.cs" />
+    <Compile Include="Models\HomeIndex.cs" />
+    <Compile Include="Models\PartialPType.cs" />
     <Compile Include="Models\PartialFooter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Content\images\admin\image_ico.png" />
     <Content Include="Content\images\admin\temp.png" />
+    <Content Include="Content\images\bg1.jpg" />
+    <Content Include="Content\images\c1.png" />
+    <Content Include="Content\images\c2.png" />
+    <Content Include="Content\images\c3.png" />
+    <Content Include="Content\images\c4.png" />
+    <Content Include="Content\images\c5.png" />
+    <Content Include="Content\images\c6.png" />
+    <Content Include="Content\images\c7.png" />
+    <Content Include="Content\images\lmbg3.png" />
+    <Content Include="Content\images\lmdi3.png" />
     <Content Include="Scripts\admin-i18n.js" />
+    <Content Include="Scripts\admin-banner.js" />
     <Content Include="Scripts\common.js" />
     <Content Include="Scripts\lightbox\css\lightbox.css" />
     <Content Include="Scripts\lightbox\css\screen.css" />
@@ -559,10 +573,11 @@
     <Content Include="Scripts\lightbox\js\.DS_Store" />
     <Content Include="Scripts\lightbox\js\lightbox.min.map" />
     <Content Include="Views\Admin\Information.cshtml" />
+    <Content Include="Views\Admin\Banner.cshtml" />
+    <Content Include="Views\Information\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Information\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

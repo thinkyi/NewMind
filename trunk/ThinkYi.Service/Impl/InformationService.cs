@@ -24,9 +24,9 @@ namespace ThinkYi.Service.Impl
             return info;
         }
 
-        public IQueryable<Information> GetInformations(string lCode)
+        public IQueryable<Information> GetInformations()
         {
-            IQueryable<Information> informations = InformationRepository.Entities.Where(i => i.Language.Code.Equals(lCode));
+            IQueryable<Information> informations = InformationRepository.Entities;
             return informations;
         }
 

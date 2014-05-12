@@ -28,7 +28,7 @@ namespace ThinkYi.Web.Controllers
             PartialFooter pf = new PartialFooter();
             var menus = I18NService.GetI18Ns(lCode).Where(i => i.I18NType.Code.Equals("menu")).ToList();
             pf.Menus = menus;
-            pf.Footer = InformationService.GetInformations(lCode).Where(i => i.Code.Equals("footer")).FirstOrDefault().Text;
+            pf.Footer = InformationService.GetInformations().Where(i => i.Language.Code.Equals(lCode) && i.Code.Equals("footer")).FirstOrDefault().Text;
             return PartialView(pf);
         }
     }

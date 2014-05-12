@@ -1,5 +1,99 @@
-﻿@{
+﻿@using ThinkYi.Domain
+@using ThinkYi.Web.Models
+@model HomeIndex
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
+@{
+    PageI18N pi = Model.PageI18N;
+    List<I18N> cooperations = Model.Cooperations;
+}
+<div id="main">
+    <div class="leftbar">
+        @{
+            Html.RenderAction("_TypePartial", "Product", new { lCode = ViewContext.RouteData.Values["language"] });
+        }
+        <div class="picbox">
+            <img src="~/Content/images/links1.png" width="204" height="74" />
+        </div>
+        <div class="picbox">
+            <img src="~/Content/images/links2.png" width="204" height="74" />
+        </div>
+        <div class="picbox">
+            <img src="~/Content/images/links3.png" width="204" height="74" />
+        </div>
+    </div>
+    <div class="rightbar">
+        <div class="bannerbox">
+            <div class="top">
+                <h3>@pi.PRecommend</h3>
+            </div>
+            <div class="mid">
+                <img src="~/Content/images/banner.jpg" width="782" height="339" />
+            </div>
+        </div>
+        <div class="productbox">
+            <div class="top">
+                <h3>@pi.PDisplay</h3><span><a href="#" class="a_white">@pi.PMore</a>>></span>
+            </div>
+            <div class="mid">
+                <ul class="pick">
+                    @foreach (var product in Model.Recommends)
+                    {
+                        <li>
+                            <a href="#" class="pick_img"><img src="@product.SmallPic" width="164" height="122" /></a>
+                            <p class="pick_name"><a href="#">@product.Name</a></p>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="di"></div>
+        </div>
+    </div>
+    <div class="fc"></div>
+</div>
+<div id="main2">
+    <div class="lcbox">
+        <div class="top">
+            <h3>@pi.Cooperation</h3>
+        </div>
+        <div class="mid">
+            <div class="flbox">
+                <h3>@cooperations[0].Name</h3>
+                <img src="~/Content/images/c1.png" />
+            </div>
+            <div class="fl_jt"></div>
+            <div class="flbox">
+                <h3>@cooperations[1].Name</h3>
+                <img src="~/Content/images/c2.png" />
+            </div>
+            <div class="fl_jt"></div>
+            <div class="flbox">
+                <h3>@cooperations[2].Name</h3>
+                <img src="~/Content/images/c3.png" />
+            </div>
+            <div class="fl_jt"></div>
+            <div class="flbox">
+                <h3>@cooperations[3].Name</h3>
+                <img src="~/Content/images/c4.png" />
+            </div>
+            <div class="fl_jt"></div>
+            <div class="flbox">
+                <h3>@cooperations[4].Name</h3>
+                <img src="~/Content/images/c5.png" />
+            </div>
+            <div class="fl_jt"></div>
+            <div class="flbox">
+                <h3>@cooperations[5].Name</h3>
+                <img src="~/Content/images/c6.png" />
+            </div>
+            <div class="fl_jt"></div>
+            <div class="flbox">
+                <h3>@cooperations[6].Name</h3>
+                <img src="~/Content/images/c7.png" />
+            </div>
+            <div class="fc"></div>
+        </div>
+        <div class="di"></div>
+    </div>
+</div>
