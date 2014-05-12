@@ -157,6 +157,7 @@
     <Content Include="Content\images\c7.png" />
     <Content Include="Content\images\lmbg3.png" />
     <Content Include="Content\images\lmdi3.png" />
+    <Content Include="Scripts\home-index.js" />
     <Content Include="Scripts\admin-i18n.js" />
     <Content Include="Scripts\admin-banner.js" />
     <Content Include="Scripts\common.js" />

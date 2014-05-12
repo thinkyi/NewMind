@@ -92,3 +92,10 @@ a.a_white:hover,a.a_white:active{ color:#ff0; text-decoration:none;}
 #footer .links a{ margin:0 20px; color:#fff; text-decoration:none;}
 #footer .links a:hover{ margin:0 20px; color:#f00; text-decoration:none;}
 #footer .copyright{ text-align:center; line-height:22px; background:url(../images/logo2.png) 40px center no-repeat; padding-left:60px; padding-top:10px; height:90px; color:#515151;}
+
+#slideshow{width:782px;height:339px;position:relative;overflow:hidden; margin-bottom:10px;}
+.slideImg img{border:0px;}
+.slideImg a{position:absolute;display:none;z-index:1;left:0;top:0;width:100%;height:100%;float:left;margin-right:-100%;text-align:center;}
+.slideBtn ul{position:absolute;right:10px;bottom:10px;overflow:hidden;z-index:100;}
+.slideBtn li{list-style:none;width:12px;height:12px;margin-right:5px;background:#fff;border:1px solid #666;cursor:pointer;float:right;}
+.slideBtn .on{background:#666;border:1px solid #fff;cursor:default;}
