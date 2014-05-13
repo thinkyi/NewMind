@@ -14,7 +14,7 @@ namespace ThinkYi.Web.Controllers
 {
     public class AdminController : Controller
     {
-        [Dependency]a
+        [Dependency]
         public ILanguageService LanguageService { get; set; }
         [Dependency]
         public II18NService I18NService { get; set; }
