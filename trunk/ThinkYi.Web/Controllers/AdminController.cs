@@ -157,7 +157,7 @@ namespace ThinkYi.Web.Controllers
         public ActionResult I18NGrid(JqGridParam jgp)
         {
             string sidx = jgp.sidx;
-            var data = I18NService.GetI18Ns(jgp.lCode);
+            var data = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(jgp.lCode));
             var jsonData = data.GetJson(jgp, JsonRequestBehavior.AllowGet, null);
             return jsonData;
         }

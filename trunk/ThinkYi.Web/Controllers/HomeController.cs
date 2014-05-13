@@ -23,7 +23,7 @@ namespace ThinkYi.Web.Controllers
         public ActionResult Index(string language)
         {
             HomeIndex hi = new HomeIndex();
-            var i18ns = I18NService.GetI18Ns(language).Where(i => !i.I18NType.Code.Equals("menu")).ToList();
+            var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(language) && !i.I18NType.Code.Equals("menu")).ToList();
             hi.PageI18N = common.GetPageI18N(i18ns.Where(i => i.I18NType.Code.Equals("title") || i.I18NType.Code.Equals("other")).ToList());
             hi.Cooperations = i18ns.Where(i => i.I18NType.Code.Equals("cooperation")).OrderBy(i => i.OrderID).ToList();
 

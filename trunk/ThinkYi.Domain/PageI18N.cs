@@ -7,6 +7,7 @@ namespace ThinkYi.Domain
 {
     public class PageI18N
     {
+        public string WebSiteTitle { get; set; }
         public string PRecommend { get; set; }
         public string PDisplay { get; set; }
         public string Cooperation { get; set; }

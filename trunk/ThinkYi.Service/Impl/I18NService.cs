@@ -23,9 +23,9 @@ namespace ThinkYi.Service.Impl
         /// </summary>
         /// <param name="lCode">language code</param>
         /// <returns></returns>
-        public IQueryable<I18N> GetI18Ns(string lCode)
+        public IQueryable<I18N> GetI18Ns()
         {
-            return I18NRepository.Entities.Where(i => i.Language.Code.Equals(lCode));
+            return I18NRepository.Entities;
         }
     }
 }

@@ -25,7 +25,7 @@ namespace ThinkYi.Web.Controllers
         public ActionResult _TypePartial(string lCode)
         {
             PartialPType ppt = new PartialPType();
-            string title = i18NService.GetI18Ns(lCode).Where(i => i.Code.Equals("ptype")).FirstOrDefault().Name;
+            string title = i18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(lCode) && i.Code.Equals("ptype")).FirstOrDefault().Name;
             ppt.ProductTypes = productTypeService.GetProductTypes(lCode).ToList();
             ppt.title = title;
             return PartialView(ppt);

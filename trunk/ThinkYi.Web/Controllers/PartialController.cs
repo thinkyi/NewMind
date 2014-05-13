@@ -19,14 +19,14 @@ namespace ThinkYi.Web.Controllers
 
         public ActionResult _Header(string lCode)
         {
-            var menus = I18NService.GetI18Ns(lCode).Where(i => i.I18NType.Code.Equals("menu")).ToList();
+            var menus = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(lCode) && i.I18NType.Code.Equals("menu")).ToList();
             return PartialView(menus);
         }
 
         public ActionResult _Footer(string lCode)
         {
             PartialFooter pf = new PartialFooter();
-            var menus = I18NService.GetI18Ns(lCode).Where(i => i.I18NType.Code.Equals("menu")).ToList();
+            var menus = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(lCode) && i.I18NType.Code.Equals("menu")).ToList();
             pf.Menus = menus;
             pf.Footer = InformationService.GetInformations().Where(i => i.Language.Code.Equals(lCode) && i.Code.Equals("footer")).FirstOrDefault().Text;
             return PartialView(pf);

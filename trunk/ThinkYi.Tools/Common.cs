@@ -16,6 +16,9 @@ namespace ThinkYi.Tools
                 string title = i.Name;
                 switch (i.Code)
                 {
+                    case "wstitle":
+                        pi.WebSiteTitle = title;
+                        break;
                     case "precommend":
                         pi.PRecommend = title;
                         break;

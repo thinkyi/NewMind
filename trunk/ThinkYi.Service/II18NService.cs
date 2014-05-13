@@ -9,6 +9,6 @@ namespace ThinkYi.Service
 {
     public interface II18NService
     {
-        IQueryable<I18N> GetI18Ns(string lCode);
+        IQueryable<I18N> GetI18Ns();
     }
 }

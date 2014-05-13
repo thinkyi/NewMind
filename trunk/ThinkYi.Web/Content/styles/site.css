@@ -14,7 +14,8 @@ a.a_white:hover,a.a_white:active{ color:#ff0; text-decoration:none;}
 #header .top{height:102px; padding-left:650px; text-align:left;}
 #header .langbox{ padding-top:10px; height:20px; line-height:20px;}
 
-.banner{margin:10px 0;}
+.banner{margin:10px 0px;}
+.banner1{margin:10px 0px -3px; text-align:center;}
 .img_txt{vertical-align:middle; padding-right:10px;}
 #header .telbox{margin-top:7px;}
 #header .telbox .tel{height:28px; line-height:28px; background:url(../images/icon_tel.png) left center no-repeat; padding-left:60px; font-size:18px; font-weight:bold; font-family:Arial, Helvetica, sans-serif; display:inline-block; color:#f00;}
