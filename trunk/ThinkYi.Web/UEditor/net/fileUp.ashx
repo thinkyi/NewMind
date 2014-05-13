@@ -2,7 +2,7 @@
 <%@ Assembly Src="Uploader.cs" %>
 /**
  * Created by visual studio 2010
- * User: xuheng1
+ * User: xuheng
  * Date: 12-3-9
  * Time: 下午13:53
  * To change this template use File | Settings | File Templates.
