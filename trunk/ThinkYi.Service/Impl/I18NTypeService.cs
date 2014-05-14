@@ -17,5 +17,10 @@ namespace ThinkYi.Service.Impl
         public I18NTypeRepository I18NTypeRepository { get; set; }
         [Dependency]
         public IUnitOfWork UnitOfWork { get; set; }
+
+        public IQueryable<I18NType> GetI18NTypes()
+        {
+            return I18NTypeRepository.Entities;
+        }
     }
 }

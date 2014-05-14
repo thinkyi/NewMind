@@ -27,8 +27,8 @@ namespace ThinkYi.Web.Controllers
             hi.PageI18N = common.GetPageI18N(i18ns.Where(i => i.I18NType.Code.Equals("title") || i.I18NType.Code.Equals("other")).ToList());
             hi.Cooperations = i18ns.Where(i => i.I18NType.Code.Equals("cooperation")).OrderBy(i => i.OrderID).ToList();
 
-            hi.Recommends = ProductService.GetProducts(language).Where(p => p.IsRecommend).ToList();
-            hi.Displays = ProductService.GetProducts(language).Where(p => p.IsShow).Take(4).ToList();
+            hi.Recommends = ProductService.GetProducts().Where(p => p.ProductType.Language.Code.Equals(language) && p.IsRecommend).ToList();
+            hi.Displays = ProductService.GetProducts().Where(p => p.ProductType.Language.Code.Equals(language) && p.IsShow).Take(4).ToList();
 
             return View(hi);
         }

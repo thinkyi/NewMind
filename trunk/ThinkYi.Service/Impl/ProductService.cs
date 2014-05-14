@@ -14,19 +14,24 @@ namespace ThinkYi.Service.Impl
     public class ProductService : IProductService
     {
         [Dependency]
-        public IProductRepository ProducRepository { get; set; }
+        public IProductRepository ProductRepository { get; set; }
         [Dependency]
         public IUnitOfWork UnitOfWork { get; set; }
 
-        public IQueryable<Product> GetProducts(string lCode)
+        public Product GetProduct(int id)
         {
-            IQueryable<Product> products = ProducRepository.Entities.Where(p => p.Language.Code.Equals(lCode));
+            return ProductRepository.GetByID(id);
+        }
+
+        public IQueryable<Product> GetProducts()
+        {
+            IQueryable<Product> products = ProductRepository.Entities;
             return products;
         }
 
         public void AddProduct(Product p)
         {
-            ProducRepository.Insert(p);
+            ProductRepository.Insert(p);
             UnitOfWork.Commit();
         }
     }

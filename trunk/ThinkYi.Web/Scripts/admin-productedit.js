@@ -41,7 +41,7 @@ jQuery(document).ready(function () {
     else
         $(".spanLanguage").first().parent().parent().hide();
 
-    BindTypeSelect($("#PType1"), $("#PType2"), 0);
+    BindTypeSelect($("#PType1"), $("#PType2"));
 });
 
 function ProductAdd() {
@@ -50,7 +50,7 @@ function ProductAdd() {
         Code: $("#Code").val(),
         Name: $("#Name").val(),
         Text: editor.getContent(),
-        BigPic: $("#BigPicPreview").attr("src"),
+        BigPic:$("#BigPicPreview").attr("src"),
         SmallPic: $("#SmallPicPreview").attr("src"),
         IsRecommend: $("#IsRecommend").prop("checked"),
         IsShow: $("#IsShow").prop("checked"),

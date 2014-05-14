@@ -89,7 +89,7 @@ function SetNav(text) {
     $(".ribbon").text(text);
 }
 
-function SetNavSelected(dtitle) {
+function SetNavSelected(viewName) {
     $("#accordion li div").removeClass("selected");
-    $("#accordion li div[title='" + dtitle + "']").addClass("selected");
+    $("#accordion li div[view='" + viewName + "']").addClass("selected");
 }

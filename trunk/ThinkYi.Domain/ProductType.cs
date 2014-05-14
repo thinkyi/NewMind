@@ -13,6 +13,7 @@ namespace ThinkYi.Domain
         public int ParentTypeID { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
+        public string Remark { get; set; }
 
         public virtual Language Language { get; set; }
     }

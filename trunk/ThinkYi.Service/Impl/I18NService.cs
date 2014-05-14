@@ -27,5 +27,11 @@ namespace ThinkYi.Service.Impl
         {
             return I18NRepository.Entities;
         }
+
+       public void I18NEdit(I18N i18n)
+        {
+            I18NRepository.Update(i18n);
+            UnitOfWork.Commit();
+        }
     }
 }

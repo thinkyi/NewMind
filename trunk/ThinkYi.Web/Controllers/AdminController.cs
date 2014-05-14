@@ -17,6 +17,8 @@ namespace ThinkYi.Web.Controllers
         [Dependency]
         public ILanguageService LanguageService { get; set; }
         [Dependency]
+        public II18NTypeService I18NTypeService { get; set; }
+        [Dependency]
         public II18NService I18NService { get; set; }
         [Dependency]
         public IProductTypeService ProductTypeService { get; set; }
@@ -34,6 +36,12 @@ namespace ThinkYi.Web.Controllers
         public ActionResult Nav(string viewName)
         {
             return View(viewName);
+        }
+
+        public ActionResult ProductEdit(int productID)
+        {
+            Product product = ProductService.GetProduct(productID);
+            return View(product);
         }
 
         public ActionResult Information(string lCode, string code)
@@ -110,7 +118,6 @@ namespace ThinkYi.Web.Controllers
                 {
                     product.SmallPic = null;
                 }
-                product.LanguageID = lid;
                 ProductService.AddProduct(product);
 
                 if (isClone && !lCode.Equals("en"))
@@ -133,12 +140,10 @@ namespace ThinkYi.Web.Controllers
                         switch (lCode)
                         {
                             case "cn":
-                                product.LanguageID = languages.Where(l => l.Code.Equals("big5")).FirstOrDefault().LanguageID;
                                 product.Name = VB.Strings.StrConv(product.Name, VB.VbStrConv.TraditionalChinese, 0);
                                 product.Text = VB.Strings.StrConv(product.Text, VB.VbStrConv.TraditionalChinese, 0);
                                 break;
                             case "big5":
-                                product.LanguageID = languages.Where(l => l.Code.Equals("cn")).FirstOrDefault().LanguageID;
                                 product.Name = VB.Strings.StrConv(product.Name, VB.VbStrConv.SimplifiedChinese, 0);
                                 product.Text = VB.Strings.StrConv(product.Text, VB.VbStrConv.SimplifiedChinese, 0);
                                 break;
@@ -154,12 +159,31 @@ namespace ThinkYi.Web.Controllers
             return result;
         }
 
-        public ActionResult I18NGrid(JqGridParam jgp)
+        public ActionResult I18NTypeGrid(JqGridParam jgp)
         {
             string sidx = jgp.sidx;
-            var data = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(jgp.lCode));
+            var data = I18NTypeService.GetI18NTypes().Where(i => i.Language.Code.Equals(jgp.lCode));
             var jsonData = data.GetJson(jgp, JsonRequestBehavior.AllowGet, null);
             return jsonData;
+        }
+
+        public ActionResult I18NGrid(JqGridParam jgp, int i18nTypeID)
+        {
+            string sidx = jgp.sidx;
+            var data = I18NService.GetI18Ns().Where(i => i.I18NType.I18NTypeID == i18nTypeID);
+            var jsonData = data.GetJson(jgp, JsonRequestBehavior.AllowGet, null);
+            return jsonData;
+        }
+
+        [HttpPost]
+        public void I18NEdit(I18N i18n)
+        {
+            var data = I18NService.GetI18Ns().Where(i => i.I18NID == i18n.I18NID).FirstOrDefault();
+            data.OrderID = i18n.OrderID;
+            data.Code = i18n.Code;
+            data.Name = i18n.Name;
+            data.Remark = i18n.Remark;
+            I18NService.I18NEdit(data);
         }
 
         public ActionResult ProductTypeGrid(JqGridParam jgp, int ptid)
@@ -168,6 +192,30 @@ namespace ThinkYi.Web.Controllers
             var data = ProductTypeService.GetProductTypes(jgp.lCode).Where(p => p.ParentTypeID == ptid);
             var jsonData = data.GetJson(jgp, JsonRequestBehavior.AllowGet, null);
             return jsonData;
+        }
+
+        [HttpPost]
+        public void ProductTypeEdit(ProductType pt)
+        {
+            var data = ProductTypeService.GetProductType(pt.ProductTypeID);
+            data.Code = pt.Code;
+            data.Name = pt.Name;
+            data.Remark = pt.Remark;
+            ProductTypeService.ProductTypeEdit(data);
+        }
+
+        [HttpPost]
+        public void ProductTypeAdd(ProductType pt, string lCode)
+        {
+            int lid = LanguageService.GetLanguages().Where(l => l.Code.Equals(lCode)).FirstOrDefault().LanguageID;
+            pt.LanguageID = lid;
+            ProductTypeService.ProductTypeAdd(pt);
+        }
+
+        [HttpPost]
+        public void ProductTypeDel(int ptid)
+        {
+            ProductTypeService.ProductTypeDel(ptid);
         }
 
         public JsonResult GetProductTypes(string lCode)
@@ -183,14 +231,13 @@ namespace ThinkYi.Web.Controllers
         {
             string sidx = jgp.sidx;
             var ptData = ProductTypeService.GetProductTypes(jgp.lCode).Where(p => p.ParentTypeID == 0);
-            var pData = ProductService.GetProducts(jgp.lCode).Include("ProductType");
+            var pData = ProductService.GetProducts().Where(p => p.ProductType.Language.Code.Equals(jgp.lCode));
             var lq = from d1 in pData
                      join d2 in ptData on d1.ProductType.ParentTypeID equals d2.ProductTypeID
                      select new
                      {
                          ProductID = d1.ProductID,
                          ProductTypeID = d1.ProductTypeID,
-                         LanguageID = d1.LanguageID,
                          Code = d1.Code,
                          Name = d1.Name,
                          SmallPic = d1.SmallPic,

@@ -4,12 +4,12 @@
     ueiDialog.open();
 }
 
-function BindTypeSelect(pt1, pt2) {
-    var ptID = 0;
+function BindTypeSelect(pt1, pt2, sptid) {
+    var bptid = 0;
     var json;
     $(pt1).change(function () {
-        ptID = $(this).val();
-        BindSmallType(pt2, ptID, json);
+        bptid = $(this).val();
+        BindSmallType(pt2, bptid, sptid, json);
     });
     $.ajax({
         url: 'GetProductTypes?lCode=' + languageCode,
@@ -18,12 +18,17 @@ function BindTypeSelect(pt1, pt2) {
             for (var i = 0; i < json.length; i++) {
                 if (json[i].ParentTypeID == 0) {
                     if (i == 0) {
-                        ptID = json[i].ProductTypeID;
-                        BindSmallType(pt2, ptID, json);
+                        bptid = json[i].ProductTypeID;
                     }
                     $(pt1).append("<option value='" + json[i].ProductTypeID + "'>" + json[i].Name + "</option>");
                 }
+                if (json[i].ProductTypeID == sptid) {
+                    bptid = json[i].ParentTypeID;
+                }
+
             }
+            $(pt1).val(bptid);
+            BindSmallType(pt2, bptid, sptid, json);
         },
         error: function (msg) {
             alert("加载错误");
@@ -31,13 +36,17 @@ function BindTypeSelect(pt1, pt2) {
     });
 }
 
-function BindSmallType(pt, ptid, json) {
+function BindSmallType(pt, bptid, sptid, json) {
     $(pt).empty();
     if (ptid > 0) {
         for (var i = 0; i < json.length; i++) {
-            if (json[i].ParentTypeID == ptid) {
+            if (json[i].ParentTypeID == bptid) {
                 $(pt).append("<option value='" + json[i].ProductTypeID + "'>" + json[i].Name + "</option>");
             }
+        }
+        if(sptid)
+        {
+            $(pt).val(sptid);
         }
     }
 }

@@ -14,14 +14,40 @@ namespace ThinkYi.Service.Impl
     public class ProductTypeService : IProductTypeService
     {
         [Dependency]
-        public IProductTypeRepository ProducTypeRepository { get; set; }
+        public IProductTypeRepository ProductTypeRepository { get; set; }
         [Dependency]
         public IUnitOfWork UnitOfWork { get; set; }
 
+        public ProductType GetProductType(int id)
+        {
+            ProductType pt = ProductTypeRepository.GetByID(id);
+            return pt;
+        }
+
         public IQueryable<ProductType> GetProductTypes(string lCode)
         {
-            IQueryable<ProductType> productTypes = ProducTypeRepository.Entities.Where(p => p.Language.Code.Equals(lCode));
+            IQueryable<ProductType> productTypes = ProductTypeRepository.Entities.Where(p => p.Language.Code.Equals(lCode));
             return productTypes;
+        }
+
+        public void ProductTypeAdd(ProductType pt)
+        {
+            ProductTypeRepository.Insert(pt);
+            UnitOfWork.Commit();
+        }
+
+        public void ProductTypeEdit(ProductType pt)
+        {
+            ProductTypeRepository.Update(pt);
+            UnitOfWork.Commit();
+        }
+
+        public void ProductTypeDel(int id)
+        {
+            ProductType pt = ProductTypeRepository.GetByID(id);
+            ProductTypeRepository.Delete(pt);
+            ProductTypeRepository.Delete(p => p.ParentTypeID == id);
+            UnitOfWork.Commit();
         }
     }
 }

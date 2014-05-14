@@ -10,5 +10,6 @@ namespace ThinkYi.Service
     public interface II18NService
     {
         IQueryable<I18N> GetI18Ns();
+        void I18NEdit(I18N i18n);
     }
 }

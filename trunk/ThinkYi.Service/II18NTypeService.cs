@@ -9,5 +9,6 @@ namespace ThinkYi.Service
 {
     public interface II18NTypeService
     {
+        IQueryable<I18NType> GetI18NTypes();
     }
 }

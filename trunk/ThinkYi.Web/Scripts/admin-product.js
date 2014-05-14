@@ -1,4 +1,5 @@
 ﻿var languageCode = parent.g_languageCode;
+var productID = 0;
 parent.g_isSetSize = true;
 
 jQuery(document).ready(function () {
@@ -6,6 +7,7 @@ jQuery(document).ready(function () {
         url: 'ProductGrid?lCode=' + languageCode,
         datatype: 'json',
         sortname: 'ProductID',
+        sortorder: 'desc',
         colNames: ['序号', '类别', '大类', '小类', '语言', '编码', '名称', '小图', '大图', '首页推荐', '首页显示'],
         colModel: [
    		            { name: 'ProductID', index: 'ProductID', hidden: true },
@@ -26,14 +28,16 @@ jQuery(document).ready(function () {
         rowNum: 50,
         rowList: [50, 100, 200],
         pager: '#productPager',
-        viewrecords: true
-
+        viewrecords: true,
+        onSelectRow: function (rowid, status, e) {
+            productID = $(this).jqGrid('getCell', rowid, 'ProductID');
+        }
     });
     $("#gbox_productGrid").addClass("ui-widget-content-remove-border");
     jQuery("#productGrid").jqGrid(
         'navGrid'
         , '#productPager'
-        , { addfunc: AddFunc } //prmView
+        , { addfunc: AddFunc, editfunc: EditFunc } //prmView
     );
 
 });
@@ -41,7 +45,12 @@ jQuery(document).ready(function () {
 function AddFunc() {
     parent.SetNav("添加产品");
     parent.SetNavSelected("ProductAdd");
-    window.location.href = "ProductAdd";
+    window.location.href = "Nav?viewName=ProductAdd";
+}
+
+function EditFunc() {
+    parent.SetNav("编辑产品");
+    window.location.href = "ProductEdit?productID=" + productID;
 }
 
 function SetSize(h, w) {
