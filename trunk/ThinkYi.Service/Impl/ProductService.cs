@@ -34,5 +34,11 @@ namespace ThinkYi.Service.Impl
             ProductRepository.Insert(p);
             UnitOfWork.Commit();
         }
+
+        public void EditProduct(Product p)
+        {
+            ProductRepository.Update(p);
+            UnitOfWork.Commit();
+        }
     }
 }

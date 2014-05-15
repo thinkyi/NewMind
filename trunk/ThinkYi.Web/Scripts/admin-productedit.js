@@ -12,7 +12,7 @@ jQuery(document).ready(function () {
         },
     })
     .click(function () {
-        ProductAdd();
+        ProductEdit();
     });
 
     upPicEditor = new UE.ui.Editor();
@@ -34,37 +34,38 @@ jQuery(document).ready(function () {
         ShowUEImageDialog(upPicEditor);
     })
 
-    if (languageCode == "cn")
-        $(".spanLanguage").text("繁体");
-    else if (languageCode == "big5")
-        $(".spanLanguage").text("简体");
-    else
-        $(".spanLanguage").first().parent().parent().hide();
-
-    BindTypeSelect($("#PType1"), $("#PType2"));
+    BindTypeSelect($("#PType1"), $("#PType2"), $("#ProductTypeID").val());
 });
 
-function ProductAdd() {
+function ProductEdit() {
+    if (!$("#PType2").val())
+    {
+        alert("产品小类不能为空");
+        return;
+    }
     var pe = {
+        ProductID: $("#ProductID").val(),
         ProductTypeID: $("#PType2").val(),
         Code: $("#Code").val(),
         Name: $("#Name").val(),
         Text: editor.getContent(),
-        BigPic:$("#BigPicPreview").attr("src"),
+        BigPic: $("#BigPicPreview").attr("src"),
         SmallPic: $("#SmallPicPreview").attr("src"),
         IsRecommend: $("#IsRecommend").prop("checked"),
         IsShow: $("#IsShow").prop("checked"),
-        lCode: languageCode,
-        isClone: $("#IsClone").prop("checked")
+        lCode: languageCode
     }
 
     $.ajax({
-        url: 'ProductAdd',
+        url: 'ProductEdit',
         type: 'post',
         data: pe,
         success: function (data) {
             if (data == "s") {
-                alert("添加成功");
+                alert("编辑成功");
+                parent.SetNav("产品列表");
+                parent.SetNavSelected("Product");
+                window.location.href = "Nav?viewName=Product";
             }
             else {
                 alert(data);

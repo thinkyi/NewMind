@@ -56,19 +56,6 @@ namespace ThinkYi.Web.Controllers
         }
     }
 
-    public class DisplayController : InfoController
-    {
-        public ActionResult Index(string language)
-        {
-            var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(language) && (i.Code.Equals("display") || i.Code.Equals("wstitle"))).ToList();
-            var data = i18ns.OrderBy(i => i.Code).Select(i => i.Name).ToList();
-            ViewBag.Title = string.Join(" - ", data.ToArray());
-            ViewBag.Caption = data[0];
-            Information info = InformationService.GetInformations().Where(i => i.Language.Code.Equals(language) && i.Code.Equals("display")).FirstOrDefault();
-            return View("~/Views/Info/Index.cshtml", info);
-        }
-    }
-
     public class InformationController : InfoController
     {
         public ActionResult Index(string language)

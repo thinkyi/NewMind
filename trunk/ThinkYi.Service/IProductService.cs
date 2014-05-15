@@ -12,5 +12,6 @@ namespace ThinkYi.Service
         Product GetProduct(int id);
         IQueryable<Product> GetProducts();
         void AddProduct(Product p);
+        void EditProduct(Product p);
     }
 }

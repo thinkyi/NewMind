@@ -8,7 +8,7 @@ jQuery(document).ready(function () {
         datatype: 'json',
         sortname: 'ProductID',
         sortorder: 'desc',
-        colNames: ['序号', '类别', '大类', '小类', '语言', '编码', '名称', '小图', '大图', '首页推荐', '首页显示'],
+        colNames: ['序号', '类别', '大类', '小类', '语言', '编码', '名称', '大图', '小图', '首页推荐', '首页显示'],
         colModel: [
    		            { name: 'ProductID', index: 'ProductID', hidden: true },
                     { name: 'ProductTypeID', index: 'ProductTypeID', hidden: true },
@@ -17,8 +17,8 @@ jQuery(document).ready(function () {
    		            { name: 'LanguageID', index: 'LanguageID', hidden: true },
    		            { name: 'Code', index: 'Code', width: 50 },
    		            { name: 'Name', index: 'Name' },
-                    { name: 'SmallPic', index: 'SmallPic', align: 'center', width: 60, formatter: ImageIcoFormatter },
                     { name: 'BigPic', index: 'BigPic', align: 'center', width: 60, formatter: ImageIcoFormatter },
+                    { name: 'SmallPic', index: 'SmallPic', align: 'center', width: 60, formatter: ImageIcoFormatter },
                     { name: 'IsRecommend', index: 'IsRecommend', align: 'center', width: 60, formatter: YNFormatter },
                     { name: 'IsShow', index: 'IsShow', align: 'center', width: 60, formatter: YNFormatter }
         ],
@@ -29,6 +29,9 @@ jQuery(document).ready(function () {
         rowList: [50, 100, 200],
         pager: '#productPager',
         viewrecords: true,
+        gridComplete: function () {
+            $(this).jqGrid("setSelection", 0);
+        },
         onSelectRow: function (rowid, status, e) {
             productID = $(this).jqGrid('getCell', rowid, 'ProductID');
         }

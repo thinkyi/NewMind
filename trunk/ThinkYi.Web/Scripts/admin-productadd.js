@@ -45,6 +45,10 @@ jQuery(document).ready(function () {
 });
 
 function ProductAdd() {
+    if (!$("#PType2").val()) {
+        alert("产品小类不能为空");
+        return;
+    }
     var pe = {
         ProductTypeID: $("#PType2").val(),
         Code: $("#Code").val(),
@@ -65,6 +69,9 @@ function ProductAdd() {
         success: function (data) {
             if (data == "s") {
                 alert("添加成功");
+                parent.SetNav("产品列表");
+                parent.SetNavSelected("Product");
+                window.location.href = "Nav?viewName=Product";
             }
             else {
                 alert(data);

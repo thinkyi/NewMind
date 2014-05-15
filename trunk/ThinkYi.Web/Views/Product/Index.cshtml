@@ -1,0 +1,96 @@
+﻿@using ThinkYi.Domain
+    @model ThinkYi.Web.Models.ProductIndex
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+
+        Information info = Model.Information;
+    }
+
+    @section javascript{
+        <script src="@Url.Content("~/Scripts/home-index.js")" type="text/javascript"></script>
+    }
+    <div class="banner1">
+        <img src="@info.BannerPic" alt="@info.Code" width="995" height="204">
+    </div>
+    <div id="main">
+        <div class="leftbar">
+            @{
+                Html.RenderAction("_TypePartial", "Product", new { lCode = ViewContext.RouteData.Values["language"] });
+            }
+            <div class="picbox">
+                <img src="~/Content/images/links1.png" width="204" height="74" />
+            </div>
+            <div class="picbox">
+                <img src="~/Content/images/links2.png" width="204" height="74" />
+            </div>
+            <div class="picbox">
+                <img src="~/Content/images/links3.png" width="204" height="74" />
+            </div>
+        </div>
+        <div class="rightbar">
+            <div class="productbox">
+                <div class="top">
+                    <h3>@ViewBag.Caption</h3>
+                </div>
+                <div class="mid" style="height:555px;">
+                    <ul class="pick">
+                        <li style="margin-bottom:10px;">
+                            <a href="#" class="pick_img"><img src="images/001.jpg" width="164" height="122" /></a>
+                            <p class="pick_name"><a href="#">产品名称</a></p>
+                        </li>
+                        <li>
+                            <a href="#" class="pick_img"><img src="images/001.jpg" width="164" height="122" /></a>
+                            <p class="pick_name"><a href="#">产品名称</a></p>
+                        </li>
+                        <li>
+                            <a href="#" class="pick_img"><img src="images/001.jpg" width="164" height="122" /></a>
+                            <p class="pick_name"><a href="#">产品名称</a></p>
+                        </li>
+                        <li>
+                            <a href="#" class="pick_img"><img src="images/001.jpg" width="164" height="122" /></a>
+                            <p class="pick_name"><a href="#">产品名称</a></p>
+                        </li>
+                        <li>
+                            <a href="#" class="pick_img"><img src="images/001.jpg" width="164" height="122" /></a>
+                            <p class="pick_name"><a href="#">产品名称</a></p>
+                        </li>
+                        <li>
+                            <a href="#" class="pick_img"><img src="images/001.jpg" width="164" height="122" /></a>
+                            <p class="pick_name"><a href="#">产品名称</a></p>
+                        </li>
+                        <li>
+                            <a href="#" class="pick_img"><img src="images/001.jpg" width="164" height="122" /></a>
+                            <p class="pick_name"><a href="#">产品名称</a></p>
+                        </li>
+                        <li>
+                            <a href="#" class="pick_img"><img src="images/001.jpg" width="164" height="122" /></a>
+                            <p class="pick_name"><a href="#">产品名称</a></p>
+                        </li>
+                        <li>
+                            <a href="#" class="pick_img"><img src="images/001.jpg" width="164" height="122" /></a>
+                            <p class="pick_name"><a href="#">产品名称</a></p>
+                        </li>
+                        <li>
+                            <a href="#" class="pick_img"><img src="images/001.jpg" width="164" height="122" /></a>
+                            <p class="pick_name"><a href="#">产品名称</a></p>
+                        </li>
+                        <li>
+                            <a href="#" class="pick_img"><img src="images/001.jpg" width="164" height="122" /></a>
+                            <p class="pick_name"><a href="#">产品名称</a></p>
+                        </li>
+                        <li>
+                            <a href="#" class="pick_img"><img src="images/001.jpg" width="164" height="122" /></a>
+                            <p class="pick_name"><a href="#">产品名称</a></p>
+                        </li>
+                    </ul>
+                    <div style="clear:both;"></div>
+                    <div class="pagebox">
+                        【<a href="#">首页</a>】    【<a href="#">上一页</a>】    【<a href="#">下一页</a>】    【<a href="#">尾页</a>】
+                    </div>
+                </div>
+                <div class="di"></div>
+            </div>
+        </div>
+        <div class="fc"></div>
+    </div>

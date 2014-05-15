@@ -2,6 +2,12 @@
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     ViewBag.Title = "ProductEdit";
+
+    string tempSrc = "../Content/images/admin/temp.png";
+    string recommendCheck = Model.IsRecommend ? "checked=\"checked\"" : "";
+    string showCheck = Model.IsShow ? "checked=\"checked\"" : "";
+    string bPic = string.IsNullOrEmpty(Model.BigPic) ? tempSrc : Model.BigPic;
+    string sPic = string.IsNullOrEmpty(Model.SmallPic) ? tempSrc : Model.SmallPic;
 }
 @section javascript{
     <script src="@Url.Content("~/Scripts/admin-productedit.js")" type="text/javascript"></script>
@@ -13,6 +19,7 @@
     <div style="width:50%; float:left;">
         <ul>
             <li>
+                <input type="hidden" id="ProductID" name="ProductID" value="@Model.ProductID" />
                 <label class="title" style="margin-top:0px;">产品编码</label>
                 <input type="text" id="Code" name="Code" value="@Model.Code" class="text ui-widget-content ui-corner-all" style="width:80%" />
             </li>
@@ -22,13 +29,14 @@
             </li>
             <li>
                 <label class="title">产品类别</label>
+                <input type="hidden" id="ProductTypeID" name="ProductTypeID" value="@Model.ProductTypeID" />
                 <select id="PType1" name="PType1" class="text ui-widget-content ui-corner-all" style="padding: 3px;"></select>
                 <select id="PType2" name="PType2" class="text ui-widget-content ui-corner-all" style="padding: 3px;"></select>
             </li>
             <li>
                 <label class="title">是否首页推荐</label>
                 <label style="margin:0px; width:230px;">
-                    <input type="checkbox" id="IsRecommend" name="IsRecommend" class="text ui-widget-content ui-corner-all" />
+                    <input type="checkbox" id="IsRecommend" name="IsRecommend" @recommendCheck class="text ui-widget-content ui-corner-all" />
                     <span style="color:#808080;">勾选则在首页产品推荐处显示大图</span>
                 </label>
             </li>
@@ -40,7 +48,7 @@
             <li>
                 <label class="title">是否首页展示</label>
                 <label style="margin: 0px; width: 230px;">
-                    <input type="checkbox" id="IsShow" name="IsShow" class="text ui-widget-content ui-corner-all" />
+                    <input type="checkbox" id="IsShow" name="IsShow" @showCheck class="text ui-widget-content ui-corner-all" />
                     <span style="color: #808080; ">勾选则在首页产品展示处显示小图</span>
                 </label>
             </li>
@@ -49,24 +57,24 @@
                 <input type="button" id="SmallPic" name="SmallPic" class="btnUpPic" value="选择展示图片" />
                 <span style="color:#808080;">图片尺寸(164*122)</span>
             </li>
-            <li>
-                <label class="title">是否添加<span class="spanLanguage"></span>版本</label>
-                <label style="margin: 0px; width: 180px;">
-                    <input type="checkbox" id="IsClone" name="IsClone" class="text ui-widget-content ui-corner-all" />
-                    <span style="color: #808080; ">勾选则自动添加<span class="spanLanguage"></span>版本</span>
-                </label>
-            </li>
+            @*<li>
+                    <label class="title">是否添加<span class="spanLanguage"></span>版本</label>
+                    <label style="margin: 0px; width: 180px;">
+                        <input type="checkbox" id="IsClone" name="IsClone" class="text ui-widget-content ui-corner-all" />
+                        <span style="color: #808080; ">勾选则自动添加<span class="spanLanguage"></span>版本</span>
+                    </label>
+                </li>*@
         </ul>
     </div>
     <div style="float:right; width:50%;">
         <ul>
             <li>
                 <label class="title" style="margin-top:0px;">产品大图预览</label>
-                <img id="BigPicPreview" src="~/Content/images/admin/temp.png" style="width:80%; max-height:220px;" />
+                <img id="BigPicPreview" src="@bPic" style="width:80%; max-height:220px;" />
             </li>
             <li>
                 <label class="title">产品小图预览</label>
-                <img id="SmallPicPreview" src="~/Content/images/admin/temp.png" style="width:25%; max-height:120px;" />
+                <img id="SmallPicPreview" src="@sPic" style="width:25%; max-height:120px;" />
             </li>
         </ul>
     </div>
@@ -75,6 +83,7 @@
         <label class="title">产品内容</label>
         <label>
             <script id="Text" name="Text" type="text/plain" style="height:300px;">
+                @Html.Raw(Model.Text)
             </script>
         </label>
     </div>

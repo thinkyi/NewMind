@@ -5,11 +5,12 @@
 }
 
 function BindTypeSelect(pt1, pt2, sptid) {
+    var b = false;
     var bptid = 0;
     var json;
     $(pt1).change(function () {
         bptid = $(this).val();
-        BindSmallType(pt2, bptid, sptid, json);
+        BindSmallType(pt2, bptid, 0, json);
     });
     $.ajax({
         url: 'GetProductTypes?lCode=' + languageCode,
@@ -17,12 +18,14 @@ function BindTypeSelect(pt1, pt2, sptid) {
             json = data;
             for (var i = 0; i < json.length; i++) {
                 if (json[i].ParentTypeID == 0) {
-                    if (i == 0) {
+                    if (!b) {
                         bptid = json[i].ProductTypeID;
+                        b = true;
                     }
                     $(pt1).append("<option value='" + json[i].ProductTypeID + "'>" + json[i].Name + "</option>");
                 }
                 if (json[i].ProductTypeID == sptid) {
+                    b = true;
                     bptid = json[i].ParentTypeID;
                 }
 
@@ -38,7 +41,7 @@ function BindTypeSelect(pt1, pt2, sptid) {
 
 function BindSmallType(pt, bptid, sptid, json) {
     $(pt).empty();
-    if (ptid > 0) {
+    if (bptid > 0) {
         for (var i = 0; i < json.length; i++) {
             if (json[i].ParentTypeID == bptid) {
                 $(pt).append("<option value='" + json[i].ProductTypeID + "'>" + json[i].Name + "</option>");

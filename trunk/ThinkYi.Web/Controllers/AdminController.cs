@@ -109,7 +109,6 @@ namespace ThinkYi.Web.Controllers
             try
             {
                 List<Language> languages = LanguageService.GetLanguages().ToList();
-                int lid = languages.Where(l => l.Code.Equals(lCode)).FirstOrDefault().LanguageID;
                 if (product.BigPic.Contains("/Content/images/admin/temp.png"))
                 {
                     product.BigPic = null;
@@ -151,6 +150,39 @@ namespace ThinkYi.Web.Controllers
                         ProductService.AddProduct(product);
                     }
                 }
+            }
+            catch (Exception e)
+            {
+                result = e.Message;
+            }
+            return result;
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public string ProductEdit(Product product)
+        {
+            string result = "s";
+            try
+            {
+                Product op = ProductService.GetProduct(product.ProductID);
+                op.Code = product.Code;
+                op.ProductTypeID=product.ProductTypeID;
+                op.Name = product.Name;
+                op.Text=product.Text;
+                if (product.BigPic.Contains("/Content/images/admin/temp.png"))
+                {
+                    product.BigPic = null;
+                }
+                if (product.SmallPic.Contains("/Content/images/admin/temp.png"))
+                {
+                    product.SmallPic = null;
+                }
+                op.BigPic = product.BigPic;
+                op.SmallPic = product.SmallPic;
+                op.IsRecommend = product.IsRecommend;
+                op.IsShow = product.IsShow;
+                ProductService.EditProduct(op);
             }
             catch (Exception e)
             {
