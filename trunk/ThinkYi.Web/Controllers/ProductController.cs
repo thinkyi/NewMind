@@ -41,6 +41,7 @@ namespace ThinkYi.Web.Controllers
             ViewBag.Title = string.Join(" - ", data.ToArray());
             ViewBag.Caption = data[0];
             pi.Information = InformationService.GetInformations().Where(i => i.Language.Code.Equals(language) && i.Code.Equals("display")).FirstOrDefault();
+            pi.Products = ProductService.GetProducts().Where(p => p.ProductType.Language.Code.Equals(language)).OrderByDescending(p => p.ProductID).ToList();
             return View("~/Views/Product/Index.cshtml", pi);
         }
     }
