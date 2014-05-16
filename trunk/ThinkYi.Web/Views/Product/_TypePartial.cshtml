@@ -14,12 +14,12 @@
                         var childTypes = data.Where(p => p.ParentTypeID == ptid).ToList();
                         int count = childTypes.Count;
                         <li>
-                            <a href="#">@pt.Name</a>
+                            <a href="@Url.Action("Index", "Display", new { language = ViewContext.RouteData.Values["language"], ProductTypeID = pt.ProductTypeID, PageIndex = 0 })">@pt.Name</a>
                             <ul>
                                 <li>
                                     @for (int i = 0; i < count; i++)
                                     {
-                                        <span>@childTypes[i].Name</span>
+                                        <a href="@Url.Action("Index", "Display", new { language = ViewContext.RouteData.Values["language"], ProductTypeID = childTypes[i].ProductTypeID, PageIndex = 0 })">@childTypes[i].Name</a>
                                         if (i < count - 1)
                                         {
                                             <span>·</span>

@@ -133,6 +133,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InformationController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\PartialController.cs" />
     <Compile Include="Global.asax.cs">
@@ -141,6 +142,7 @@
     <Compile Include="IoC\CustomControllerActivator.cs" />
     <Compile Include="IoC\UnityControllerFactory .cs" />
     <Compile Include="IoC\UnityDependencyResolver.cs" />
+    <Compile Include="Models\ProductDetail.cs" />
     <Compile Include="Models\ProductIndex.cs" />
     <Compile Include="Models\HomeIndex.cs" />
     <Compile Include="Models\PartialPType.cs" />
@@ -159,6 +161,9 @@
     <Content Include="Content\images\lmbg3.png" />
     <Content Include="Content\images\lmdi3.png" />
     <Content Include="Scripts\admin-productedit.js" />
+    <Content Include="Scripts\account-index.js" />
+    <Content Include="Scripts\product-detail.js" />
+    <Content Include="Scripts\product-index.js" />
     <Content Include="Scripts\home-index.js" />
     <Content Include="Scripts\admin-i18n.js" />
     <Content Include="Scripts\admin-banner.js" />
@@ -235,7 +240,6 @@
     <Content Include="Scripts\admin-product.js" />
     <Content Include="Scripts\admin-producttype.js" />
     <Content Include="Scripts\admin-Information.js" />
-    <Content Include="Scripts\admin-index - Copy.js" />
     <Content Include="Scripts\admin-index.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jqGrid\css\ellipsis-xbl.xml" />
@@ -580,6 +584,8 @@
     <Content Include="Views\Info\Index.cshtml" />
     <Content Include="Views\Admin\ProductEdit.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\Detail.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

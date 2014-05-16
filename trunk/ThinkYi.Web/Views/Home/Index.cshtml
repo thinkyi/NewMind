@@ -4,7 +4,7 @@
 @{
     PageI18N pi = Model.PageI18N;
     List<I18N> cooperations = Model.Cooperations;
-    
+
     ViewBag.Title = pi.WebSiteTitle;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -42,12 +42,12 @@
                         {
                             if (i == cpCount - 1)
                             {
-                                <a index="@i" style="z-index: 1; display: block;">
+                                <a href="@Url.Action("Detail", "Display", new { id = recommends[i].ProductID })" index="@i" style="z-index: 1; display: block;">
                                     <img src="@recommends[i].BigPic" alt="@recommends[i].Name" width="782" height="339">
                                 </a>}
                             else
                             {
-                                <a index="@i" style="z-index: 1; display: none;">
+                                <a href="@Url.Action("Detail", "Display", new { id = recommends[i].ProductID })" index="@i" style="z-index: 1; display: none;">
                                     <img src="@recommends[i].BigPic" alt="@recommends[i].Name" width="782" height="339">
                                 </a>
                             }
@@ -81,9 +81,9 @@
                 <ul class="pick">
                     @foreach (var product in Model.Displays)
                     {
-                        <li>
-                            <a href="#" class="pick_img"><img src="@product.SmallPic" width="164" height="122" /></a>
-                            <p class="pick_name"><a href="#">@product.Name</a></p>
+                        <li pid="@product.ProductID">
+                            <a href="javascript:void(0);" class="pick_img"><img src="@product.SmallPic" width="164" height="122" /></a>
+                            <p class="pick_name"><a href="javascript:void(0);">@product.Name</a></p>
                         </li>
                     }
                 </ul>

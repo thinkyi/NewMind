@@ -10,5 +10,13 @@ namespace ThinkYi.Web.Models
     {
         public Information Information { get; set; }
         public List<Product> Products { get; set; }
+        public int Total { get; set; }
+        public bool Next { get; set; }
+        public bool Pre { get; set; }
+        public int Curr { get; set; }
+        public string FirstText { get; set; }
+        public string PreText { get; set; }
+        public string NextText { get; set; }
+        public string LastText { get; set; }
     }
 }

@@ -12,6 +12,7 @@ using ThinkYi.Tools.jqGrid;
 
 namespace ThinkYi.Web.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         [Dependency]
@@ -26,10 +27,15 @@ namespace ThinkYi.Web.Controllers
         public IProductService ProductService { get; set; }
         [Dependency]
         public IInformationService InformationService { get; set; }
+        [Dependency]
+        public IUserService UserService { get; set; }
 
         public ActionResult Index()
         {
             var data = LanguageService.GetLanguages().OrderByDescending(l => l.LanguageID).ToList();
+            string userName = User.Identity.Name;
+            User user = UserService.GetUsers().Where(u => u.UserName.Equals(userName)).FirstOrDefault();
+            ViewBag.DisplayName = user.DisplayName;
             return View(data);
         }
 
@@ -167,9 +173,9 @@ namespace ThinkYi.Web.Controllers
             {
                 Product op = ProductService.GetProduct(product.ProductID);
                 op.Code = product.Code;
-                op.ProductTypeID=product.ProductTypeID;
+                op.ProductTypeID = product.ProductTypeID;
                 op.Name = product.Name;
-                op.Text=product.Text;
+                op.Text = product.Text;
                 if (product.BigPic.Contains("/Content/images/admin/temp.png"))
                 {
                     product.BigPic = null;
@@ -215,7 +221,7 @@ namespace ThinkYi.Web.Controllers
             data.Code = i18n.Code;
             data.Name = i18n.Name;
             data.Remark = i18n.Remark;
-            I18NService.I18NEdit(data);
+            I18NService.EditI18N(data);
         }
 
         public ActionResult ProductTypeGrid(JqGridParam jgp, int ptid)

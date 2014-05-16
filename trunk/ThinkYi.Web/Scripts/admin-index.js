@@ -66,6 +66,23 @@ jQuery(document).ready(function () {
 
         SetNav($(this).find(".nav").text());
     });
+
+    $("#resetDialog").dialog({
+        autoOpen: false,
+        width: 300,
+        caption: "abc",
+        modal: true,
+        resizable: false,
+        buttons: {
+            确定: function () {
+                UserEdit();
+            },
+            取消: function () {
+                $(this).dialog("close");
+            }
+        },
+        close: function () { }
+    });
     //#endregion
 
     SetLanguage();
@@ -74,6 +91,10 @@ jQuery(document).ready(function () {
         $(this).addClass("active");
         g_languageCode = $(this).attr("name");
         mainFrame.location.reload();
+    });
+
+    $("#reset").click(function () {
+        $("#resetDialog").dialog("open");
     });
 });
 
@@ -92,4 +113,42 @@ function SetNav(text) {
 function SetNavSelected(viewName) {
     $("#accordion li div").removeClass("selected");
     $("#accordion li div[view='" + viewName + "']").addClass("selected");
+}
+
+function UserEdit() {
+    var oldPwd = $("#OldPwd").val();
+    var newPwd = $("#NewPwd").val();
+    var opwd = {
+        oldPwd: oldPwd,
+        newPwd: newPwd
+    }
+    if (!oldPwd) {
+        alert("请输入旧密码");
+        return;
+    }
+    if (!newPwd) {
+        alert("请输入新密码");
+        return;
+    }
+    $.ajax({
+        url: '/Account/UserEdit',
+        type: 'post',
+        data: opwd,
+        success: function (data) {
+            if (data == "s") {
+                $("#OldPwd").val("");
+                $("#NewPwd").val("");
+                alert("密码修改成功");
+                $("#resetDialog").dialog("close");
+            }
+            else {
+                alert(data);
+                $("#OldPwd").val("");
+                $("#NewPwd").val("");
+            }
+        },
+        error: function (msg) {
+            alert("加载错误");
+        }
+    });
 }

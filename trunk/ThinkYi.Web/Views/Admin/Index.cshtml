@@ -21,7 +21,12 @@
     <div class="ui-layout-north">
         <div style="float: right; padding: 5px 5px 0px 0px; font-size: 12px; color:white;">
             <div style="float: right; margin-right: 5px;">
-                <strong>用户：</strong> <span>管理员</span>
+                <strong>用户：</strong>
+                <span>@ViewBag.DisplayName</span>
+                <span style="padding:0px 5px;">|</span>
+                <strong><a id="reset" href="javascript:void(0);" style="color:white;">修改密码</a></strong>
+                <span style="padding:0px 5px;">|</span>
+                <strong><a id="logout" href="@Url.Action("LogOut","Account")" style="color:white;">退出</a></strong>
             </div>
         </div>
         <div id="logo">
@@ -240,5 +245,18 @@
                 src="@Url.Action("Nav",new {viewName="I18N"})"></iframe>
     </div>
     @***********center end***********@
+
+    <div id="resetDialog" title="修改密码">
+        <ul>
+            <li>
+                <label style="margin-top:0px;">请输入旧密码</label>
+                <input type="password" id="OldPwd" name="OldPwd" class="text ui-widget-content ui-corner-all" style="width:80%; height:23px; padding-left:5px;" />
+            </li>
+            <li>
+                <label>请输入新密码</label>
+                <input type="password" id="NewPwd" name="NewPwd" class="text ui-widget-content ui-corner-all" style="width: 80%; height: 23px; padding-left: 5px;" />
+            </li>
+        </ul>
+    </div>
 </body>
 </html>

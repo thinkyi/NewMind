@@ -7,9 +7,10 @@ using ThinkYi.Domain;
 
 namespace ThinkYi.Service
 {
-    public interface II18NService
+    public interface IUserService
     {
-        IQueryable<I18N> GetI18Ns();
-        void EditI18N(I18N i18n);
+        User GetUser(int id);
+        IQueryable<User> GetUsers();
+        void EditUser(User user);
     }
 }

@@ -58,6 +58,7 @@
     <Compile Include="Repositories\LanguageRepository.cs" />
     <Compile Include="Repositories\I18NRepository.cs" />
     <Compile Include="Repositories\InformationRepository.cs" />
+    <Compile Include="Repositories\AccountRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\ProductTypeRepository.cs" />
     <Compile Include="Repositories\I18NTypeRepository.cs" />

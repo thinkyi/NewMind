@@ -19,9 +19,9 @@ a.a_white:hover,a.a_white:active{ color:#ff0; text-decoration:none;}
 .img_txt{vertical-align:middle; padding-right:10px;}
 #header .telbox{margin-top:7px;}
 #header .telbox .tel{height:28px; line-height:28px; background:url(../images/icon_tel.png) left center no-repeat; padding-left:60px; font-size:18px; font-weight:bold; font-family:Arial, Helvetica, sans-serif; display:inline-block; color:#f00;}
-#header .searchbox{background:#62ab00; width:230px; height:24px; line-height:24px; margin-top:5px;}
-#header .searchbox .input1{background:#ffffcc; margin:2px 0 2px 2px; color:#515151; border:none;height:20px; line-height:20px; padding:0 4px;vertical-align:middle;width:170px; }
-#header .searchbox .input2{background:#62ab00;text-align:center; color:#fff; border:none; width:50px; height:20px; line-height:20px; vertical-align:middle; cursor:pointer;}
+#header .searchbox{background:#62ab00; width:235px; height:26px; line-height:26px; margin-top:3px;}
+#header .searchbox .input1{background:#ffffcc; margin:1px; padding-left:3px; color:#515151; border:none; height:24px; width:170px; }
+#header .searchbox .input2{background:#62ab00; text-align:center; color:#fff; border:none; width:50px; cursor:pointer;}
 
 #header .menu{background:url(../images/menubg.jpg) repeat-x; height:38px; line-height:38px; font-family:"Microsoft YaHei","微软雅黑"; font-size:14px;}
 #header .menu ul li{float:left; font-size:14px; width:118px; text-align:center; font-weight:bold; color:#fff;}
@@ -44,6 +44,7 @@ a.a_white:hover,a.a_white:active{ color:#ff0; text-decoration:none;}
 .prolist ul li a{color:#ff6100; text-decoration:none;}
 .prolist ul li a:hover{color:#f00; text-decoration:none;}
 .prolist ul li ul li{ background:none; border:none; line-height:20px; padding-left:0px; color:#515151; font-size:12px; font-weight:normal;}
+.prolist ul li ul li a{color:#515151;}
 .picbox{margin-bottom:6px;}
 
 .bannerbox{ margin-bottom:6px;}
@@ -56,7 +57,7 @@ a.a_white:hover,a.a_white:active{ color:#ff0; text-decoration:none;}
 .productbox{line-height:0px;}
 .productbox .top{background:url(../images/lmtop2.png) no-repeat; height:34px; line-height:34px;}
 .productbox .top h3{color:#fff; padding-left:15px; font-family:"Microsoft YaHei","Microsoft YaHei","微软雅黑"; font-size:15px; float:left;}
-.productbox .top span{color:#fff; float:right; padding-right:20px;}
+.productbox .top span{color:#fff;}
 .productbox .mid{ background:url(../images/lmbg2.png) repeat-y; padding:10px; height:175px;}
 .productbox .di{ background:url(../images/lmdi2.png) no-repeat; height:12px; width:782px; overflow:hidden;}
 .pick{padding:18px 0;}
@@ -81,10 +82,7 @@ a.a_white:hover,a.a_white:active{ color:#ff0; text-decoration:none;}
 .pagebox{text-align:center; height:35px; line-height:35px; background:#eee; border:1px solid #ccc; margin:0 10px; color:#666666;}
 .pagebox a{margin:0 5px; color:#666; text-decoration:none;}
 .pagebox a:hover{margin:0 5px; color:#f00; text-decoration:none;}
-
-.pagebox{text-align:center; height:35px; line-height:35px; background:#eee; border:1px solid #ccc; margin:0 10px; color:#666666;}
-.pagebox a{margin:0 5px; color:#666; text-decoration:none;}
-.pagebox a:hover{margin:0 5px; color:#f00; text-decoration:none;}
+.pagebox a.disabled{color:#ccc; cursor:default;}
 
 
 /*-- footer -------------------------------------------------------------*/
@@ -100,3 +98,16 @@ a.a_white:hover,a.a_white:active{ color:#ff0; text-decoration:none;}
 .slideBtn ul{position:absolute;right:10px;bottom:10px;overflow:hidden;z-index:100;}
 .slideBtn li{list-style:none;width:12px;height:12px;margin-right:5px;background:#fff;border:1px solid #666;cursor:pointer;float:right;}
 .slideBtn .on{background:#666;border:1px solid #fff;cursor:default;}
+
+/*Login*/
+#loginBox {width: 750px; padding-top: 250px; margin: 0px auto; font-family: "Microsoft YaHei","微软雅黑",Lucida Grande,Lucida Sans,Arial,sans-serif;}
+#loginBox input{height:25px; padding-left:5px; width:160px;}
+.boxLeft {float: left; width: 350px; margin-top: 23px; margin-left:50px;}
+#loginBox .logo {width: 82px; height: 82px; float: left; margin-right: 15px;}
+#loginBox .title img{float:left;}
+#loginBox .title span{float:left; color:#004dfb;}
+#loginBox .bigText {display: block; font-size: 25px; font-weight: bold; margin-top: 5px; margin-left: 20px; width:200px;}
+#loginBox .smallText {display: block; font-size: 15px; font-weight: bold; margin-top: 5px; margin-left: 20px; width:200px;}
+.boxCenter {float: left;}
+.boxRight {margin-top: 20px;}
+.boxRight .inputBox {height: 30px; margin-top: 8px;}

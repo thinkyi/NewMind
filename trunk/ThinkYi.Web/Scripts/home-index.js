@@ -28,6 +28,11 @@ $(document).ready(function () {
     }, function () {
         t = setInterval('imgPlay()', 3500);
     });
+
+    $("ul.pick li").click(function () {
+        var pid = $(this).attr("pid");
+        window.location.href = "cn/Display/Detail/" + pid;
+    });
 });
 
 // 播放图片的函数
