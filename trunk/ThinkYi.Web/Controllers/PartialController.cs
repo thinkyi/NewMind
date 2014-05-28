@@ -15,7 +15,7 @@ namespace ThinkYi.Web.Controllers
         [Dependency]
         public II18NService I18NService { get; set; }
         [Dependency]
-        public IInformationService InformationService { get; set; }
+        public IPostService PostService { get; set; }
 
         public ActionResult _Header(string lCode)
         {
@@ -28,7 +28,7 @@ namespace ThinkYi.Web.Controllers
             PartialFooter pf = new PartialFooter();
             var menus = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(lCode) && i.I18NType.Code.Equals("menu")).ToList();
             pf.Menus = menus;
-            pf.Footer = InformationService.GetInformations().Where(i => i.Language.Code.Equals(lCode) && i.Code.Equals("footer")).FirstOrDefault().Text;
+            pf.Footer = PostService.GetPosts().Where(i => i.Language.Code.Equals(lCode) && i.Code.Equals("footer")).FirstOrDefault().Text;
             return PartialView(pf);
         }
     }

@@ -7,15 +7,15 @@ using ThinkYi.Data.Infrastructure;
 
 namespace ThinkYi.Data.Repositories
 {
-    public class InformationRepository : RepositoryBase<Information>, IInformationRepository
+    public class PostRepository : RepositoryBase<Post>, IPostRepository
     {
-        public InformationRepository(IDatabaseFactory databaseFactory)
+        public PostRepository(IDatabaseFactory databaseFactory)
             : base(databaseFactory)
         {
         }
     }
 
-    public interface IInformationRepository : IRepository<Information>
+    public interface IPostRepository : IRepository<Post>
     {
     }
 }

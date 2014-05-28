@@ -4,14 +4,14 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    Information info = Model.Information;
+    Post post = Model.Post;
     Product product = Model.Product;
 }
 @section javascript{
     <script src="@Url.Content("~/Scripts/product-detail.js")" type="text/javascript"></script>
 }
 <div class="banner1">
-    <img src="@info.BannerPic" alt="@info.Code" width="995" height="204">
+    <img src="@post.BannerPic" alt="@post.Code" width="995" height="204">
 </div>
 <div id="main">
     <input type="hidden" id="ProductTypeID" value="@product.ProductTypeID" />

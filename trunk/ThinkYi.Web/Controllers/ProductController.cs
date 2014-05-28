@@ -20,7 +20,7 @@ namespace ThinkYi.Web.Controllers
         [Dependency]
         public II18NService I18NService { get; set; }
         [Dependency]
-        public IInformationService InformationService { get; set; }
+        public IPostService PostService { get; set; }
 
         public ActionResult _TypePartial(string lCode)
         {
@@ -63,7 +63,7 @@ namespace ThinkYi.Web.Controllers
                         break;
                 }
             }
-            pi.Information = InformationService.GetInformations().Where(i => i.Language.Code.Equals(language) && i.Code.Equals("display")).FirstOrDefault();
+            pi.Post = PostService.GetPosts().Where(i => i.Language.Code.Equals(language) && i.Code.Equals("display")).FirstOrDefault();
             IQueryable<Product> qp = ProductService.GetProducts().Where(p => p.ProductType.Language.Code.Equals(language)).OrderByDescending(p => p.ProductID);
             int total = qp.Count();
             if (ProductTypeID != 0)
@@ -122,7 +122,7 @@ namespace ThinkYi.Web.Controllers
             var data = i18ns.OrderBy(i => i.Code).Select(i => i.Name).ToList();
             ViewBag.Title = string.Join(" - ", data.ToArray());
             ViewBag.Caption = data[0];
-            pd.Information = InformationService.GetInformations().Where(i => i.Language.LanguageID == pd.Product.ProductType.LanguageID && i.Code.Equals("display")).FirstOrDefault();
+            pd.Post = PostService.GetPosts().Where(i => i.Language.LanguageID == pd.Product.ProductType.LanguageID && i.Code.Equals("display")).FirstOrDefault();
             return View("~/Views/Product/Detail.cshtml", pd);
         }
     }

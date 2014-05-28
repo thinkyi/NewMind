@@ -32,7 +32,7 @@ jQuery(document).ready(function () {
 
 function BannerInit(code) {
     $.ajax({
-        url: 'Information?n=' + Math.random() + '&lCode=' + languageCode + '&code=' + code,
+        url: 'Post?n=' + Math.random() + '&lCode=' + languageCode + '&code=' + code,
         success: function (data) {
             $("#InformationID").val(data.InformationID);
             if (data.BannerPic)

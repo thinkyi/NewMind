@@ -7,10 +7,10 @@ using ThinkYi.Domain;
 
 namespace ThinkYi.Service
 {
-    public interface IInformationService
+    public interface IPostService
     {
-        Information GetInformation(int id);
-        IQueryable<Information> GetInformations();
-        void EditInformation(Information info);
+        Post GetPost(int id);
+        IQueryable<Post> GetPosts();
+        void EditPost(Post post);
     }
 }

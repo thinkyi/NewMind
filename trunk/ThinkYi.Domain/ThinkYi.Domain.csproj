@@ -43,7 +43,7 @@
     <Compile Include="JqGridParam.cs" />
     <Compile Include="Language.cs" />
     <Compile Include="I18N.cs" />
-    <Compile Include="Information.cs" />
+    <Compile Include="Post.cs" />
     <Compile Include="PageI18N.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductType.cs" />

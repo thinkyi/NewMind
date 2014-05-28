@@ -26,7 +26,7 @@ namespace ThinkYi.Web.Controllers
         [Dependency]
         public IProductService ProductService { get; set; }
         [Dependency]
-        public IInformationService InformationService { get; set; }
+        public IPostService PostService { get; set; }
         [Dependency]
         public IUserService UserService { get; set; }
 
@@ -50,11 +50,11 @@ namespace ThinkYi.Web.Controllers
             return View(product);
         }
 
-        public ActionResult Information(string lCode, string code)
+        public ActionResult Post(string lCode, string code)
         {
-            Information info = null;
+            Post info = null;
             if (!string.IsNullOrEmpty(lCode))
-                info = InformationService.GetInformations().Where(i => i.Language.Code.Equals(lCode) && i.Code.Equals(code)).FirstOrDefault();
+                info = PostService.GetPosts().Where(i => i.Language.Code.Equals(lCode) && i.Code.Equals(code)).FirstOrDefault();
             JsonResult json = new JsonResult();
             json.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
             json.Data = info;
@@ -68,17 +68,17 @@ namespace ThinkYi.Web.Controllers
             string result = "s";
             try
             {
-                Information info = InformationService.GetInformation(id);
+                Post info = PostService.GetPost(id);
                 info.BannerPic = bannerPic;
-                InformationService.EditInformation(info);
+                PostService.EditPost(info);
 
                 if (isClone)
                 {
-                    List<Information> infos = InformationService.GetInformations().Where(i => i.Code.Equals(info.Code) && i.LanguageID != info.LanguageID).ToList();
-                    foreach (Information i in infos)
+                    List<Post> infos = PostService.GetPosts().Where(i => i.Code.Equals(info.Code) && i.LanguageID != info.LanguageID).ToList();
+                    foreach (Post i in infos)
                     {
                         i.BannerPic = bannerPic;
-                        InformationService.EditInformation(i);
+                        PostService.EditPost(i);
                     }
                 }
             }
@@ -96,9 +96,9 @@ namespace ThinkYi.Web.Controllers
             string result = "s";
             try
             {
-                Information info = InformationService.GetInformation(id);
+                Post info = PostService.GetPost(id);
                 info.Text = text;
-                InformationService.EditInformation(info);
+                PostService.EditPost(info);
             }
             catch (Exception e)
             {

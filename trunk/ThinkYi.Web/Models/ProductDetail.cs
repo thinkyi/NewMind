@@ -8,7 +8,7 @@ namespace ThinkYi.Web.Models
 {
     public class ProductDetail
     {
-        public Information Information { get; set; }
+        public Post Post { get; set; }
         public Product Product { get; set; }
     }
 }

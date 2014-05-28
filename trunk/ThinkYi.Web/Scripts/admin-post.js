@@ -16,7 +16,7 @@ jQuery(document).ready(function () {
 
 function InfoInit(code) {
     $.ajax({
-        url: 'Information?n=' + Math.random() + '&lCode=' + languageCode + '&code=' + code,
+        url: 'Post?n=' + Math.random() + '&lCode=' + languageCode + '&code=' + code,
         success: function (data) {
             $("#InformationID").val(data.InformationID);
             $("#Code").val(data.Code);

@@ -3,7 +3,7 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    Information info = Model.Information;
+    Post post = Model.Post;
     List<Product> products = Model.Products;
 
     int next = Model.Curr + 1;
@@ -19,7 +19,7 @@
 <input type="hidden" id="Next" value="@Model.Next" />
 <input type="hidden" id="Pre" value="@Model.Pre" />
 <div class="banner1">
-    <img src="@info.BannerPic" alt="@info.Code" width="995" height="204">
+    <img src="@post.BannerPic" alt="@post.Code" width="995" height="204">
 </div>
 <div id="main">
     <div class="leftbar">
