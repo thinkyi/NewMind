@@ -1,12 +1,20 @@
 ﻿@using ThinkYi.Domain
-@model Post
+@using ThinkYi.Web.Models
+@model InformationDetail
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    Post post = Model.Post;
+    Information information = Model.Information;
+}
+@section javascript{
+    <script src="@Url.Content("~/Scripts/information-detail.js")" type="text/javascript"></script>
 }
 <div class="banner1">
-    <img src="@Model.BannerPic" alt="@Model.Code" width="995" height="204">
+    <img src="@post.BannerPic" alt="@post.Code" width="995" height="204">
 </div>
 <div id="main">
+    <input type="hidden" id="InformationID" value="@information.InformationID" />
     <div class="leftbar">
         @{
             Html.RenderAction("_TypePartial", "Product", new { lCode = ViewContext.RouteData.Values["language"] });
@@ -37,7 +45,13 @@
                     </b>
                 </div>
                 <div class="neicontent">
-                    @Html.Raw(Model.Text)
+                    <div class="detail">
+                        <h1 class="title">@information.Name</h1>
+                        <div class="time">发布时间：@information.Date.ToString("yyyy-MM-dd")</div>
+                        <div class="content">
+                            @Html.Raw(information.Text)
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="di"></div>

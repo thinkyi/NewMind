@@ -26,6 +26,8 @@ namespace ThinkYi.Web.Controllers
         [Dependency]
         public IProductService ProductService { get; set; }
         [Dependency]
+        public IInformationService InformationService { get; set; }
+        [Dependency]
         public IPostService PostService { get; set; }
         [Dependency]
         public IUserService UserService { get; set; }
@@ -91,14 +93,14 @@ namespace ThinkYi.Web.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public string InfoEdit(int id, string text)
+        public string PostEdit(int id, string text)
         {
             string result = "s";
             try
             {
-                Post info = PostService.GetPost(id);
-                info.Text = text;
-                PostService.EditPost(info);
+                Post post = PostService.GetPost(id);
+                post.Text = text;
+                PostService.EditPost(post);
             }
             catch (Exception e)
             {
@@ -288,6 +290,88 @@ namespace ThinkYi.Web.Controllers
 
             var jsonData = lq.GetJson(jgp, JsonRequestBehavior.AllowGet, null);
             return jsonData;
+        }
+
+        public ActionResult InformationGrid(JqGridParam jgp)
+        {
+            string sidx = jgp.sidx;
+            var data = InformationService.GetInformations().Where(i => i.Language.Code.Equals(jgp.lCode));
+            var lq = from d in data
+                     select new
+                     {
+                         InformationID = d.InformationID,
+                         Code = d.Code,
+                         Name = d.Name,
+                         Date = d.Date
+                     };
+
+            var jsonData = lq.GetJson(jgp, JsonRequestBehavior.AllowGet, null);
+            return jsonData;
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public string InformationAdd(Information information, string lCode, bool isClone)
+        {
+            string result = "s";
+            try
+            {
+                List<Language> languages = LanguageService.GetLanguages().ToList();
+                information.LanguageID = languages.Where(l => l.Code.Equals(lCode)).First().LanguageID;
+                InformationService.AddInformation(information);
+
+                if (isClone && !lCode.Equals("en"))
+                {
+                    switch (lCode)
+                    {
+                        case "cn":
+                            information.LanguageID = languages.Where(l => l.Code.Equals("big5")).First().LanguageID;
+                            information.Name = VB.Strings.StrConv(information.Name, VB.VbStrConv.TraditionalChinese, 0);
+                            information.Text = VB.Strings.StrConv(information.Text, VB.VbStrConv.TraditionalChinese, 0);
+                            break;
+                        case "big5":
+                            information.LanguageID = languages.Where(l => l.Code.Equals("cn")).First().LanguageID;
+                            information.Name = VB.Strings.StrConv(information.Name, VB.VbStrConv.SimplifiedChinese, 0);
+                            information.Text = VB.Strings.StrConv(information.Text, VB.VbStrConv.SimplifiedChinese, 0);
+                            break;
+                    }
+                    InformationService.AddInformation(information);
+                }
+            }
+            catch (Exception e)
+            {
+                result = e.Message;
+            }
+            return result;
+        }
+
+        public ActionResult InformationEdit(int informationID)
+        {
+            Information info = InformationService.GetInformation(informationID);
+            return View(info);
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public string InformationEdit(Information info)
+        {
+            string result = "s";
+            try
+            {
+                Information oinfo = InformationService.GetInformation(info.InformationID);
+                oinfo.LanguageID = info.LanguageID;
+                oinfo.Code = info.Code;
+                oinfo.Name = info.Name;
+                oinfo.Date = info.Date;
+                oinfo.Text = info.Text;
+
+                InformationService.EditInformation(oinfo);
+            }
+            catch (Exception e)
+            {
+                result = e.Message;
+            }
+            return result;
         }
     }
 }

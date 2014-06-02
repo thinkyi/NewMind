@@ -52,6 +52,8 @@ namespace ThinkYi.Web
                 .RegisterType<IProductService, ProductService>(new HttpContextLifetimeManager<IProductService>())
                 .RegisterType<IPostRepository, PostRepository>(new HttpContextLifetimeManager<IPostRepository>())
                 .RegisterType<IPostService, PostService>(new HttpContextLifetimeManager<IPostService>())
+                .RegisterType<IInformationRepository, InformationRepository>(new HttpContextLifetimeManager<IInformationRepository>())
+                .RegisterType<IInformationService, InformationService>(new HttpContextLifetimeManager<IInformationService>())
                 .RegisterType<IUserRepository, UserRepository>(new HttpContextLifetimeManager<IUserRepository>())
                 .RegisterType<IUserService, UserService>(new HttpContextLifetimeManager<IUserService>());
             return container;

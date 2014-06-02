@@ -22,9 +22,10 @@ namespace ThinkYi.Web.Controllers
         public ActionResult Index(string language)
         {
             var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(language) && (i.Code.Equals("about") || i.Code.Equals("wstitle"))).ToList();
-            var data = i18ns.OrderBy(i => i.Code).Select(i => i.Name).ToList();
-            ViewBag.Title = string.Join(" - ", data.ToArray());
-            ViewBag.Caption = data[0];
+            var data = i18ns.OrderBy(i => i.Code).ToList();
+            ViewBag.Title = data[0].Name + " - " + data[1].Name;
+            ViewBag.Caption = data[0].Name;
+            ViewBag.Remark = data[0].Remark;
             Post info = PostService.GetPosts().Where(i => i.Language.Code.Equals(language) && i.Code.Equals("about")).FirstOrDefault();
             return View("~/Views/Post/Index.cshtml", info);
         }
@@ -35,9 +36,10 @@ namespace ThinkYi.Web.Controllers
         public ActionResult Index(string language)
         {
             var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(language) && (i.Code.Equals("price") || i.Code.Equals("wstitle"))).ToList();
-            var data = i18ns.OrderBy(i => i.Code).Select(i => i.Name).ToList();
-            ViewBag.Title = string.Join(" - ", data.ToArray());
-            ViewBag.Caption = data[0];
+            var data = i18ns.OrderBy(i => i.Code).ToList();
+            ViewBag.Title = data[0].Name + " - " + data[1].Name;
+            ViewBag.Caption = data[0].Name;
+            ViewBag.Remark = data[0].Remark;
             Post info = PostService.GetPosts().Where(i => i.Language.Code.Equals(language) && i.Code.Equals("price")).FirstOrDefault();
             return View("~/Views/Post/Index.cshtml", info);
         }
@@ -48,23 +50,11 @@ namespace ThinkYi.Web.Controllers
         public ActionResult Index(string language)
         {
             var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(language) && (i.Code.Equals("facilities") || i.Code.Equals("wstitle"))).ToList();
-            var data = i18ns.OrderBy(i => i.Code).Select(i => i.Name).ToList();
-            ViewBag.Title = string.Join(" - ", data.ToArray());
-            ViewBag.Caption = data[0];
+            var data = i18ns.OrderBy(i => i.Code).ToList();
+            ViewBag.Title = data[0].Name + " - " + data[1].Name;
+            ViewBag.Caption = data[0].Name;
+            ViewBag.Remark = data[0].Remark;
             Post info = PostService.GetPosts().Where(i => i.Language.Code.Equals(language) && i.Code.Equals("facilities")).FirstOrDefault();
-            return View("~/Views/Post/Index.cshtml", info);
-        }
-    }
-
-    public class InformationController : PostController
-    {
-        public ActionResult Index(string language)
-        {
-            var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(language) && (i.Code.Equals("information") || i.Code.Equals("wstitle"))).ToList();
-            var data = i18ns.OrderBy(i => i.Code).Select(i => i.Name).ToList();
-            ViewBag.Title = string.Join(" - ", data.ToArray());
-            ViewBag.Caption = data[0];
-            Post info = PostService.GetPosts().Where(i => i.Language.Code.Equals(language) && i.Code.Equals("information")).FirstOrDefault();
             return View("~/Views/Post/Index.cshtml", info);
         }
     }
@@ -74,9 +64,10 @@ namespace ThinkYi.Web.Controllers
         public ActionResult Index(string language)
         {
             var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(language) && (i.Code.Equals("recuit") || i.Code.Equals("wstitle"))).ToList();
-            var data = i18ns.OrderBy(i => i.Code).Select(i => i.Name).ToList();
-            ViewBag.Title = string.Join(" - ", data.ToArray());
-            ViewBag.Caption = data[0];
+            var data = i18ns.OrderBy(i => i.Code).ToList();
+            ViewBag.Title = data[0].Name + " - " + data[1].Name;
+            ViewBag.Caption = data[0].Name;
+            ViewBag.Remark = data[0].Remark;
             Post info = PostService.GetPosts().Where(i => i.Language.Code.Equals(language) && i.Code.Equals("recuit")).FirstOrDefault();
             return View("~/Views/Post/Index.cshtml", info);
         }
@@ -87,9 +78,10 @@ namespace ThinkYi.Web.Controllers
         public ActionResult Index(string language)
         {
             var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(language) && (i.Code.Equals("contact") || i.Code.Equals("wstitle"))).ToList();
-            var data = i18ns.OrderBy(i => i.Code).Select(i => i.Name).ToList();
-            ViewBag.Title = string.Join(" - ", data.ToArray());
-            ViewBag.Caption = data[0];
+            var data = i18ns.OrderBy(i => i.Code).ToList();
+            ViewBag.Title = data[0].Name + " - " + data[1].Name;
+            ViewBag.Caption = data[0].Name;
+            ViewBag.Remark = data[0].Remark;
             Post info = PostService.GetPosts().Where(i => i.Language.Code.Equals(language) && i.Code.Equals("contact")).FirstOrDefault();
             return View("~/Views/Post/Index.cshtml", info);
         }

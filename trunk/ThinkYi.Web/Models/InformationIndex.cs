@@ -6,9 +6,9 @@ using ThinkYi.Domain;
 
 namespace ThinkYi.Web.Models
 {
-    public class ProductIndex : PagerBasic
+    public class InformationIndex : PagerBasic
     {
         public Post Post { get; set; }
-        public List<Product> Products { get; set; }
+        public List<Information> Informations { get; set; }
     }
 }

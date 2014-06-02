@@ -33,6 +33,12 @@ namespace ThinkYi.Web
             );
 
             routes.MapRoute(
+                name: "Information",
+                url: "{language}/Information/Index/{PageIndex}",
+                defaults: new { language = "cn", controller = "Information", action = "Index", PageIndex = 0 }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{language}/{controller}/{action}/{id}",
                 defaults: new { language = "cn", controller = "Home", action = "Index", id = UrlParameter.Optional }

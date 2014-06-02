@@ -72,7 +72,7 @@ namespace ThinkYi.Web.Controllers
                 total = qp.Count();
             }
             pi.Curr = PageIndex;
-            if (total > 6)
+            if (total > 12)
             {
                 int totalPage = total % 12 == 0 ? total / 12 : total / 12 + 1;
                 if (totalPage > PageIndex)

@@ -3,12 +3,18 @@
 img{border:none;}
 ul,li{list-style-type:none;}
 .fc{clear:both;}
-body{font-size:12px; background:url(../images/bg1.jpg) center top no-repeat #eadcbf;}
+body{font-size:12px; line-height:22px; background:url(../images/bg1.jpg) center top no-repeat #eadcbf;}
 a,a:link,a:visited{ color:#515151; text-decoration:none;}
 a:hover,a:active{ color:#f60; text-decoration:none;}
 a.a_white,a.a_white:link,a.a_white:visited{ color:#fff; text-decoration:none;}
 a.a_white:hover,a.a_white:active{ color:#ff0; text-decoration:none;}
-
+.c_hui{color:#676767; text-transform:capitalize;/*首字母大写*/
+text-transform:lowercase;/*全部小写*/
+text-transform:uppercase;/*全部大写*/
+}
+.f_14{font-size:14px; line-height:30px; background:url(../images/pic_contact.jpg) no-repeat right top;min-height:300px;}
+.neicontent{ margin-top:7px;}
+.neicontent img{max-width:762px;}
 /*-- header -------------------------------------------------------------*/
 #header{background:url(../images/topbg.jpg) no-repeat; width:998px; margin:0 auto;}
 #header .top{height:102px; padding-left:650px; text-align:left;}
@@ -58,7 +64,7 @@ a.a_white:hover,a.a_white:active{ color:#ff0; text-decoration:none;}
 .productbox .top{background:url(../images/lmtop2.png) no-repeat; height:34px; line-height:34px;}
 .productbox .top h3{color:#fff; padding-left:15px; font-family:"Microsoft YaHei","Microsoft YaHei","微软雅黑"; font-size:15px; float:left;}
 .productbox .top span{color:#fff;}
-.productbox .mid{ background:url(../images/lmbg2.png) repeat-y; padding:10px; height:175px;}
+.productbox .mid{ background:url(../images/lmbg2.png) repeat-y; padding:10px; height:181px;}
 .productbox .di{ background:url(../images/lmdi2.png) no-repeat; height:12px; width:782px; overflow:hidden;}
 .pick{padding:18px 0;}
 .pick li{margin:0px 12px; width:164px; display:block; float:left;  }
@@ -84,9 +90,28 @@ a.a_white:hover,a.a_white:active{ color:#ff0; text-decoration:none;}
 .pagebox a:hover{margin:0 5px; color:#f00; text-decoration:none;}
 .pagebox a.disabled{color:#ccc; cursor:default;}
 
+/*行业知识*/
+.neibox{}
+.neibox .top{background:url(../images/lmtop2.png) no-repeat; height:34px; line-height:34px;}
+.neibox .top h3{color:#fff; padding-left:15px; font-family:"微软雅黑"; font-size:15px; float:left;}
+.neibox .top span{color:#fff; float:right; padding-right:20px;}
+.neibox .mid{ background:url(../images/lmbg2.png) repeat-y; padding:10px; min-height:565px;}
+.neibox .di{ background:url(../images/lmdi2.png) no-repeat; height:12px; width:782px; overflow:hidden; margin-bottom:10px;}
 
+.navbox{background:url(../images/icon_nav.jpg) no-repeat left center; height:54px; padding-left:70px; padding-bottom:10px; padding-top:10px; border-bottom:1px solid #62ab00;}
+.navbox b{font-family:"微软雅黑"; font-size:18px; line-height:30px; font-weight:normal; }
+.newsbox{ margin-bottom:10px;}
+.newsbox ul li{border-bottom:1px dashed #ccc; height:30px; line-height:30px; background:url(../images/icon_news.jpg) no-repeat left center; padding-left:20px;}
+.newsbox ul li span{float:right; color:#9b9b9b; padding-right:10px;}
+.pagebox{background:#ececec; border:1px solid #ccc; text-align:center;}
+
+.detail{}
+.detail h1.title{text-align:center; font-size:16px;}
+.detail p.content{ padding:10px;}
+.detail .time{border-bottom:1px dashed #ccc; text-align:center; height:40px; line-height:40px; margin-bottom:10px;}
+.closebox{text-align:center; height:50px; line-height:50px; }
 /*-- footer -------------------------------------------------------------*/
-#footer{ width:998px; margin:0 auto;}
+#footer{ width:998px; margin:0px auto;}
 #footer .links{background:#669900; height:30px; line-height:30px; text-align:center;color:#fff;}
 #footer .links a{ margin:0 20px; color:#fff; text-decoration:none;}
 #footer .links a:hover{ margin:0 20px; color:#f00; text-decoration:none;}

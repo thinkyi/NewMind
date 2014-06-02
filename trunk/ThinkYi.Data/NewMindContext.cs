@@ -18,6 +18,7 @@ namespace ThinkYi.Data
         public DbSet<I18NType> I18NTypes { get; set; }
         public DbSet<ProductType> ProductTypes { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Information> Information { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<User> Users { get; set; }
 

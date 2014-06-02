@@ -59,11 +59,13 @@
     <Compile Include="Impl\I18NTypeService.cs" />
     <Compile Include="Impl\I18NService.cs" />
     <Compile Include="Impl\LanguageService.cs" />
+    <Compile Include="Impl\InformationService.cs" />
     <Compile Include="Impl\PostService.cs" />
     <Compile Include="Impl\UserService.cs" />
     <Compile Include="Impl\ProductTypeService.cs" />
     <Compile Include="Impl\ProductService.cs" />
     <Compile Include="II18NService.cs" />
+    <Compile Include="IInformationService.cs" />
     <Compile Include="IPostService.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="IProductTypeService.cs" />

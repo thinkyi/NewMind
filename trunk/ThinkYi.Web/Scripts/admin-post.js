@@ -9,16 +9,16 @@ jQuery(document).ready(function () {
         },
     })
     .click(function () {
-        InfoAdd();
+        PostEdit();
     });
-    InfoInit(parent.g_navCode);
+    PostInit(parent.g_navCode);
 });
 
-function InfoInit(code) {
+function PostInit(code) {
     $.ajax({
         url: 'Post?n=' + Math.random() + '&lCode=' + languageCode + '&code=' + code,
         success: function (data) {
-            $("#InformationID").val(data.InformationID);
+            $("#PostID").val(data.PostID);
             $("#Code").val(data.Code);
             editor = UE.getEditor('Text');
             editor.addListener("ready", function () {
@@ -32,15 +32,15 @@ function InfoInit(code) {
     });
 }
 
-function InfoEdit() {
-    var info = {
-        id: $("#InformationID").val(),
+function PostEdit() {
+    var post = {
+        id: $("#PostID").val(),
         text: editor.getContent()
     }
     $.ajax({
-        url: 'InfoEdit',
+        url: 'PostEdit',
         type: 'post',
-        data: info,
+        data: post,
         success: function (data) {
             if (data == "s") {
                 alert("更新成功");
