@@ -65,6 +65,7 @@ text-transform:uppercase;/*全部大写*/
 .productbox .top h3{color:#fff; padding-left:15px; font-family:"Microsoft YaHei","Microsoft YaHei","微软雅黑"; font-size:15px; float:left;}
 .productbox .top span{color:#fff;}
 .productbox .mid{ background:url(../images/lmbg2.png) repeat-y; padding:10px; height:181px;}
+.productbox .mid img{max-width:762px;}
 .productbox .di{ background:url(../images/lmdi2.png) no-repeat; height:12px; width:782px; overflow:hidden;}
 .pick{padding:18px 0;}
 .pick li{margin:0px 12px; width:164px; display:block; float:left;  }
