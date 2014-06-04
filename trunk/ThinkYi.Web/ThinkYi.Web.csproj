@@ -603,6 +603,8 @@
     <Content Include="Views\Admin\Information.cshtml" />
     <Content Include="Views\Admin\InformationAdd.cshtml" />
     <Content Include="Views\Admin\InformationEdit.cshtml" />
+    <Content Include="Views\Payment\Index.cshtml" />
+    <Content Include="Views\Shared\_ECWidget.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
