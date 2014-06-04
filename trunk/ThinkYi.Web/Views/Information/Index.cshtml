@@ -18,59 +18,42 @@
 <input type="hidden" id="Total" value="@Model.Total" />
 <input type="hidden" id="Next" value="@Model.Next" />
 <input type="hidden" id="Pre" value="@Model.Pre" />
-<div class="banner1">
-    <img src="@post.BannerPic" alt="@post.Code" width="995" height="204">
-</div>
-<div id="main">
-    <div class="leftbar">
-        @{
-            Html.RenderAction("_TypePartial", "Product", new { lCode = ViewContext.RouteData.Values["language"] });
-        }
-        <div class="picbox">
-            <img src="~/Content/images/links1.png" width="204" height="74" />
-        </div>
-        <div class="picbox">
-            <a href="http://newmindhk.en.alibaba.com/" target="_blank">
-                <img src="~/Content/images/links2.png" width="204" height="74" style="border:0px;" />
-            </a>
-        </div>
-        <div class="picbox">
-            <img src="~/Content/images/links3.png" width="204" height="74" />
-        </div>
+@section banner{
+    <div class="banner1">
+        <img src="@post.BannerPic" alt="@post.Code" width="995" height="204">
     </div>
-    <div class="rightbar">
-        <div class="neibox">
-            <div class="top">
-                <h3>您现在的位置是：首页 > @ViewBag.Caption</h3>
-            </div>
-            <div class="mid" style="min-height:565px;">
-                <div class="navbox">
-                    <b>
-                        @ViewBag.Caption
-                        <br />
-                    </b>
-                    <b class="c_hui">
-                        @ViewBag.Remark
-                    </b>
-                </div>
-                <div class="newsbox" style="min-height:445px;">
-                    <ul>
-                        @foreach (Information info in informations)
-                        {
-                            <li><span class="date">【@info.Date.ToString()】</span><a href="@Url.Action("Detail", new { id = info.InformationID })">@info.Name</a> </li>
-                        }
-                    </ul>
-                </div>
-                <div style="clear:both;"></div>
-                <div class="pagebox">
-                    【<a href="@Url.Action("Index", "Information", new { language = ViewContext.RouteData.Values["language"], PageIndex = 1 })" id="gotoFirst">@Model.FirstText</a>】
-                    【<a href="@Url.Action("Index", "Information", new { language = ViewContext.RouteData.Values["language"], PageIndex = pre })" id="gotoPre">@Model.PreText</a>】
-                    【<a href="@Url.Action("Index", "Information", new { language = ViewContext.RouteData.Values["language"], PageIndex = next })" id="gotoNext">@Model.NextText</a>】
-                    【<a href="@Url.Action("Index", "Information", new { language = ViewContext.RouteData.Values["language"], PageIndex = last })" id="gotoLast">@Model.LastText</a>】
-                </div>
-            </div>
-            <div class="di"></div>
+}
+<div class="rightbar">
+    <div class="neibox">
+        <div class="top">
+            <h3>您现在的位置是：首页 > @ViewBag.Caption</h3>
         </div>
+        <div class="mid" style="min-height:565px;">
+            <div class="navbox">
+                <b>
+                    @ViewBag.Caption
+                    <br />
+                </b>
+                <b class="c_hui">
+                    @ViewBag.Remark
+                </b>
+            </div>
+            <div class="newsbox" style="min-height:445px;">
+                <ul>
+                    @foreach (Information info in informations)
+                    {
+                        <li><span class="date">【@info.Date.ToString()】</span><a href="@Url.Action("Detail", new { id = info.InformationID })">@info.Name</a> </li>
+                    }
+                </ul>
+            </div>
+            <div style="clear:both;"></div>
+            <div class="pagebox">
+                【<a href="@Url.Action("Index", "Information", new { language = ViewContext.RouteData.Values["language"], PageIndex = 1 })" id="gotoFirst">@Model.FirstText</a>】
+                【<a href="@Url.Action("Index", "Information", new { language = ViewContext.RouteData.Values["language"], PageIndex = pre })" id="gotoPre">@Model.PreText</a>】
+                【<a href="@Url.Action("Index", "Information", new { language = ViewContext.RouteData.Values["language"], PageIndex = next })" id="gotoNext">@Model.NextText</a>】
+                【<a href="@Url.Action("Index", "Information", new { language = ViewContext.RouteData.Values["language"], PageIndex = last })" id="gotoLast">@Model.LastText</a>】
+            </div>
+        </div>
+        <div class="di"></div>
     </div>
-    <div class="fc"></div>
 </div>

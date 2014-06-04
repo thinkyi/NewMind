@@ -14,7 +14,18 @@
         @{
             Html.RenderAction("_Header", "Partial", new { lCode = ViewContext.RouteData.Values["language"] });
         }
-        @RenderBody()
+        @RenderSection("banner", false)
+        <div id="main">
+            <div class="leftbar">
+                @{
+                    Html.RenderAction("_TypePartial", "Product", new { lCode = ViewContext.RouteData.Values["language"] });
+                    Html.RenderPartial("_ECWidget");
+                }
+            </div>
+            @RenderBody()
+            <div class="fc"></div>
+        </div>
+        @RenderSection("cooperation", false)
         @{
             Html.RenderAction("_Footer", "Partial", new { lCode = ViewContext.RouteData.Values["language"] });
         }

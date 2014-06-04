@@ -10,54 +10,37 @@
 @section javascript{
     <script src="@Url.Content("~/Scripts/information-detail.js")" type="text/javascript"></script>
 }
-<div class="banner1">
-    <img src="@post.BannerPic" alt="@post.Code" width="995" height="204">
-</div>
-<div id="main">
-    <input type="hidden" id="InformationID" value="@information.InformationID" />
-    <div class="leftbar">
-        @{
-            Html.RenderAction("_TypePartial", "Product", new { lCode = ViewContext.RouteData.Values["language"] });
-        }
-        <div class="picbox">
-            <img src="~/Content/images/links1.png" width="204" height="74" />
-        </div>
-        <div class="picbox">
-            <a href="http://newmindhk.en.alibaba.com/" target="_blank">
-                <img src="~/Content/images/links2.png" width="204" height="74" style="border:0px;" />
-            </a>
-        </div>
-        <div class="picbox">
-            <img src="~/Content/images/links3.png" width="204" height="74" />
-        </div>
+@section banner{
+    <div class="banner1">
+        <img src="@post.BannerPic" alt="@post.Code" width="995" height="204">
     </div>
-    <div class="rightbar">
-        <div class="neibox">
-            <div class="top">
-                <h3>您现在的位置是：首页 > @ViewBag.Caption</h3>
+}
+<input type="hidden" id="InformationID" value="@information.InformationID" />
+<div class="rightbar">
+    <div class="neibox">
+        <div class="top">
+            <h3>您现在的位置是：首页 > @ViewBag.Caption</h3>
+        </div>
+        <div class="mid">
+            <div class="navbox">
+                <b>
+                    @ViewBag.Caption
+                    <br />
+                </b>
+                <b class="c_hui">
+                    @ViewBag.Remark
+                </b>
             </div>
-            <div class="mid">
-                <div class="navbox">
-                    <b>
-                        @ViewBag.Caption
-                        <br />
-                    </b>
-                    <b class="c_hui">
-                        @ViewBag.Remark
-                    </b>
-                </div>
-                <div class="neicontent">
-                    <div class="detail">
-                        <h1 class="title">@information.Name</h1>
-                        <div class="time">发布时间：@information.Date.ToString("yyyy-MM-dd")</div>
-                        <div class="content">
-                            @Html.Raw(information.Text)
-                        </div>
+            <div class="neicontent">
+                <div class="detail">
+                    <h1 class="title">@information.Name</h1>
+                    <div class="time">发布时间：@information.Date.ToString("yyyy-MM-dd")</div>
+                    <div class="content">
+                        @Html.Raw(information.Text)
                     </div>
                 </div>
             </div>
-            <div class="di"></div>
         </div>
+        <div class="di"></div>
     </div>
-    <div class="fc"></div>
 </div>

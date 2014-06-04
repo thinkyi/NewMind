@@ -3,47 +3,30 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="banner1">
-    <img src="@Model.BannerPic" alt="@Model.Code" width="995" height="204">
-</div>
-<div id="main">
-    <div class="leftbar">
-        @{
-            Html.RenderAction("_TypePartial", "Product", new { lCode = ViewContext.RouteData.Values["language"] });
-        }
-        <div class="picbox">
-            <img src="~/Content/images/links1.png" width="204" height="74" />
-        </div>
-        <div class="picbox">
-            <a href="http://newmindhk.en.alibaba.com/" target="_blank">
-                <img src="~/Content/images/links2.png" width="204" height="74" style="border:0px;" />
-            </a>
-        </div>
-        <div class="picbox">
-            <img src="~/Content/images/links3.png" width="204" height="74" />
-        </div>
+@section banner{
+    <div class="banner1">
+        <img src="@Model.BannerPic" alt="@Model.Code" width="995" height="204">
     </div>
-    <div class="rightbar">
-        <div class="neibox">
-            <div class="top">
-                <h3>您现在的位置是：首页 > @ViewBag.Caption</h3>
-            </div>
-            <div class="mid">
-                <div class="navbox">
-                    <b>
-                        @ViewBag.Caption
-                        <br />
-                    </b>
-                    <b class="c_hui">
-                        @ViewBag.Remark
-                    </b>
-                </div>
-                <div class="neicontent">
-                    @Html.Raw(Model.Text)
-                </div>
-            </div>
-            <div class="di"></div>
+}
+<div class="rightbar">
+    <div class="neibox">
+        <div class="top">
+            <h3>您现在的位置是：首页 > @ViewBag.Caption</h3>
         </div>
+        <div class="mid">
+            <div class="navbox">
+                <b>
+                    @ViewBag.Caption
+                    <br />
+                </b>
+                <b class="c_hui">
+                    @ViewBag.Remark
+                </b>
+            </div>
+            <div class="neicontent">
+                @Html.Raw(Model.Text)
+            </div>
+        </div>
+        <div class="di"></div>
     </div>
-    <div class="fc"></div>
 </div>

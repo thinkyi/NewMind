@@ -86,4 +86,18 @@ namespace ThinkYi.Web.Controllers
             return View("~/Views/Post/Index.cshtml", info);
         }
     }
+
+    public class PaymentController : PostController
+    {
+        public ActionResult Index(string language)
+        {
+            var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(language) && (i.Code.Equals("payment") || i.Code.Equals("wstitle"))).ToList();
+            var data = i18ns.OrderBy(i => i.Code).ToList();
+            ViewBag.Title = data[0].Name + " - " + data[1].Name;
+            ViewBag.Caption = data[0].Name;
+            ViewBag.Remark = data[0].Remark;
+            Post info = PostService.GetPosts().Where(i => i.Language.Code.Equals(language) && i.Code.Equals("contact")).FirstOrDefault();
+            return View("~/Views/Post/Index.cshtml", info);
+        }
+    }
 }

@@ -10,38 +10,21 @@
 @section javascript{
     <script src="@Url.Content("~/Scripts/product-detail.js")" type="text/javascript"></script>
 }
-<div class="banner1">
-    <img src="@post.BannerPic" alt="@post.Code" width="995" height="204">
-</div>
-<div id="main">
-    <input type="hidden" id="ProductTypeID" value="@product.ProductTypeID" />
-    <input type="hidden" id="ParentTypeID" value="@product.ProductType.ParentTypeID" />
-    <div class="leftbar">
-        @{
-            Html.RenderAction("_TypePartial", "Product", new { lCode = ViewContext.RouteData.Values["language"] });
-        }
-        <div class="picbox">
-            <img src="~/Content/images/links1.png" width="204" height="74" />
-        </div>
-        <div class="picbox">
-            <a href="http://newmindhk.en.alibaba.com/" target="_blank">
-                <img src="~/Content/images/links2.png" width="204" height="74" style="border:0px;" />
-            </a>
-        </div>
-        <div class="picbox">
-            <img src="~/Content/images/links3.png" width="204" height="74" />
-        </div>
+@section banner{
+    <div class="banner1">
+        <img src="@post.BannerPic" alt="@post.Code" width="995" height="204">
     </div>
-    <div class="rightbar">
-        <div class="productbox">
-            <div class="top">
-                <h3>@ViewBag.Caption</h3>
-            </div>
-            <div class="mid" style="min-height:555px;">
-                @Html.Raw(product.Text)
-            </div>
-            <div class="di"></div>
+}
+<input type="hidden" id="ProductTypeID" value="@product.ProductTypeID" />
+<input type="hidden" id="ParentTypeID" value="@product.ProductType.ParentTypeID" />
+<div class="rightbar">
+    <div class="productbox">
+        <div class="top">
+            <h3>@ViewBag.Caption</h3>
         </div>
+        <div class="mid" style="min-height:555px;">
+            @Html.Raw(product.Text)
+        </div>
+        <div class="di"></div>
     </div>
-    <div class="fc"></div>
 </div>
