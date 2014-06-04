@@ -226,7 +226,6 @@
     <Content Include="Content\images\menubg.jpg" />
     <Content Include="Content\images\split.png" />
     <Content Include="Content\images\topbg.jpg" />
-    <Content Include="Content\images\txt.jpg" />
     <Content Include="Content\styles\admin.css" />
     <Content Include="Content\styles\site.css" />
     <Content Include="Content\themes\redmond\images\animated-overlay.gif" />
@@ -253,6 +252,7 @@
     <Content Include="Scripts\admin-producttype.js" />
     <Content Include="Scripts\admin-post.js" />
     <Content Include="Scripts\admin-index.js" />
+    <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jqGrid\css\ellipsis-xbl.xml" />
     <Content Include="Scripts\jqGrid\css\ui.jqgrid.css" />

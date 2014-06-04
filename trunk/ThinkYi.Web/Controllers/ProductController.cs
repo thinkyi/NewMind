@@ -72,9 +72,9 @@ namespace ThinkYi.Web.Controllers
                 total = qp.Count();
             }
             pi.Curr = PageIndex;
-            if (total > 12)
+            if (total > 16)
             {
-                int totalPage = total % 12 == 0 ? total / 12 : total / 12 + 1;
+                int totalPage = total % 16 == 0 ? total / 16 : total / 16 + 1;
                 if (totalPage > PageIndex)
                 {
                     pi.Next = true;
@@ -94,7 +94,7 @@ namespace ThinkYi.Web.Controllers
                 }
             }
             pi.Total = total;
-            pi.Products = qp.Skip((PageIndex - 1) * 12).Take(12).ToList();
+            pi.Products = qp.Skip((PageIndex - 1) * 16).Take(16).ToList();
             if (ProductTypeID > 0)
             {
                 ProductType pt = ProductTypeService.GetProductTypes(language).Where(p => p.ProductTypeID == ProductTypeID && p.ParentTypeID == 0).FirstOrDefault();
