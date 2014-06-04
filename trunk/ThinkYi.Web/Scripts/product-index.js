@@ -2,7 +2,7 @@
     var total = $("#Total").val();
     var next = $("#Next").val();
     var pre = $("#Pre").val();
-    if (total > 12) {
+    if (total > 16) {
         $(".pagebox").show();
     }
     else {
