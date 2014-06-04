@@ -1,0 +1,149 @@
+﻿@using ThinkYi.Domain
+@using ThinkYi.Web.Models
+@model HomeIndex
+@{
+    PageI18N pi = Model.PageI18N;
+    List<I18N> cooperations = Model.Cooperations;
+
+    ViewBag.Title = pi.WebSiteTitle;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section javascript{
+    <script src="@Url.Content("~/Scripts/home-index.js")" type="text/javascript"></script>
+}
+<div id="main">
+    <div class="leftbar">
+        @{
+            Html.RenderAction("_TypePartial", "Product", new { lCode = ViewContext.RouteData.Values["language"] });
+        }
+        <div class="picbox">
+            <img src="~/Content/images/links1.png" width="204" height="74" />
+        </div>
+        <div class="picbox">
+            <a href="http://newmindhk.en.alibaba.com/" target="_blank">
+                <img src="~/Content/images/links2.png" width="204" height="74" style="border:0px;" />
+            </a>
+        </div>
+        <div class="picbox">
+            <img src="~/Content/images/links3.png" width="204" height="74" />
+        </div>
+    </div>
+    <div class="rightbar">
+        <div class="bannerbox">
+            <div class="top">
+                <h3>@pi.PRecommend</h3>
+            </div>
+            <div class="mid">
+                <div id="slideshow">
+                    @{
+                        var recommends = Model.Recommends;
+                        int cpCount = recommends.Count;
+                    }
+                    <div class="slideImg">
+                        @for (int i = 0; i < cpCount; i++)
+                        {
+                            if (i == cpCount - 1)
+                            {
+                                <a href="@Url.Action("Detail", "Display", new { id = recommends[i].ProductID })" index="@i" style="z-index: 1; display: block;">
+                                    <img src="@recommends[i].BigPic" alt="@recommends[i].Name" width="782" height="339">
+                                </a>}
+                            else
+                            {
+                                <a href="@Url.Action("Detail", "Display", new { id = recommends[i].ProductID })" index="@i" style="z-index: 1; display: none;">
+                                    <img src="@recommends[i].BigPic" alt="@recommends[i].Name" width="782" height="339">
+                                </a>
+                            }
+                        }
+                    </div>
+                    <div class="slideBtn">
+                        <ul>
+                            @for (int i = 0; i < cpCount; i++)
+                            {
+                                int index = cpCount - 1 - i;
+                                if (i == 0)
+                                {
+                                    <li index="@index" class="on"></li>
+                                }
+                                else
+                                {
+                                    <li index="@index"></li>
+                                }
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="productbox">
+            <div class="top">
+                <h3>@pi.PDisplay</h3><span><a href="@Url.Action("Index", "Display", new { language = ViewContext.RouteData.Values["language"], ProductTypeID = 0, PageIndex = 0 })" class="a_white">@pi.PMore</a>>></span>
+            </div>
+            <div class="mid">
+                <ul class="pick">
+                    @foreach (var product in Model.Displays)
+                    {
+                        <li pid="@product.ProductID">
+                            <a href="javascript:void(0);" class="pick_img"><img src="@product.SmallPic" width="164" height="122" /></a>
+                            <p class="pick_name"><a href="javascript:void(0);">@product.Name</a></p>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="di"></div>
+        </div>
+    </div>
+    <div class="fc"></div>
+</div>
+<div id="main2">
+    <div class="lcbox">
+        <div class="top">
+            <h3>@pi.Cooperation</h3>
+        </div>
+        <div class="mid">
+            <div class="flbox">
+                <h3>@cooperations[0].Name</h3>
+                <p>通过ＱＱ、旺旺或电话提供印刷资询，了解客户需求；</p>
+                <img src="~/Content/images/c1.png" />
+            </div>
+            <div class="fl_jt"></div>
+            <div class="flbox">
+                <h3>@cooperations[1].Name</h3>
+                <p>客服报价，签署订购合同，支付定金；</p>
+                <img src="~/Content/images/c2.png" />
+            </div>
+            <div class="fl_jt"></div>
+            <div class="flbox">
+                <h3>@cooperations[2].Name</h3>
+                <p>按客要求设计制作文件(或按客户提供文件)做好样版；</p>
+                <img src="~/Content/images/c3.png" />
+            </div>
+            <div class="fl_jt"></div>
+            <div class="flbox">
+                <h3>@cooperations[3].Name</h3>
+                <p>按客户确认样板安排印制生产大货；</p>
+                <img src="~/Content/images/c4.png" />
+            </div>
+            <div class="fl_jt"></div>
+            <div class="flbox">
+                <h3>@cooperations[4].Name</h3>
+                <p>全程品质跟踪，直至包装出货；</p>
+                <img src="~/Content/images/c5.png" />
+            </div>
+            <div class="fl_jt"></div>
+            <div class="flbox">
+                <h3>@cooperations[5].Name</h3>
+                <p>按时保质保量将货物送到客户手中，并收取尾款；</p>
+                <img src="~/Content/images/c6.png" />
+            </div>
+            <div class="fl_jt"></div>
+            <div class="flbox">
+                <h3>@cooperations[6].Name</h3>
+                <p>提供完善的售后跟踪服务，期待下次愉快合作。</p>
+                <img src="~/Content/images/c7.png" />
+            </div>
+            <div class="fc"></div>
+        </div>
+        <div class="di"></div>
+    </div>
+</div>
