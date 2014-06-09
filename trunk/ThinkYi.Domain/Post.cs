@@ -13,6 +13,7 @@ namespace ThinkYi.Domain
         public string Code { get; set; }
         public string Text { get; set; }
         public string BannerPic { get; set; }
+        public string TitlePic { get; set; }
 
         public virtual Language Language { get; set; }
     }

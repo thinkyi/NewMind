@@ -176,6 +176,7 @@
     <Content Include="Content\images\lmbg3.png" />
     <Content Include="Content\images\lmdi3.png" />
     <Content Include="Content\images\zfb.jpg" />
+    <Content Include="Scripts\admin-titlepic.js" />
     <Content Include="Scripts\admin-information.js" />
     <Content Include="Scripts\admin-informationadd.js" />
     <Content Include="Scripts\admin-informationedit.js" />
@@ -614,6 +615,7 @@
     <Content Include="Views\Admin\InformationEdit.cshtml" />
     <Content Include="Views\Payment\Index.cshtml" />
     <Content Include="Views\Shared\_ECWidget.cshtml" />
+    <Content Include="Views\Admin\TitlePic.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

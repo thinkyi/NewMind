@@ -99,8 +99,8 @@ text-transform:uppercase;/*全部大写*/
 .neibox .mid{ background:url(../images/lmbg2.png) repeat-y; padding:10px; min-height:565px;}
 .neibox .di{ background:url(../images/lmdi2.png) no-repeat; height:12px; width:782px; overflow:hidden; margin-bottom:10px;}
 
-.navbox{background:url(../images/icon_nav.jpg) no-repeat left center; height:54px; padding-left:70px; padding-bottom:10px; padding-top:10px; border-bottom:1px solid #62ab00;}
-.navbox b{font-family:"微软雅黑"; font-size:18px; line-height:30px; font-weight:normal; }
+.navbox{height:54px; padding-left:85px; padding-bottom:10px; padding-top:10px; border-bottom:1px solid #62ab00;}
+.navbox b{font-family:"微软雅黑"; font-size:18px; line-height:28px; font-weight:normal; }
 .newsbox{ margin-bottom:10px;}
 .newsbox ul li{border-bottom:1px dashed #ccc; height:30px; line-height:30px; background:url(../images/icon_news.jpg) no-repeat left center; padding-left:20px;}
 .newsbox ul li span{float:right; color:#9b9b9b; padding-right:10px;}

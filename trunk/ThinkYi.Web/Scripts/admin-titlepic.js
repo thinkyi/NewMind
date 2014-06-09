@@ -9,10 +9,10 @@ jQuery(document).ready(function () {
         },
     })
     .click(function () {
-        BannerEdit();
+        TitlePicEdit();
     });
 
-    BannerInit(parent.g_navCode);
+    TitlePicInit(parent.g_navCode);
 
     upPicEditor = new UE.ui.Editor();
     upPicEditor.render('upPicEditor');
@@ -21,7 +21,7 @@ jQuery(document).ready(function () {
         upPicEditor.hide(); //隐藏UE框体
         upPicEditor.addListener('beforeInsertImage', function (t, arg) {
             //alert(arg[0].src); //arg就是上传图片的返回值，是个数组，如果上传多张图片，请遍历该值。
-            $("#BannerPic").attr("src", arg[0].src);
+            $("#TitlePic").attr("src", arg[0].src);
         });
     })
 
@@ -30,13 +30,13 @@ jQuery(document).ready(function () {
     })
 });
 
-function BannerInit(code) {
+function TitlePicInit(code) {
     $.ajax({
         url: 'Post?n=' + Math.random() + '&lCode=' + languageCode + '&code=' + code,
         success: function (data) {
             $("#PostID").val(data.PostID);
             if (data.BannerPic)
-                $("#BannerPic").attr("src", data.BannerPic);
+                $("#TitlePic").attr("src", data.BannerPic);
         },
         error: function (msg) {
             alert("加载错误");
@@ -45,14 +45,14 @@ function BannerInit(code) {
 }
 
 
-function BannerEdit() {
+function TitlePicEdit() {
     var info = {
         id: $("#PostID").val(),
-        bannerPic: $("#BannerPic").attr("src"),
+        titlePic: $("#TitlePic").attr("src"),
         isClone: $("#IsClone").prop("checked")
     }
     $.ajax({
-        url: 'BannerEdit',
+        url: 'TitlePicEdit',
         type: 'post',
         data: info,
         success: function (data) {

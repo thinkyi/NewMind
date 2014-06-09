@@ -70,17 +70,45 @@ namespace ThinkYi.Web.Controllers
             string result = "s";
             try
             {
-                Post info = PostService.GetPost(id);
-                info.BannerPic = bannerPic;
-                PostService.EditPost(info);
+                Post post = PostService.GetPost(id);
+                post.BannerPic = bannerPic;
+                PostService.EditPost(post);
 
                 if (isClone)
                 {
-                    List<Post> infos = PostService.GetPosts().Where(i => i.Code.Equals(info.Code) && i.LanguageID != info.LanguageID).ToList();
-                    foreach (Post i in infos)
+                    List<Post> posts = PostService.GetPosts().Where(i => i.Code.Equals(post.Code) && i.LanguageID != post.LanguageID).ToList();
+                    foreach (Post p in posts)
                     {
-                        i.BannerPic = bannerPic;
-                        PostService.EditPost(i);
+                        p.BannerPic = bannerPic;
+                        PostService.EditPost(p);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                result = e.Message;
+            }
+            return result;
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public string TitlePicEdit(int id, string TitlePic, bool isClone)
+        {
+            string result = "s";
+            try
+            {
+                Post post = PostService.GetPost(id);
+                post.TitlePic = TitlePic;
+                PostService.EditPost(post);
+
+                if (isClone)
+                {
+                    List<Post> posts = PostService.GetPosts().Where(i => i.Code.Equals(post.Code) && i.LanguageID != post.LanguageID).ToList();
+                    foreach (Post p in posts)
+                    {
+                        p.TitlePic = TitlePic;
+                        PostService.EditPost(p);
                     }
                 }
             }
