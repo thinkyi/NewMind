@@ -262,6 +262,7 @@
     <Content Include="Scripts\admin-producttype.js" />
     <Content Include="Scripts\admin-post.js" />
     <Content Include="Scripts\admin-index.js" />
+    <None Include="Properties\PublishProfiles\NewMind_Local.pubxml" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jqGrid\css\ellipsis-xbl.xml" />

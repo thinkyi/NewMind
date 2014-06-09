@@ -35,8 +35,8 @@ function TitlePicInit(code) {
         url: 'Post?n=' + Math.random() + '&lCode=' + languageCode + '&code=' + code,
         success: function (data) {
             $("#PostID").val(data.PostID);
-            if (data.BannerPic)
-                $("#TitlePic").attr("src", data.BannerPic);
+            if (data.TitlePic)
+                $("#TitlePic").attr("src", data.TitlePic);
         },
         error: function (msg) {
             alert("加载错误");
