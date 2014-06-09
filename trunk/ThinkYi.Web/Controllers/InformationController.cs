@@ -24,11 +24,13 @@ namespace ThinkYi.Web.Controllers
         {
             PageIndex = PageIndex == 0 ? 1 : PageIndex;
             InformationIndex ii = new InformationIndex();
-            var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(language) && (i.I18NType.Code.Equals("pager") || i.Code.Equals("information") || i.Code.Equals("wstitle"))).ToList();
+            var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(language) && (i.I18NType.Code.Equals("pager") || i.Code.Equals("information") || i.Code.Equals("ntprefix") || i.Code.Equals("wstitle"))).ToList();
             var data1 = i18ns.Where(i => !i.I18NType.Code.Equals("pager")).OrderBy(i => i.Code).ToList();
-            ViewBag.Title = data1[0].Name + " - " + data1[1].Name;
-            ViewBag.Caption = data1[0].Name;
-            ViewBag.Remark = " - " + data1[0].Remark;
+            ViewBag.Title = data1[0].Name + " - " + data1[2].Name;
+            ViewBag.LongCaption = data1[1].Name + " > " + data1[0].Name;
+            ViewBag.ShortCaption = data1[0].Name;
+            ViewBag.Remark = data1[0].Remark;
+
             var data2 = i18ns.Where(i => i.I18NType.Code.Equals("pager")).ToList();
             foreach (var item in data2)
             {
@@ -83,10 +85,11 @@ namespace ThinkYi.Web.Controllers
         {
             InformationDetail idetail = new InformationDetail();
             idetail.Information = InformationService.GetInformations().Where(i => i.InformationID == id).First();
-            var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.LanguageID == idetail.Information.LanguageID && (i.Code.Equals("information") || i.Code.Equals("wstitle"))).ToList();
+            var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.LanguageID == idetail.Information.LanguageID && (i.Code.Equals("information") || i.Code.Equals("ntprefix") || i.Code.Equals("wstitle"))).ToList();
             var data = i18ns.OrderBy(i => i.Code).ToList();
-            ViewBag.Title = data[0].Name + " - " + data[1].Name;
-            ViewBag.Caption = data[0].Name;
+            ViewBag.Title = data[0].Name + " - " + data[2].Name;
+            ViewBag.LongCaption = data[1].Name + " > " + data[0].Name;
+            ViewBag.ShortCaption = data[0].Name;
             ViewBag.Remark = data[0].Remark;
             idetail.Post = PostService.GetPosts().Where(i => i.Language.LanguageID == idetail.Information.LanguageID && i.Code.Equals("information")).FirstOrDefault();
             return View(idetail);

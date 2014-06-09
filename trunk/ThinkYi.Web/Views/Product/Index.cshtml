@@ -25,18 +25,23 @@
     </div>
 }
 <div class="rightbar">
-    <div class="productbox">
+    <div class="neibox">
         <div class="top">
-            <h3>
-                <span id="t1">@ViewBag.Caption1</span>
-                <span id="t2">@ViewBag.Caption2</span>
-                <span id="t3">@ViewBag.Caption3</span>
-            </h3>
+            <h3>@ViewBag.LongCaption</h3>
         </div>
-        <div class="mid" style="min-height:745px;">
-            <ul class="pick" style="height:670px;">
+        <div class="mid">
+            <div class="navbox" style="background:url(@post.TitlePic) no-repeat left center;">
+                <b>
+                    @ViewBag.ShortCaption
+                    <br />
+                </b>
+                <b class="c_hui">
+                    @ViewBag.Remark
+                </b>
+            </div>
+            <ul class="pick">
                 @foreach (Product p in products)
-                    {
+                {
                     <li style="margin-bottom:45px;" pid="@p.ProductID">
                         <a href="javascript:void(0);" class="pick_img">
                             <img src="@p.SmallPic" width="164" height="122" />
@@ -45,7 +50,7 @@
                             <a href="javascript:void(0);">@p.Name</a>
                         </p>
                     </li>
-                    }
+                }
             </ul>
             <div style="clear:both;"></div>
             <div class="pagebox">

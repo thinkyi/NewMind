@@ -19,12 +19,12 @@
 <div class="rightbar">
     <div class="neibox">
         <div class="top">
-            <h3>您现在的位置是：首页 > @ViewBag.Caption</h3>
+            <h3>@ViewBag.LongCaption</h3>
         </div>
         <div class="mid">
-            <div class="navbox">
+            <div class="navbox" style="background:url(@post.TitlePic) no-repeat left center;">
                 <b>
-                    @ViewBag.Caption
+                    @ViewBag.ShortCaption
                     <br />
                 </b>
                 <b class="c_hui">

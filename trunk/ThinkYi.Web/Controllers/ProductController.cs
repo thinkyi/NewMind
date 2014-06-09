@@ -36,13 +36,15 @@ namespace ThinkYi.Web.Controllers
     {
         public ActionResult Index(string language, int ProductTypeID, int PageIndex)
         {
+            string longCaption = null;
             PageIndex = PageIndex == 0 ? 1 : PageIndex;
             ProductIndex pi = new ProductIndex();
-            var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(language) && (i.I18NType.Code.Equals("pager") || i.Code.Equals("allproduct") || i.Code.Equals("display") || i.Code.Equals("wstitle"))).ToList();
-            var data1 = i18ns.Where(i => !i.I18NType.Code.Equals("pager")).OrderBy(i => i.Code).Select(i => i.Name).ToList();
-            ViewBag.Title = string.Join(" - ", data1.Skip(1).ToArray());
-            ViewBag.Caption1 = data1[1];
-            ViewBag.Caption2 = " - " + data1[0];
+            var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(language) && (i.I18NType.Code.Equals("pager") || i.Code.Equals("allproduct") || i.Code.Equals("display") || i.Code.Equals("ntprefix") || i.Code.Equals("wstitle"))).ToList();
+            var data1 = i18ns.Where(i => !i.I18NType.Code.Equals("pager")).OrderBy(i => i.Code).ToList();
+            ViewBag.Title = data1[1].Name + " - " + data1[3].Name;
+            longCaption = data1[2].Name ;
+            ViewBag.ShortCaption = data1[1].Name;
+            ViewBag.Remark = data1[1].Remark;
             var data2 = i18ns.Where(i => i.I18NType.Code.Equals("pager")).ToList();
             foreach (var item in data2)
             {
@@ -101,16 +103,21 @@ namespace ThinkYi.Web.Controllers
                 if (pt == null)
                 {
                     ProductType pt1 = ProductTypeService.GetProductType(ProductTypeID);
-                    ViewBag.Caption2 = " - " + ProductTypeService.GetProductType(pt1.ParentTypeID).Name;
-                    ViewBag.Caption3 = " - " + pt1.Name;
+                    longCaption = longCaption + " > " + ProductTypeService.GetProductType(pt1.ParentTypeID).Name;
+                    longCaption = longCaption + " > " + pt1.Name;
 
                 }
                 else
                 {
-                    ViewBag.Caption2 = " - " + pt.Name;
+                    longCaption = longCaption + " > " + pt.Name;
                 }
 
             }
+            else
+            {
+                longCaption = longCaption + " > " + data1[0].Name;
+            }
+            ViewBag.LongCaption = longCaption;
             return View("~/Views/Product/Index.cshtml", pi);
         }
 
@@ -118,10 +125,12 @@ namespace ThinkYi.Web.Controllers
         {
             ProductDetail pd = new ProductDetail();
             pd.Product = ProductService.GetProducts().Include("ProductType").Where(p => p.ProductID == id).First();
-            var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.LanguageID == pd.Product.ProductType.LanguageID && (i.Code.Equals("display") || i.Code.Equals("wstitle"))).ToList();
-            var data = i18ns.OrderBy(i => i.Code).Select(i => i.Name).ToList();
-            ViewBag.Title = string.Join(" - ", data.ToArray());
-            ViewBag.Caption = data[0];
+            var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.LanguageID == pd.Product.ProductType.LanguageID && (i.Code.Equals("display") || i.Code.Equals("ntprefix") || i.Code.Equals("wstitle"))).ToList();
+            var data = i18ns.OrderBy(i => i.Code).ToList();
+            ViewBag.Title = data[0].Name + " - " + data[2].Name;
+            ViewBag.LongCaption = data[1].Name + " > " + data[0].Name;
+            ViewBag.ShortCaption = data[0].Name;
+            ViewBag.Remark = data[0].Remark;
             pd.Post = PostService.GetPosts().Where(i => i.Language.LanguageID == pd.Product.ProductType.LanguageID && i.Code.Equals("display")).FirstOrDefault();
             return View("~/Views/Product/Detail.cshtml", pd);
         }

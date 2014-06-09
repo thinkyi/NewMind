@@ -18,12 +18,23 @@
 <input type="hidden" id="ProductTypeID" value="@product.ProductTypeID" />
 <input type="hidden" id="ParentTypeID" value="@product.ProductType.ParentTypeID" />
 <div class="rightbar">
-    <div class="productbox">
+    <div class="neibox">
         <div class="top">
-            <h3>@ViewBag.Caption</h3>
+            <h3>@ViewBag.LongCaption</h3>
         </div>
-        <div class="mid" style="min-height:555px;">
-            @Html.Raw(product.Text)
+        <div class="mid">
+            <div class="navbox" style="background:url(@post.TitlePic) no-repeat left center;">
+                <b>
+                    @ViewBag.ShortCaption
+                    <br />
+                </b>
+                <b class="c_hui">
+                    @ViewBag.Remark
+                </b>
+            </div>
+            <div class="neicontent">
+                @Html.Raw(product.Text)
+            </div>
         </div>
         <div class="di"></div>
     </div>
