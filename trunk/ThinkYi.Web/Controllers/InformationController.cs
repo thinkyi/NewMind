@@ -51,7 +51,7 @@ namespace ThinkYi.Web.Controllers
                         break;
                 }
             }
-            ii.Post = PostService.GetPosts().Where(i => i.Language.Code.Equals(language) && i.Code.Equals("display")).FirstOrDefault();
+            ii.Post = PostService.GetPosts().Where(i => i.Language.Code.Equals(language) && i.Code.Equals("information")).FirstOrDefault();
             IQueryable<Information> qi = InformationService.GetInformations().Where(i => i.Language.Code.Equals(language)).OrderByDescending(i => i.Date);
             int total = qi.Count();
             ii.Curr = PageIndex;
