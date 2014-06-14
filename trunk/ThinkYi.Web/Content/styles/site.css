@@ -30,10 +30,14 @@ text-transform:uppercase;/*全部大写*/
 #header .searchbox .input2{background:#62ab00; text-align:center; color:#fff; border:none; width:50px; cursor:pointer;}
 
 #header .menu{background:url(../images/menubg.jpg) repeat-x; height:38px; line-height:38px; font-family:"Microsoft YaHei","微软雅黑"; font-size:14px;}
-#header .menu ul li{float:left; font-size:14px; width:118px; text-align:center; font-weight:bold; color:#fff;}
+/*#header .menu ul li{float:left; font-size:14px; width:118px; text-align:center; font-weight:bold; color:#fff;}
 #header .menu ul li a{color:#fff; text-decoration:none;}
-#header .menu ul li a:hover{color:#ff0; text-decoration:none;}
+#header .menu ul li a:hover{color:#ff0; text-decoration:none;}*/
 #header .menu ul li.menu_fg{width:5px; display:block; margin:0;}
+
+#header .menu ul li{float:left; text-align:center; font-size:14px; font-weight:bold; margin:0 30px; color:#ff0;}
+#header .menu ul li a{color:#ff0; text-decoration:none;}
+#header .menu ul li a:hover{color:#FC0; text-decoration:none;}  
 
 /*-- main -------------------------------------------------------------*/
 #main{width:998px; margin:10px auto 0px;}
@@ -112,11 +116,15 @@ text-transform:uppercase;/*全部大写*/
 .detail .time{border-bottom:1px dashed #ccc; text-align:center; height:40px; line-height:40px; margin-bottom:10px;}
 .closebox{text-align:center; height:50px; line-height:50px; }
 /*-- footer -------------------------------------------------------------*/
-#footer{ width:998px; margin:0px auto;}
+/*#footer{ width:998px; margin:0px auto;}*/
+#footer{ width:998px; margin:0 auto; background:url(../images/footerbg.jpg) repeat-x top #f5ffff;}
 #footer .links{background:#669900; height:30px; line-height:30px; text-align:center;color:#fff;}
 #footer .links a{ margin:0 20px; color:#fff; text-decoration:none;}
 #footer .links a:hover{ margin:0 20px; color:#f00; text-decoration:none;}
 #footer .copyright{ text-align:center; line-height:22px; background:url(../images/logo2.png) 40px center no-repeat; padding-left:60px; padding-top:10px; height:90px; color:#515151;}
+
+
+
 
 #slideshow{width:782px;height:339px;position:relative;overflow:hidden; margin-bottom:10px;}
 .slideImg img{border:0px;}
