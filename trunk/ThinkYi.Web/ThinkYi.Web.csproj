@@ -170,6 +170,7 @@
     <Content Include="Content\images\cft.jpg" />
     <Content Include="Content\images\cn_txt.png" />
     <Content Include="Content\images\en_txt.png" />
+    <Content Include="Content\images\footerbg.jpg" />
     <Content Include="Content\images\icon_nav.jpg" />
     <Content Include="Content\images\icon_news.jpg" />
     <Content Include="Content\images\jt.png" />
