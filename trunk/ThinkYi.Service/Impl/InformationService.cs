@@ -41,5 +41,12 @@ namespace ThinkYi.Service.Impl
             InformationRepository.Update(info);
             UnitOfWork.Commit();
         }
+
+        public void DelInformation(int id)
+        {
+            Information i = InformationRepository.GetByID(id);
+            InformationRepository.Delete(i);
+            UnitOfWork.Commit();
+        }
     }
 }

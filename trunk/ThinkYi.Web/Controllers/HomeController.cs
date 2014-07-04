@@ -28,7 +28,7 @@ namespace ThinkYi.Web.Controllers
             hi.Cooperations = i18ns.Where(i => i.I18NType.Code.Equals("cooperation")).OrderBy(i => i.OrderID).ToList();
 
             hi.Recommends = ProductService.GetProducts().Where(p => p.ProductType.Language.Code.Equals(language) && p.IsRecommend).ToList();
-            hi.Displays = ProductService.GetProducts().Where(p => p.ProductType.Language.Code.Equals(language) && p.IsShow).Take(4).ToList();
+            hi.Displays = ProductService.GetProducts().Where(p => p.ProductType.Language.Code.Equals(language) && p.IsShow).Take(20).ToList();
 
             return View(hi);
         }

@@ -286,6 +286,32 @@ namespace ThinkYi.Web.Controllers
             ProductTypeService.ProductTypeDel(ptid);
         }
 
+        [HttpPost]
+        public int PTSubmitVerify(int ptid)
+        {
+            int n = 0;
+            int result = 0;
+            ProductType pt = ProductTypeService.GetProductType(ptid);
+            if (pt.ParentTypeID > 0)
+            {
+                n = ProductService.GetProducts().Count(p => p.ProductTypeID == ptid);
+                if (n > 0)
+                {
+                    result = 2;
+                }
+            }
+            else
+            {
+                n = ProductTypeService.GetProductTypes(pt.Language.Code).Count(p => p.ParentTypeID == ptid);
+                if (n > 0)
+                {
+                    result = 1;
+                }
+            }
+
+            return result;
+        }
+
         public JsonResult GetProductTypes(string lCode)
         {
             var data = ProductTypeService.GetProductTypes(lCode).ToList();
@@ -318,6 +344,12 @@ namespace ThinkYi.Web.Controllers
 
             var jsonData = lq.GetJson(jgp, JsonRequestBehavior.AllowGet, null);
             return jsonData;
+        }
+
+        [HttpPost]
+        public void ProductDel(int pid)
+        {
+            ProductService.DelProduct(pid);
         }
 
         public ActionResult InformationGrid(JqGridParam jgp)
@@ -400,6 +432,12 @@ namespace ThinkYi.Web.Controllers
                 result = e.Message;
             }
             return result;
+        }
+
+        [HttpPost]
+        public void InformationDel(int iid)
+        {
+            InformationService.DelInformation(iid);
         }
     }
 }

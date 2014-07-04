@@ -40,5 +40,12 @@ namespace ThinkYi.Service.Impl
             ProductRepository.Update(p);
             UnitOfWork.Commit();
         }
+
+        public void DelProduct(int id)
+        {
+            Product p = ProductRepository.GetByID(id);
+            ProductRepository.Delete(p);
+            UnitOfWork.Commit();
+        }
     }
 }

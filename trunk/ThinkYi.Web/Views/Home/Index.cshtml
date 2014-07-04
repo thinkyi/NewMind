@@ -19,39 +19,39 @@
         <div class="mid">
             <div id="slideshow">
                 @{
-                        var recommends = Model.Recommends;
-                        int cpCount = recommends.Count;
+                    var recommends = Model.Recommends;
+                    int cpCount = recommends.Count;
                 }
                 <div class="slideImg">
                     @for (int i = 0; i < cpCount; i++)
+                    {
+                        if (i == cpCount - 1)
                         {
-                            if (i == cpCount - 1)
-                            {
-                    <a href="@Url.Action("Detail", "Display", new { id = recommends[i].ProductID })" index="@i" style="z-index: 1; display: block;">
-                        <img src="@recommends[i].BigPic" alt="@recommends[i].Name" width="782" height="339">
-                    </a>}
-                            else
-                            {
-                    <a href="@Url.Action("Detail", "Display", new { id = recommends[i].ProductID })" index="@i" style="z-index: 1; display: none;">
-                        <img src="@recommends[i].BigPic" alt="@recommends[i].Name" width="782" height="339">
-                    </a>
-                            }
+                            <a href="@Url.Action("Detail", "Display", new { id = recommends[i].ProductID })" index="@i" style="z-index: 1; display: block;">
+                                <img src="@recommends[i].BigPic" alt="@recommends[i].Name" width="782" height="339">
+                            </a>}
+                        else
+                        {
+                            <a href="@Url.Action("Detail", "Display", new { id = recommends[i].ProductID })" index="@i" style="z-index: 1; display: none;">
+                                <img src="@recommends[i].BigPic" alt="@recommends[i].Name" width="782" height="339">
+                            </a>
                         }
+                    }
                 </div>
                 <div class="slideBtn">
                     <ul>
                         @for (int i = 0; i < cpCount; i++)
+                        {
+                            int index = cpCount - 1 - i;
+                            if (i == 0)
                             {
-                                int index = cpCount - 1 - i;
-                                if (i == 0)
-                                {
-                        <li index="@index" class="on"></li>
-                                }
-                                else
-                                {
-                        <li index="@index"></li>
-                                }
+                                <li index="@index" class="on"></li>
                             }
+                            else
+                            {
+                                <li index="@index"></li>
+                            }
+                        }
 
                     </ul>
                 </div>
@@ -63,15 +63,17 @@
             <h3>@pi.PDisplay</h3><span><a href="@Url.Action("Index", "Display", new { language = ViewContext.RouteData.Values["language"], ProductTypeID = 0, PageIndex = 0 })" class="a_white">@pi.PMore</a>>></span>
         </div>
         <div class="mid">
-            <ul class="pick">
-                @foreach (var product in Model.Displays)
+            <div class="marquee">
+                <ul class="pick">
+                    @foreach (var product in Model.Displays)
                     {
-                <li pid="@product.ProductID">
-                    <a href="javascript:void(0);" class="pick_img"><img src="@product.SmallPic" width="164" height="164" /></a>
-                    <p class="pick_name"><a href="javascript:void(0);">@product.Name</a></p>
-                </li>
+                        <li pid="@product.ProductID">
+                            <a href="javascript:void(0);" class="pick_img"><img src="@product.SmallPic" width="164" height="164" /></a>
+                            <p class="pick_name"><a href="javascript:void(0);">@product.Name</a></p>
+                        </li>
                     }
-            </ul>
+                </ul>
+            </div>
         </div>
         <div class="di"></div>
     </div>

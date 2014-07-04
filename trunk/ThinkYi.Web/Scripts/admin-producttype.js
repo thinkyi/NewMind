@@ -46,6 +46,7 @@ jQuery(document).ready(function () {
                     return value;
                 }
             },
+            beforeSubmit: PT2BeforeSubmit,
             url: 'ProductTypeDel'
         } //prmDel
         , {} //prmSearch
@@ -97,6 +98,7 @@ jQuery(document).ready(function () {
                     return value;
                 }
             },
+            beforeSubmit: PT1BeforeSubmit,
             url: 'ProductTypeDel'
         } //prmDel
         , {} //prmSearch
@@ -108,4 +110,40 @@ jQuery(document).ready(function () {
 function SetSize(h, w) {
     $("#pt1Grid").setGridHeight(h - 111);
     $("#pt2Grid").setGridHeight(h - 111);
+}
+
+function PTBeforeSubmit(ptid) {
+    $.ajax({
+        url: 'PTSubmitVerify',
+        async: false,
+        type: 'post',
+        data: { ptid: ptid },
+        success: function (data) {
+            var success = data == 0 ? true : false;
+            var message = "验证成功";
+            if (data == 1) {
+                message = "请先删除大类下面的小类。";
+            }
+            else if (data = 2) {
+                message = "请先删除小类下面的产品。";
+            }
+            result = [success, message];
+        },
+        error: function (msg) {
+            result = [false, "err: system error"];
+        }
+    });
+    return result;
+}
+
+function PT1BeforeSubmit(postdata, formid) {
+    var sel_id = $('#pt1Grid').jqGrid('getGridParam', 'selrow');
+    var value = $('#pt1Grid').jqGrid('getCell', sel_id, 'ProductTypeID');
+    return PTBeforeSubmit(value);
+}
+
+function PT2BeforeSubmit(postdata, formid) {
+    var sel_id = $('#pt2Grid').jqGrid('getGridParam', 'selrow');
+    var value = $('#pt2Grid').jqGrid('getCell', sel_id, 'ProductTypeID');
+    return PTBeforeSubmit(value);
 }

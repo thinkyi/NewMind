@@ -21,6 +21,7 @@ function InformationEdit() {
         Code: $("#Code").val(),
         Name: $("#Name").val(),
         Text: editor.getContent(),
+        Date: $("#Date").val()
     }
 
     $.ajax({

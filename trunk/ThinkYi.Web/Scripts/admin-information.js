@@ -35,6 +35,20 @@ jQuery(document).ready(function () {
         'navGrid'
         , '#informationPager'
         , { addfunc: AddFunc, editfunc: EditFunc } //prmView
+        , {} //prmEdit
+        , {} //prmAdd
+        , {
+            delData: {
+                iid: function () {
+                    var sel_id = $('#informationGrid').jqGrid('getGridParam', 'selrow');
+                    var value = $('#informationGrid').jqGrid('getCell', sel_id, 'InformationID');
+                    return value;
+                }
+            },
+            url: 'InformationDel'
+        } //prmDel
+        , {} //prmSearch
+        , {} //prmView
     );
 
 });

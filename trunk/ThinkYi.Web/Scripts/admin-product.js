@@ -41,6 +41,20 @@ jQuery(document).ready(function () {
         'navGrid'
         , '#productPager'
         , { addfunc: AddFunc, editfunc: EditFunc } //prmView
+        , {} //prmEdit
+        , {} //prmAdd
+        , {
+            delData: {
+                pid: function () {
+                    var sel_id = $('#productGrid').jqGrid('getGridParam', 'selrow');
+                    var value = $('#productGrid').jqGrid('getCell', sel_id, 'ProductID');
+                    return value;
+                }
+            },
+            url: 'ProductDel'
+        } //prmDel
+        , {} //prmSearch
+        , {} //prmView
     );
 
 });

@@ -46,7 +46,6 @@ namespace ThinkYi.Service.Impl
         {
             ProductType pt = ProductTypeRepository.GetByID(id);
             ProductTypeRepository.Delete(pt);
-            ProductTypeRepository.Delete(p => p.ParentTypeID == id);
             UnitOfWork.Commit();
         }
     }

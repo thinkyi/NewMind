@@ -13,5 +13,6 @@ namespace ThinkYi.Service
         IQueryable<Information> GetInformations();
         void AddInformation(Information info);
         void EditInformation(Information info);
+        void DelInformation(int id);
     }
 }
