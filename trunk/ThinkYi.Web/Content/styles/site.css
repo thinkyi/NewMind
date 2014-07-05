@@ -65,6 +65,7 @@ text-transform:uppercase;/*全部大写*/
 .bannerbox .di{ background:url(../images/lmdi2.png) no-repeat; height:12px; width:782px; overflow:hidden;}*/
 
 .productbox{line-height:0px;}
+.productTitle{margin:0 auto;text-align:center; color:#62ab00;height:40px;line-height:40px;font-size:16px;}
 .productbox .top{background:url(../images/lmtop2.png) no-repeat; height:34px; line-height:34px;}
 .productbox .top h3{color:#fff; padding-left:15px; font-family:"Microsoft YaHei","Microsoft YaHei","微软雅黑"; font-size:15px; float:left;}
 .productbox .top span{color:#fff; float:right; padding-right:20px;}
@@ -146,3 +147,6 @@ text-transform:uppercase;/*全部大写*/
 .boxCenter {float: left;}
 .boxRight {margin-top: 20px;}
 .boxRight .inputBox {height: 30px; margin-top: 8px;}
+
+/*Common*/
+.pCenter{margin:0 auto;text-align:center;}

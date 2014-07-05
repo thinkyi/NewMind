@@ -23,7 +23,7 @@
             <h3>@ViewBag.LongCaption</h3>
         </div>
         <div class="mid">
-            <div class="navbox" style="background:url(@post.TitlePic) no-repeat left center;">
+            @*<div class="navbox" style="background:url(@post.TitlePic) no-repeat left center;">
                 <b>
                     @ViewBag.ShortCaption
                     <br />
@@ -31,7 +31,8 @@
                 <b class="c_hui">
                     @ViewBag.Remark
                 </b>
-            </div>
+            </div>*@
+            <h3 class="title productTitle">@product.Name</h3>
             <div class="neicontent">
                 @Html.Raw(product.Text)
             </div>
