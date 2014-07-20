@@ -35,9 +35,11 @@ text-transform:uppercase;/*全部大写*/
 #header .menu ul li a:hover{color:#ff0; text-decoration:none;}*/
 #header .menu ul li.menu_fg{width:4px; display:block; margin:0;}
 
-#header .menu ul li{float:left; text-align:center; font-size:14px; font-weight:bold; margin:0 24px; color:#ff0;}
+#header .menu ul li{float:left; text-align:center; font-size:14px; font-weight:bold; margin:0 25px; color:#ff0;}
 #header .menu ul li a{color:#ff0; text-decoration:none;}
 #header .menu ul li a:hover{color:#FC0; text-decoration:none;}  
+
+
 
 /*-- main -------------------------------------------------------------*/
 #main{width:998px; margin:10px auto 0px;}
