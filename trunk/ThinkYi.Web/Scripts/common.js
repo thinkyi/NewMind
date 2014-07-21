@@ -13,7 +13,7 @@ function BindTypeSelect(pt1, pt2, sptid) {
         BindSmallType(pt2, bptid, 0, json);
     });
     $.ajax({
-        url: 'GetProductTypes?lCode=' + languageCode,
+        url: 'GetProductTypes?lCode=' + languageCode + "&categoryID=" + categoryID,
         success: function (data) {
             json = data;
             for (var i = 0; i < json.length; i++) {
@@ -47,8 +47,7 @@ function BindSmallType(pt, bptid, sptid, json) {
                 $(pt).append("<option value='" + json[i].ProductTypeID + "'>" + json[i].Name + "</option>");
             }
         }
-        if(sptid)
-        {
+        if (sptid) {
             $(pt).val(sptid);
         }
     }

@@ -20,32 +20,32 @@
         <ul>
             <li>
                 <input type="hidden" id="ProductID" name="ProductID" value="@Model.ProductID" />
-                <label class="title" style="margin-top:0px;">产品编码</label>
+                <label class="title" style="margin-top:0px;">@*产品*@编码</label>
                 <input type="text" id="Code" name="Code" value="@Model.Code" class="text ui-widget-content ui-corner-all" style="width:80%" />
             </li>
             <li>
-                <label class="title">产品名称</label>
+                <label class="title">@*产品*@名称</label>
                 <input type="text" id="Name" name="Name" value="@Model.Name" class="text ui-widget-content ui-corner-all" style="width: 80%" />
             </li>
             <li>
-                <label class="title">产品类别</label>
+                <label class="title">@*产品*@类别</label>
                 <input type="hidden" id="ProductTypeID" name="ProductTypeID" value="@Model.ProductTypeID" />
                 <select id="PType1" name="PType1" class="text ui-widget-content ui-corner-all" style="padding: 3px;"></select>
                 <select id="PType2" name="PType2" class="text ui-widget-content ui-corner-all" style="padding: 3px;"></select>
             </li>
-            <li>
+            <li id="liRecommend" style="display:none;">
                 <label class="title">是否首页推荐</label>
                 <label style="margin:0px; width:230px;">
                     <input type="checkbox" id="IsRecommend" name="IsRecommend" @recommendCheck class="text ui-widget-content ui-corner-all" />
                     <span style="color:#808080;">勾选则在首页产品推荐处显示大图</span>
                 </label>
             </li>
-            <li class="liBigPic">
-                <label class="title">上传产品大图</label>
-                <input type="button" id="BigPic" name="BigPic" class="btnUpPic" value="选择推荐图片" />
+            <li class="liBigPic" style="display:none;">
+                <label class="title">上传@*产品*@大图</label>
+                <input type="button" id="BigPic" name="BigPic" class="btnUpPic" value="选择大图" />
                 <span style="color:#808080;">图片尺寸(782*339)</span>
             </li>
-            <li>
+            <li id="liShow" style="display:none;">
                 <label class="title">是否首页展示</label>
                 <label style="margin: 0px; width: 230px;">
                     <input type="checkbox" id="IsShow" name="IsShow" @showCheck class="text ui-widget-content ui-corner-all" />
@@ -53,8 +53,8 @@
                 </label>
             </li>
             <li class="liSmallPic">
-                <label class="title">上传产品小图</label>
-                <input type="button" id="SmallPic" name="SmallPic" class="btnUpPic" value="选择展示图片" />
+                <label class="title">上传@*产品*@小图</label>
+                <input type="button" id="SmallPic" name="SmallPic" class="btnUpPic" value="选择小图" />
                 <span style="color:#808080;">图片尺寸(164*164)</span>
             </li>
             @*<li>
@@ -68,19 +68,19 @@
     </div>
     <div style="float:right; width:50%;">
         <ul>
-            <li>
-                <label class="title" style="margin-top:0px;">产品大图预览</label>
+            <li id="liBigShow" style="display:none;">
+                <label class="title" style="margin-top:0px;">@*产品*@大图预览</label>
                 <img id="BigPicPreview" src="@bPic" style="width:80%; max-height:220px;" />
             </li>
             <li>
-                <label class="title">产品小图预览</label>
+                <label class="title">@*产品*@小图预览</label>
                 <img id="SmallPicPreview" src="@sPic" style="width:25%; max-height:120px;" />
             </li>
         </ul>
     </div>
     <div style="clear:both;"></div>
     <div>
-        <label class="title">产品内容</label>
+        <label class="title">@*产品*@内容</label>
         <label>
             <script id="Text" name="Text" type="text/plain" style="height:300px;">
                 @Html.Raw(Model.Text)

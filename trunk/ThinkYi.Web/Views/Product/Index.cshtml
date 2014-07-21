@@ -18,6 +18,7 @@
 <input type="hidden" id="Total" value="@Model.Total" />
 <input type="hidden" id="Next" value="@Model.Next" />
 <input type="hidden" id="Pre" value="@Model.Pre" />
+<input type="hidden" id="categoryID" value="@Model.CategoryID" />
 
 @section banner{
     <div class="banner1">
@@ -53,7 +54,7 @@
                 }
             </ul>
             <div style="clear:both;"></div>
-            <div class="pagebox">
+            <div class="pagebox" style="display:none;">
                 【<a href="@Url.Action("Index", "Display", new { language = ViewContext.RouteData.Values["language"], ProductTypeID = ViewContext.RouteData.Values["ProductTypeID"], PageIndex = 1 })" id="gotoFirst">@Model.FirstText</a>】
                 【<a href="@Url.Action("Index", "Display", new { language = ViewContext.RouteData.Values["language"], ProductTypeID = ViewContext.RouteData.Values["ProductTypeID"], PageIndex = pre })" id="gotoPre">@Model.PreText</a>】
                 【<a href="@Url.Action("Index", "Display", new { language = ViewContext.RouteData.Values["language"], ProductTypeID = ViewContext.RouteData.Values["ProductTypeID"], PageIndex = next })" id="gotoNext">@Model.NextText</a>】

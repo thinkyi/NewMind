@@ -1,5 +1,6 @@
 ﻿var g_languageCode = "cn";
 var g_navCode;
+var g_categoryID = 1;
 //jqGridRowID,jqGridWidth,jqGridHeight
 var g_isSetSize = false, g_layoutCenterHeight = 300, g_layoutCenterWidth = 500;
 var pageLayout;
@@ -62,6 +63,7 @@ jQuery(document).ready(function () {
         $("#accordion li div").removeClass("selected");
         $(this).addClass("selected");
         g_navCode = $(this).attr("code");
+        g_categoryID = $(this).attr("category");
         $("#mainFrame").attr("src", "Admin/Nav?viewName=" + $(this).attr("view"));
 
         SetNav($(this).find(".nav").text());
@@ -110,9 +112,9 @@ function SetNav(text) {
     $(".ribbon").text(text);
 }
 
-function SetNavSelected(viewName) {
+function SetNavSelected(viewName, categoryID) {
     $("#accordion li div").removeClass("selected");
-    $("#accordion li div[view='" + viewName + "']").addClass("selected");
+    $("#accordion li div[view='" + viewName + "'][category=" + categoryID + "]").addClass("selected");
 }
 
 function UserEdit() {

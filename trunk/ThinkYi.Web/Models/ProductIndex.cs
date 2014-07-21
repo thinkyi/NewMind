@@ -8,6 +8,7 @@ namespace ThinkYi.Web.Models
 {
     public class ProductIndex : PagerBasic
     {
+        public int CategoryID { get; set; }
         public Post Post { get; set; }
         public List<Product> Products { get; set; }
     }

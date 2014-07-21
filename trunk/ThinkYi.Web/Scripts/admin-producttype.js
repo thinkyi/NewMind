@@ -1,4 +1,5 @@
 ﻿var languageCode = parent.g_languageCode;
+var categoryID = parent.g_categoryID;
 var parentTypeID = 0;
 var ptEditData1;
 var ptEditData2;
@@ -37,7 +38,7 @@ jQuery(document).ready(function () {
         , '#pt2Pager'
         , { view: true, search: false, view: false }
         , {} //prmEdit
-        , { editData: { ParentTypeID: function () { return parentTypeID; }, lCode: languageCode }, url: 'ProductTypeAdd' } //prmAdd
+        , { editData: { ParentTypeID: function () { return parentTypeID; }, CategoryID: categoryID, lCode: languageCode }, url: 'ProductTypeAdd' } //prmAdd
         , {
             delData: {
                 ptid: function () {
@@ -54,15 +55,16 @@ jQuery(document).ready(function () {
     );
 
     jQuery("#pt1Grid").jqGrid({
-        url: 'ProductTypeGrid?lCode=' + languageCode + "&ptid=" + parentTypeID,
+        url: 'ProductTypeGrid?lCode=' + languageCode + "&categoryID=" + categoryID + "&ptid=" + parentTypeID,
         datatype: 'json',
         sortname: 'ProductTypeID',
         caption: '大类设置',
-        colNames: ['序号', '语言', '父类型', '编码', '名称', '备注'],
+        colNames: ['序号', '语言', '父类型', '分类', '编码', '名称', '备注'],
         colModel: [
    		            { name: 'ProductTypeID', index: 'I18NID', editable: true, width: 20, hidden: true },
    		            { name: 'LanguageID', index: 'LanguageID', width: 30, hidden: true },
    		            { name: 'ParentTypeID', index: 'OrderID', width: 30, hidden: true },
+                    { name: 'CategoryID', index: 'CategoryID', width: 30, hidden: true },
    		            { name: 'Code', index: 'Code', editable: true, width: 100 },
                     { name: 'Name', index: 'Name', editable: true, width: 150 },
                     { name: 'Remark', index: 'Remark', editable: true, width: 100 }
@@ -80,7 +82,7 @@ jQuery(document).ready(function () {
         },
         onSelectRow: function (rowid, status, e) {
             parentTypeID = $(this).jqGrid('getCell', rowid, 'ProductTypeID');
-            jQuery("#pt2Grid").jqGrid('setGridParam', { url: 'ProductTypeGrid?lCode=' + languageCode + "&ptid=" + parentTypeID, search: "false", datatype: "json" }).trigger("reloadGrid", [{ page: 1 }]);
+            jQuery("#pt2Grid").jqGrid('setGridParam', { url: 'ProductTypeGrid?lCode=' + languageCode + "&categoryID=" + categoryID + "&ptid=" + parentTypeID, search: "false", datatype: "json" }).trigger("reloadGrid", [{ page: 1 }]);
         }
     });
     $("#gbox_pt1Grid").addClass("ui-widget-content-remove-border1");
@@ -89,7 +91,7 @@ jQuery(document).ready(function () {
         , '#pt1Pager'
         , { view: true, search: false, view: false }
         , {} //prmEdit
-        , { editData: { ParentTypeID: 0, lCode: languageCode }, url: 'ProductTypeAdd' } //prmAdd
+        , { editData: { ParentTypeID: 0, CategoryID: categoryID, lCode: languageCode }, url: 'ProductTypeAdd' } //prmAdd
         , {
             delData: {
                 ptid: function () {

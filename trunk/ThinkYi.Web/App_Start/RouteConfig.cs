@@ -28,8 +28,14 @@ namespace ThinkYi.Web
 
             routes.MapRoute(
                 name: "Product",
-                url: "{language}/Display/Index/{ProductTypeID}/{PageIndex}",
-                defaults: new { language = "cn", controller = "Display", action = "Index", ProductTypeID = 0, PageIndex = 0 }
+                url: "{language}/{controller}/Index/{CategoryID}/{ProductTypeID}/{PageIndex}",
+                defaults: new { language = "cn", controller = "Display", action = "Index", CategoryID = 1, ProductTypeID = 0, PageIndex = 0 }
+            );
+
+            routes.MapRoute(
+                name: "Product1",
+                url: "{language}/{controller}/Detail/{CategoryID}/{id}",
+                defaults: new { language = "cn", controller = "Display", action = "Detail", CategoryID = 1, id = UrlParameter.Optional }
             );
 
             routes.MapRoute(

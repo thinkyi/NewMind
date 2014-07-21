@@ -131,7 +131,8 @@ $(document).ready(function () {
 
     $("ul.pick li").click(function () {
         var pid = $(this).attr("pid");
-        window.location.href = "cn/Display/Detail/" + pid;
+        var lCode = $("#lCode").val();
+        window.location.href = "/" + lCode + "/Display/Detail/1/" + pid;
     });
 
     $('.marquee').kxbdMarquee({

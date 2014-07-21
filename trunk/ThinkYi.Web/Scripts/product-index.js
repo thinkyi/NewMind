@@ -31,6 +31,19 @@
     $("ul.pick li").click(function () {
         var pid = $(this).attr("pid");
         var lCode = $("#lCode").val();
-        window.location.href = "/" + lCode + "/Display/Detail/" + pid;
+        var categoryID = $("#categoryID").val();
+        var controllerName = "Display";
+        switch (parseInt(categoryID)) {
+            case 2:
+                controllerName = "Advert";
+                break;
+            case 3:
+                controllerName = "Leaflet";
+                break;
+            default:
+                controllerName = "Display";
+                break;
+        }
+        window.location.href = "/" + lCode + "/" + controllerName + "/Detail/" + categoryID + "/" + pid;
     });
 });

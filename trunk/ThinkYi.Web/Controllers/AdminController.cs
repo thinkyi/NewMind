@@ -31,6 +31,8 @@ namespace ThinkYi.Web.Controllers
         public IPostService PostService { get; set; }
         [Dependency]
         public IUserService UserService { get; set; }
+        [Dependency]
+        public IMessageService MessageService { get; set; }
 
         public ActionResult Index()
         {
@@ -254,10 +256,10 @@ namespace ThinkYi.Web.Controllers
             I18NService.EditI18N(data);
         }
 
-        public ActionResult ProductTypeGrid(JqGridParam jgp, int ptid)
+        public ActionResult ProductTypeGrid(JqGridParam jgp, int categoryID, int ptid)
         {
             string sidx = jgp.sidx;
-            var data = ProductTypeService.GetProductTypes(jgp.lCode).Where(p => p.ParentTypeID == ptid);
+            var data = ProductTypeService.GetProductTypes(jgp.lCode).Where(p => p.CategoryID == categoryID && p.ParentTypeID == ptid);
             var jsonData = data.GetJson(jgp, JsonRequestBehavior.AllowGet, null);
             return jsonData;
         }
@@ -312,20 +314,20 @@ namespace ThinkYi.Web.Controllers
             return result;
         }
 
-        public JsonResult GetProductTypes(string lCode)
+        public JsonResult GetProductTypes(string lCode, int categoryID)
         {
-            var data = ProductTypeService.GetProductTypes(lCode).ToList();
+            var data = ProductTypeService.GetProductTypes(lCode).Where(p => p.CategoryID == categoryID).ToList();
             JsonResult json = new JsonResult();
             json.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
             json.Data = data;
             return json;
         }
 
-        public ActionResult ProductGrid(JqGridParam jgp)
+        public ActionResult ProductGrid(JqGridParam jgp, int categoryID)
         {
             string sidx = jgp.sidx;
-            var ptData = ProductTypeService.GetProductTypes(jgp.lCode).Where(p => p.ParentTypeID == 0);
-            var pData = ProductService.GetProducts().Where(p => p.ProductType.Language.Code.Equals(jgp.lCode));
+            var ptData = ProductTypeService.GetProductTypes(jgp.lCode).Where(p => p.CategoryID == categoryID && p.ParentTypeID == 0);
+            var pData = ProductService.GetProducts().Where(p => p.ProductType.CategoryID == categoryID && p.ProductType.Language.Code.Equals(jgp.lCode));
             var lq = from d1 in pData
                      join d2 in ptData on d1.ProductType.ParentTypeID equals d2.ProductTypeID
                      select new
@@ -438,6 +440,14 @@ namespace ThinkYi.Web.Controllers
         public void InformationDel(int iid)
         {
             InformationService.DelInformation(iid);
+        }
+
+        public ActionResult MessageGrid(JqGridParam jgp)
+        {
+            string sidx = jgp.sidx;
+            var data = MessageService.GetMessages();
+            var jsonData = data.GetJson(jgp, JsonRequestBehavior.AllowGet, null);
+            return jsonData;
         }
     }
 }

@@ -132,6 +132,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\InformationController.cs" />
@@ -177,6 +178,7 @@
     <Content Include="Content\images\lmbg3.png" />
     <Content Include="Content\images\lmdi3.png" />
     <Content Include="Content\images\zfb.jpg" />
+    <Content Include="Scripts\admin-message.js" />
     <Content Include="Scripts\admin-titlepic.js" />
     <Content Include="Scripts\admin-information.js" />
     <Content Include="Scripts\admin-informationadd.js" />
@@ -618,13 +620,10 @@
     <Content Include="Views\Payment\Index.cshtml" />
     <Content Include="Views\Shared\_ECWidget.cshtml" />
     <Content Include="Views\Admin\TitlePic.cshtml" />
-    <Content Include="Views\Leaflet\Detail.cshtml" />
-    <Content Include="Views\Leaflet\Index.cshtml" />
-    <Content Include="Views\Leaflet\_TypePartial.cshtml" />
-    <Content Include="Views\Advert\Detail.cshtml" />
-    <Content Include="Views\Advert\Index.cshtml" />
-    <Content Include="Views\Advert\_TypePartial.cshtml" />
     <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Leaflet\Index.cshtml" />
+    <Content Include="Views\Advert\Index.cshtml" />
+    <Content Include="Views\Admin\Message.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

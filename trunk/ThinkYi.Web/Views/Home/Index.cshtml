@@ -11,6 +11,7 @@
 @section javascript{
     <script src="@Url.Content("~/Scripts/home-index.js")" type="text/javascript"></script>
 }
+<input type="hidden" id="lCode" value="@ViewContext.RouteData.Values["language"]" />
 <div class="rightbar">
     <div class="bannerbox">
         <div class="top">
@@ -27,12 +28,12 @@
                     {
                         if (i == cpCount - 1)
                         {
-                            <a href="@Url.Action("Detail", "Display", new { id = recommends[i].ProductID })" index="@i" style="z-index: 1; display: block;">
+                            <a href="@Url.Action("Detail", "Display", new {CategoryID=1, id = recommends[i].ProductID })" index="@i" style="z-index: 1; display: block;">
                                 <img src="@recommends[i].BigPic" alt="@recommends[i].Name" width="782" height="339">
                             </a>}
                         else
                         {
-                            <a href="@Url.Action("Detail", "Display", new { id = recommends[i].ProductID })" index="@i" style="z-index: 1; display: none;">
+                            <a href="@Url.Action("Detail", "Display", new {CategoryID=1, id = recommends[i].ProductID })" index="@i" style="z-index: 1; display: none;">
                                 <img src="@recommends[i].BigPic" alt="@recommends[i].Name" width="782" height="339">
                             </a>
                         }

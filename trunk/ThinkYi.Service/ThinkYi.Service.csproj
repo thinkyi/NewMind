@@ -56,8 +56,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="II18NTypeService.cs" />
+    <Compile Include="IMessageService.cs" />
     <Compile Include="Impl\I18NTypeService.cs" />
     <Compile Include="Impl\I18NService.cs" />
+    <Compile Include="Impl\MessageService.cs" />
     <Compile Include="Impl\LanguageService.cs" />
     <Compile Include="Impl\InformationService.cs" />
     <Compile Include="Impl\PostService.cs" />

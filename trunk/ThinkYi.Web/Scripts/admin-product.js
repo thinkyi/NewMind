@@ -1,10 +1,11 @@
 ﻿var languageCode = parent.g_languageCode;
+var categoryID = parent.g_categoryID;
 var productID = 0;
 parent.g_isSetSize = true;
 
 jQuery(document).ready(function () {
     jQuery("#productGrid").jqGrid({
-        url: 'ProductGrid?lCode=' + languageCode,
+        url: 'ProductGrid?lCode=' + languageCode + "&categoryID=" + categoryID,
         datatype: 'json',
         sortname: 'ProductID',
         sortorder: 'desc',
@@ -60,13 +61,34 @@ jQuery(document).ready(function () {
 });
 
 function AddFunc() {
-    parent.SetNav("添加产品");
-    parent.SetNavSelected("ProductAdd");
+    switch (parseInt(categoryID)) {
+        case 2:
+            parent.SetNav("添加新广告印刷");
+            break;
+        case 3:
+            parent.SetNav("添加新传单派发");
+            break;
+        default:
+            parent.SetNav("添加新产品");
+            break;
+
+    }
+    parent.SetNavSelected("ProductAdd", categoryID);
     window.location.href = "Nav?viewName=ProductAdd";
 }
 
 function EditFunc() {
-    parent.SetNav("编辑产品");
+    switch (parseInt(categoryID)) {
+        case 2:
+            parent.SetNav("编辑广告印刷");
+            break;
+        case 3:
+            parent.SetNav("编辑传单派发");
+            break;
+        default:
+            parent.SetNav("编辑产品");
+            break;
+    }
     window.location.href = "ProductEdit?productID=" + productID;
 }
 

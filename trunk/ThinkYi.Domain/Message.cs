@@ -15,7 +15,7 @@ namespace ThinkYi.Domain
         public string Title { get; set; }
         public string Text { get; set; }
         public string Reply { get; set; }
-        public DateTime Date { get; set; }
-        public bool IsPassed { get; set; }
+        public DateTime CreateDate { get; set; }
+        public DateTime? ReplyDate { get; set; }
     }
 }

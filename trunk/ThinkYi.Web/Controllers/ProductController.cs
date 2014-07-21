@@ -22,29 +22,67 @@ namespace ThinkYi.Web.Controllers
         [Dependency]
         public IPostService PostService { get; set; }
 
-        public ActionResult _TypePartial(string lCode)
+        public ActionResult _TypePartial(string lCode, int CategoryID)
         {
+            ViewContext vc = new ViewContext();
             PartialPType ppt = new PartialPType();
-            string title = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(lCode) && i.Code.Equals("ptype")).FirstOrDefault().Name;
-            ppt.ProductTypes = ProductTypeService.GetProductTypes(lCode).ToList();
+            string title = null;
+            switch (CategoryID)
+            {
+                case 2:
+                    title = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(lCode) && i.Code.Equals("atype")).FirstOrDefault().Name;
+                    break;
+                case 3:
+                    title = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(lCode) && i.Code.Equals("ltype")).FirstOrDefault().Name;
+                    break;
+                default:
+                    title = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(lCode) && i.Code.Equals("ptype")).FirstOrDefault().Name;
+                    break;
+            }
+            ppt.ProductTypes = ProductTypeService.GetProductTypes(lCode).Where(p => p.CategoryID == CategoryID).ToList();
             ppt.title = title;
             return PartialView(ppt);
         }
-    }
 
-    public class DisplayController : ProductController
-    {
-        public ActionResult Index(string language, int ProductTypeID, int PageIndex)
+        public ActionResult Index(string language, int CategoryID, int ProductTypeID, int PageIndex)
         {
             string longCaption = null;
             PageIndex = PageIndex == 0 ? 1 : PageIndex;
+
+            string code = "display";
+            string all = "allproduct";
+            switch (CategoryID)
+            {
+                case 2:
+                    code = "advert";
+                    all = "alladvert";
+                    break;
+                case 3:
+                    code = "leaflet";
+                    all = "allleaflet";
+                    break;
+                default:
+                    code = "display";
+                    all = "allproduct";
+                    break;
+            }
+
+
             ProductIndex pi = new ProductIndex();
-            var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(language) && (i.I18NType.Code.Equals("pager") || i.Code.Equals("allproduct") || i.Code.Equals("display") || i.Code.Equals("ntprefix") || i.Code.Equals("wstitle"))).ToList();
-            var data1 = i18ns.Where(i => !i.I18NType.Code.Equals("pager")).OrderBy(i => i.Code).ToList();
-            ViewBag.Title = data1[1].Name + " - " + data1[3].Name;
-            longCaption = data1[2].Name ;
-            ViewBag.ShortCaption = data1[1].Name;
-            ViewBag.Remark = data1[1].Remark;
+            pi.CategoryID = CategoryID;
+
+            var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(language) && (i.I18NType.Code.Equals("pager") || i.Code.Equals(all) || i.Code.Equals(code) || i.Code.Equals("ntprefix") || i.Code.Equals("wstitle"))).ToList();
+            var data = i18ns.Where(i => !i.I18NType.Code.Equals("pager")).OrderBy(i => i.Code).ToList();
+            int l0 = 0, l1 = 1;
+            if (CategoryID == 2)
+            {
+                l0 = 1;
+                l1 = 0;
+            }
+            ViewBag.Title = data[l1].Name + " - " + data[3].Name;
+            longCaption = data[2].Name;
+            ViewBag.ShortCaption = data[l1].Name;
+            ViewBag.Remark = data[l1].Remark;
             var data2 = i18ns.Where(i => i.I18NType.Code.Equals("pager")).ToList();
             foreach (var item in data2)
             {
@@ -65,8 +103,9 @@ namespace ThinkYi.Web.Controllers
                         break;
                 }
             }
-            pi.Post = PostService.GetPosts().Where(i => i.Language.Code.Equals(language) && i.Code.Equals("display")).FirstOrDefault();
-            IQueryable<Product> qp = ProductService.GetProducts().Where(p => p.ProductType.Language.Code.Equals(language)).OrderByDescending(p => p.ProductID);
+
+            pi.Post = PostService.GetPosts().Where(i => i.Language.Code.Equals(language) && i.Code.Equals(code)).FirstOrDefault();
+            IQueryable<Product> qp = ProductService.GetProducts().Where(p => p.ProductType.CategoryID == CategoryID && p.ProductType.Language.Code.Equals(language)).OrderByDescending(p => p.ProductID);
             int total = qp.Count();
             if (ProductTypeID != 0)
             {
@@ -115,24 +154,53 @@ namespace ThinkYi.Web.Controllers
             }
             else
             {
-                longCaption = longCaption + " > " + data1[0].Name;
+                longCaption = longCaption + " > " + data[l0].Name;
             }
             ViewBag.LongCaption = longCaption;
             return View("~/Views/Product/Index.cshtml", pi);
         }
 
-        public ActionResult Detail(int id)
+        public ActionResult Detail(int CategoryID, int id)
         {
+            string code = "display";
+            switch (CategoryID)
+            {
+                case 2:
+                    code = "advert";
+                    break;
+                case 3:
+                    code = "leaflet";
+                    break;
+                default:
+                    code = "display";
+                    break;
+            }
+
             ProductDetail pd = new ProductDetail();
             pd.Product = ProductService.GetProducts().Include("ProductType").Where(p => p.ProductID == id).First();
-            var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.LanguageID == pd.Product.ProductType.LanguageID && (i.Code.Equals("display") || i.Code.Equals("ntprefix") || i.Code.Equals("wstitle"))).ToList();
+            var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.LanguageID == pd.Product.ProductType.LanguageID && (i.Code.Equals(code) || i.Code.Equals("ntprefix") || i.Code.Equals("wstitle"))).ToList();
             var data = i18ns.OrderBy(i => i.Code).ToList();
             ViewBag.Title = data[0].Name + " - " + data[2].Name;
             ViewBag.LongCaption = data[1].Name + " > " + data[0].Name;
             ViewBag.ShortCaption = data[0].Name;
             ViewBag.Remark = data[0].Remark;
-            pd.Post = PostService.GetPosts().Where(i => i.Language.LanguageID == pd.Product.ProductType.LanguageID && i.Code.Equals("display")).FirstOrDefault();
+            pd.Post = PostService.GetPosts().Where(i => i.Language.LanguageID == pd.Product.ProductType.LanguageID && i.Code.Equals(code)).FirstOrDefault();
             return View("~/Views/Product/Detail.cshtml", pd);
         }
+    }
+
+    public class DisplayController : ProductController
+    {
+
+    }
+
+    public class AdvertController : ProductController
+    {
+
+    }
+
+    public class LeafletController : ProductController
+    {
+
     }
 }

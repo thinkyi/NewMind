@@ -11,6 +11,7 @@ namespace ThinkYi.Domain
         public int ProductTypeID { get; set; }
         public int LanguageID { get; set; }
         public int ParentTypeID { get; set; }
+        public int CategoryID { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
         public string Remark { get; set; }

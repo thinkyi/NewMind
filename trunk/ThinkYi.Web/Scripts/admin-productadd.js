@@ -1,10 +1,19 @@
 ﻿var languageCode = parent.g_languageCode;
+var categoryID = parent.g_categoryID;
 parent.g_isSetSize = false;
 var editor;
 var upPicEditor;
 var picType = "BigPic";
 
 jQuery(document).ready(function () {
+
+    if (categoryID == 1) {
+        $("#liRecommend").show();
+        $(".liBigPic").show();
+        $("#liShow").show();
+        $("#liBigShow").show();
+    }
+
     editor = UE.getEditor('Text');
     $("#btnSave").button({
         icons: {
@@ -69,8 +78,19 @@ function ProductAdd() {
         success: function (data) {
             if (data == "s") {
                 alert("添加成功");
-                parent.SetNav("产品列表");
-                parent.SetNavSelected("Product");
+                switch (parseInt(categoryID)) {
+                    case 2:
+                        parent.SetNav("广告印刷列表");
+                        break;
+                    case 3:
+                        parent.SetNav("传单派发列表");
+                        break;
+                    default:
+                        parent.SetNav("产品列表");
+                        break;
+
+                }
+                parent.SetNavSelected("Product", categoryID);
                 window.location.href = "Nav?viewName=Product";
             }
             else {

@@ -1,65 +1,17 @@
-﻿@using ThinkYi.Domain
-@model ThinkYi.Web.Models.ProductIndex
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-
-    Post post = Model.Post;
-    List<Product> products = Model.Products;
-
-    int next = Model.Curr + 1;
-    int pre = Model.Curr - 1;
-    int last = Model.Total % 16 == 0 ? Model.Total / 16 : Model.Total / 16 + 1;
+﻿@{
+    Layout = null;
 }
 
-@section javascript{
-    <script src="@Url.Content("~/Scripts/product-index.js")" type="text/javascript"></script>
-}
-<input type="hidden" id="lCode" value="@ViewContext.RouteData.Values["language"]" />
-<input type="hidden" id="Total" value="@Model.Total" />
-<input type="hidden" id="Next" value="@Model.Next" />
-<input type="hidden" id="Pre" value="@Model.Pre" />
+<!DOCTYPE html>
 
-@section banner{
-    <div class="banner1">
-        <img src="@post.BannerPic" alt="@post.Code" width="995" height="204">
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        
     </div>
-}
-<div class="rightbar">
-    <div class="neibox">
-        <div class="top">
-            <h3>@ViewBag.LongCaption</h3>
-        </div>
-        <div class="mid">
-            <div class="navbox" style="background:url(@post.TitlePic) no-repeat left center;">
-                <b>
-                    @ViewBag.ShortCaption
-                    <br />
-                </b>
-                <b class="c_hui">
-                    @ViewBag.Remark
-                </b>
-            </div>
-            <ul class="pick" style="padding:10px 0px 0px 0px;">
-                @foreach (Product p in products)
-                {
-                    <li style="margin:10px 13px 10px 13px;" pid="@p.ProductID">
-                        <a href="javascript:void(0);" class="pick_img">
-                            <img src="@p.SmallPic" width="164" height="164" />
-                        </a>
-                        <p class="pick_name">
-                            <a href="javascript:void(0);">@p.Name</a>
-                        </p>
-                    </li>
-                }
-            </ul>
-            <div style="clear:both;"></div>
-            <div class="pagebox">
-                【<a href="@Url.Action("Index", "Display", new { language = ViewContext.RouteData.Values["language"], ProductTypeID = ViewContext.RouteData.Values["ProductTypeID"], PageIndex = 1 })" id="gotoFirst">@Model.FirstText</a>】
-                【<a href="@Url.Action("Index", "Display", new { language = ViewContext.RouteData.Values["language"], ProductTypeID = ViewContext.RouteData.Values["ProductTypeID"], PageIndex = pre })" id="gotoPre">@Model.PreText</a>】
-                【<a href="@Url.Action("Index", "Display", new { language = ViewContext.RouteData.Values["language"], ProductTypeID = ViewContext.RouteData.Values["ProductTypeID"], PageIndex = next })" id="gotoNext">@Model.NextText</a>】
-                【<a href="@Url.Action("Index", "Display", new { language = ViewContext.RouteData.Values["language"], ProductTypeID = ViewContext.RouteData.Values["ProductTypeID"], PageIndex = last })" id="gotoLast">@Model.LastText</a>】
-            </div>
-        </div>
-        <div class="di"></div>
-    </div>
-</div>
+</body>
+</html>

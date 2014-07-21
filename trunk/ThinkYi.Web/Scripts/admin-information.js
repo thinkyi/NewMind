@@ -64,11 +64,6 @@ function EditFunc() {
     window.location.href = "InformationEdit?informationID=" + informationID;
 }
 
-function EditFunc() {
-    parent.SetNav("编辑行业知识");
-    window.location.href = "InformationEdit?informationID=" + informationID;
-}
-
 function SetSize(h, w) {
     $("#informationGrid").setGridHeight(h - 86);
     $("#informationGrid").setGridWidth(w);

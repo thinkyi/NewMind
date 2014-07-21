@@ -19,7 +19,21 @@
                                 <li>
                                     @for (int i = 0; i < count; i++)
                                     {
-                                        <a href="@Url.Action("Index", "Display", new { language = ViewContext.RouteData.Values["language"], ProductTypeID = childTypes[i].ProductTypeID, PageIndex = 0 })">@childTypes[i].Name</a>
+                                        int categoryID =childTypes[i].CategoryID;
+                                        string controllerName = "Display";
+                                        switch (categoryID)
+                                        {
+                                            case 2:
+                                                controllerName = "Advert";
+                                                break;
+                                            case 3:
+                                                controllerName = "Leaflet";
+                                                break;
+                                            default:
+                                                controllerName = "Display";
+                                                break;
+                                        }
+                                        <a href="@Url.Action("Index", controllerName, new { language = ViewContext.RouteData.Values["language"], CategoryID = categoryID, ProductTypeID = childTypes[i].ProductTypeID, PageIndex = 0 })">@childTypes[i].Name</a>
                                         if (i < count - 1)
                                         {
                                             <span>·</span>
