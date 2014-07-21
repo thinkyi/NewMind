@@ -14,6 +14,7 @@ namespace ThinkYi.Domain
         public string Code { get; set; }
         public string Name { get; set; }
         public string Remark { get; set; }
+        public bool IsHidden { get; set; }
 
         public virtual I18NType I18NType { get; set; }
     }
