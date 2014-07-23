@@ -27,21 +27,15 @@ namespace ThinkYi.Web
             );
 
             routes.MapRoute(
-                name: "Product",
-                url: "{language}/{controller}/Index/{CategoryID}/{ProductTypeID}/{PageIndex}",
-                defaults: new { language = "cn", controller = "Display", action = "Index", CategoryID = 1, ProductTypeID = 0, PageIndex = 0 }
+                name: "Pager",
+                url: "{language}/{controller}/Index/{c1}/{c2}/{c3}/{c4}",
+                defaults: new { language = "cn", controller = "Display", action = "Index", c1 = 1, c2 = 0, c3 = 0, c4 = 0 }
             );
 
             routes.MapRoute(
-                name: "Product1",
-                url: "{language}/{controller}/Detail/{CategoryID}/{id}",
-                defaults: new { language = "cn", controller = "Display", action = "Detail", CategoryID = 1, id = UrlParameter.Optional }
-            );
-
-            routes.MapRoute(
-                name: "Information",
-                url: "{language}/Information/Index/{PageIndex}",
-                defaults: new { language = "cn", controller = "Information", action = "Index", PageIndex = 0 }
+                name: "ProductDetail",
+                url: "{language}/{controller}/Detail/{c1}/{id}",
+                defaults: new { language = "cn", controller = "Display", action = "Detail", c1 = 1, id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
@@ -49,6 +43,8 @@ namespace ThinkYi.Web
                 url: "{language}/{controller}/{action}/{id}",
                 defaults: new { language = "cn", controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+
         }
     }
 }

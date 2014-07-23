@@ -58,6 +58,9 @@
       <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="MvcPager">
+      <HintPath>..\lib\MvcPager.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -145,6 +148,7 @@
     <Compile Include="IoC\UnityControllerFactory .cs" />
     <Compile Include="IoC\UnityDependencyResolver.cs" />
     <Compile Include="Models\InformationDetail.cs" />
+    <Compile Include="Models\MessageIndex.cs" />
     <Compile Include="Models\ProductDetail.cs" />
     <Compile Include="Models\InformationIndex.cs" />
     <Compile Include="Models\PagerBasic.cs" />
@@ -155,6 +159,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Content\images\admin\image_ico.png" />
     <Content Include="Content\images\admin\temp.png" />
+    <Content Include="Content\images\ask-bg-green.gif" />
+    <Content Include="Content\images\ask-bg-orange.gif" />
     <Content Include="Content\images\bank1.jpg" />
     <Content Include="Content\images\bank2.jpg" />
     <Content Include="Content\images\bank3.jpg" />
@@ -187,7 +193,8 @@
     <Content Include="Scripts\account-index.js" />
     <Content Include="Scripts\information-detail.js" />
     <Content Include="Scripts\product-detail.js" />
-    <Content Include="Scripts\product-information.js" />
+    <Content Include="Scripts\pager.js" />
+    <Content Include="Scripts\message-index.js" />
     <Content Include="Scripts\product-index.js" />
     <Content Include="Scripts\home-index.js" />
     <Content Include="Scripts\admin-i18n.js" />

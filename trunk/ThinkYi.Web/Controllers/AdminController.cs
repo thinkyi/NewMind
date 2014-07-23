@@ -449,5 +449,22 @@ namespace ThinkYi.Web.Controllers
             var jsonData = data.GetJson(jgp, JsonRequestBehavior.AllowGet, null);
             return jsonData;
         }
+
+        [HttpPost]
+        public void MessageDel(int mid)
+        {
+            MessageService.DelMessage(mid);
+        }
+
+        [HttpPost]
+        public void MessageEdit(int mid, Message msg)
+        {
+            Message m = MessageService.GetMessage(mid);
+            m.Text = msg.Text;
+            m.Reply = msg.Reply;
+            m.ReplyDate = DateTime.Now;
+
+            MessageService.EditMessage(m);
+        }
     }
 }

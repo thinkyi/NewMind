@@ -18,7 +18,7 @@
         <div id="main">
             <div class="leftbar">
                 @{
-                    Html.RenderAction("_TypePartial", "Product", new { lCode = ViewContext.RouteData.Values["language"], CategoryID = ViewContext.RouteData.Values["CategoryID"] == null ? 1 : ViewContext.RouteData.Values["CategoryID"] });
+                    Html.RenderAction("_TypePartial", "Product", new { lCode = ViewContext.RouteData.Values["language"], c1 = ViewContext.RouteData.Values["c1"] == null ? 1 : ViewContext.RouteData.Values["c1"] });
                     Html.RenderPartial("_ECWidget");
                 }
             </div>

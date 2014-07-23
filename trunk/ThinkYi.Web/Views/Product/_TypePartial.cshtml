@@ -33,7 +33,7 @@
                                                 controllerName = "Display";
                                                 break;
                                         }
-                                        <a href="@Url.Action("Index", controllerName, new { language = ViewContext.RouteData.Values["language"], CategoryID = categoryID, ProductTypeID = childTypes[i].ProductTypeID, PageIndex = 0 })">@childTypes[i].Name</a>
+                                        <a href="@Url.Action("Index", controllerName, new { language = ViewContext.RouteData.Values["language"], c1 = categoryID, c2 = childTypes[i].ProductTypeID, c3 = 0 })">@childTypes[i].Name</a>
                                         if (i < count - 1)
                                         {
                                             <span>·</span>

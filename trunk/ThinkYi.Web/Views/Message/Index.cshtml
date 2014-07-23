@@ -1,6 +1,14 @@
-﻿@model List<ThinkYi.Domain.Message>
+﻿@using ThinkYi.Domain
+@model ThinkYi.Web.Models.MessageIndex
 @{
     Layout = null;
+
+    List<Message> messages = Model.Messages;
+
+    int size = Model.Size;
+    int next = Model.Curr + 1;
+    int pre = Model.Curr - 1;
+    int last = Model.Total % size == 0 ? Model.Total / size : Model.Total / size + 1;
 }
 
 <!DOCTYPE html>
@@ -12,23 +20,52 @@
     <title>@ViewBag.Title</title>
     <link href="~/Content/styles/site.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/pager.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/message-index.js")" type="text/javascript"></script>
 </head>
 <body>
+    <input type="hidden" id="lCode" value="@ViewContext.RouteData.Values["language"]" />
+    <input type="hidden" id="Size" value="@Model.Size" />
+    <input type="hidden" id="Total" value="@Model.Total" />
+    <input type="hidden" id="Next" value="@Model.Next" />
+    <input type="hidden" id="Pre" value="@Model.Pre" />
     <div id="container">
         @{
             Html.RenderAction("_Header", "Partial", new { lCode = ViewContext.RouteData.Values["language"] });
         }
         <div id="main">
-            @foreach (var msg in Model)
-            {
-                <div>留言内容：@msg.Text</div>
-                <div>回复内容：@msg.Reply</div>
-                <hr />
-            }
-            <form action="@Url.Action("Add")" method="post">
-                <textarea name="text" style="width:500px;height:100px;"></textarea>
-                <button type="submit">提交</button>
-            </form>
+            <div id=message>
+                @foreach (var msg in messages)
+                {
+                    <div class="division boxBlue" style="overflow: hidden; MARGIN: 0px">
+                        <div class="fl commentMain">
+                            <div class="fl commentAsk">留言</div><span style="color: #f90;">@msg.Client</span>&nbsp;&nbsp;说： <span style="color:#666;">@msg.CreateDate.ToString("yyyy-MM-dd HH:mm:ss")</span>
+                            <div class="fc"></div>
+                            <div class=commentText><pre>@msg.Text</pre></div>
+                        </div>
+                    </div>
+                    <div class=commentReply>
+                        <div class="division item " style="MARGIN: 0px">
+                            <div class="fl commentReply-admin">回复</div><span style="color: #f90;">新创印馆</span>&nbsp;&nbsp;回复： <span style="color:#666;">@Convert.ToDateTime(msg.ReplyDate).ToString("yyyy-MM-dd HH:mm:ss")</span>
+                            <div class="fc"></div>
+                            <div class=commentText><pre>@msg.Reply</pre></div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="pagebox" style="display:none; margin:0px;">
+                【<a href="@Url.Action("Index", "Message", new { language = ViewContext.RouteData.Values["language"], c3 = 1 })" id="gotoFirst">@Model.FirstText</a>】
+                【<a href="@Url.Action("Index", "Message", new { language = ViewContext.RouteData.Values["language"], c3 = pre })" id="gotoPre">@Model.PreText</a>】
+                【<a href="@Url.Action("Index", "Message", new { language = ViewContext.RouteData.Values["language"], c3 = next })" id="gotoNext">@Model.NextText</a>】
+                【<a href="@Url.Action("Index", "Message", new { language = ViewContext.RouteData.Values["language"], c3 = last })" id="gotoLast">@Model.LastText</a>】
+            </div>
+            <div style="background-color:#ccc; height:2px; margin:5px 0px;"></div>
+            <div>
+                名称：<input type="text" id="Client" /> 联系方式：<input type="text" id="Contact"><br />
+                @*标题：<input type="text" name="Title"><br />*@
+                内容：<textarea id="Text" style="width:500px;height:100px;"></textarea><br />
+                <button id="btnSubmit" type="button" style="padding:3px 8px;">提交</button>
+            </div>
         </div>
         @{
             Html.RenderAction("_Footer", "Partial", new { lCode = ViewContext.RouteData.Values["language"] });
@@ -36,4 +73,3 @@
     </div>
 </body>
 </html>
-

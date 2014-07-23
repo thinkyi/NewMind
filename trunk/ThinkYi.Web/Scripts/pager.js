@@ -1,8 +1,9 @@
 ﻿$(document).ready(function () {
+    var size = $("#Size").val();
     var total = $("#Total").val();
     var next = $("#Next").val();
     var pre = $("#Pre").val();
-    if (total > 14) {
+    if (parseInt(total) > parseInt(size)) {
         $(".pagebox").show();
     }
     else {
