@@ -163,3 +163,11 @@ pre{white-space: pre-wrap; word-wrap: break-word;}
 .commentText {color: #111; margin-top: 5px;}
 .commentReply {margin-bottom: 10px;}
 .commentReply-admin {height: 19px; width: 32px; background: url(../images/ask-bg-green.gif); color: #fff; text-align: center; line-height: 19px; margin-right: 5px;}
+
+
+.content_notebook{background:url(../images/bg_note.jpg) no-repeat top center; min-height:250px;}
+.notebook_table{line-height:36px; padding:20px;}
+.ant_notebook{ background:url(../images/29.gif) no-repeat; width:93px; height:30px; line-height:30px; text-align:center; color:#fff; border:none; cursor:pointer; font-size:14px; font-weight:bold;}
+.notebook_table .note_textarea{padding:10px; color:#666;background:#f1f1f1; background:#F3FDD5;border:1px solid #89C113;}
+.notebook_table input{color:#666; padding:0 5px; background:#F3FDD5;border:1px solid #89C113; height:20px; line-height:20px;}
+.notebook_ant_box{margin:10px auto; text-align:center;}

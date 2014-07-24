@@ -157,6 +157,7 @@
     <Compile Include="Models\PartialPType.cs" />
     <Compile Include="Models\PartialFooter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Content\images\29.gif" />
     <Content Include="Content\images\admin\image_ico.png" />
     <Content Include="Content\images\admin\temp.png" />
     <Content Include="Content\images\ask-bg-green.gif" />
@@ -166,6 +167,7 @@
     <Content Include="Content\images\bank3.jpg" />
     <Content Include="Content\images\bank4.jpg" />
     <Content Include="Content\images\bg1.jpg" />
+    <Content Include="Content\images\bg_note.jpg" />
     <Content Include="Content\images\big5_txt.png" />
     <Content Include="Content\images\c1.png" />
     <Content Include="Content\images\c2.png" />
