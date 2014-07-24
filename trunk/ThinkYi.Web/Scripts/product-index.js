@@ -44,6 +44,6 @@
                 controllerName = "Display";
                 break;
         }
-        window.location.href = "/" + lCode + "/" + controllerName + "/Detail/" + categoryID + "/" + pid;
+        window.location.href = "/" + lCode + "/" + controllerName + "/Detail/" + pid;
     });
 });

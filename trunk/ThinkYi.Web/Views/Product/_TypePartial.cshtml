@@ -13,33 +13,33 @@
                         int ptid = pt.ProductTypeID;
                         var childTypes = data.Where(p => p.ParentTypeID == ptid).ToList();
                         int count = childTypes.Count;
+
+                        int categoryID = pt.CategoryID;
+                        string controllerName = "Display";
+                        switch (categoryID)
+                        {
+                            case 2:
+                                controllerName = "Advert";
+                                break;
+                            case 3:
+                                controllerName = "Leaflet";
+                                break;
+                            default:
+                                controllerName = "Display";
+                                break;
+                        }
                         <li>
-                            <a href="@Url.Action("Index", "Display", new { language = ViewContext.RouteData.Values["language"], ProductTypeID = pt.ProductTypeID, PageIndex = 0 })">@pt.Name</a>
+                            <a href="@Url.Action("Index", controllerName, new { language = ViewContext.RouteData.Values["language"], c1 = categoryID, c2 = pt.ProductTypeID, c3 = 0 })">@pt.Name</a>
                             <ul>
                                 <li>
                                     @for (int i = 0; i < count; i++)
                                     {
-                                        int categoryID =childTypes[i].CategoryID;
-                                        string controllerName = "Display";
-                                        switch (categoryID)
-                                        {
-                                            case 2:
-                                                controllerName = "Advert";
-                                                break;
-                                            case 3:
-                                                controllerName = "Leaflet";
-                                                break;
-                                            default:
-                                                controllerName = "Display";
-                                                break;
-                                        }
                                         <a href="@Url.Action("Index", controllerName, new { language = ViewContext.RouteData.Values["language"], c1 = categoryID, c2 = childTypes[i].ProductTypeID, c3 = 0 })">@childTypes[i].Name</a>
                                         if (i < count - 1)
                                         {
                                             <span>·</span>
                                         }
                                     }
-
                                 </li>
                             </ul>
                         </li>

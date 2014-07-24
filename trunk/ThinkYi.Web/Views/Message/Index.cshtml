@@ -30,60 +30,62 @@
     <input type="hidden" id="Next" value="@Model.Next" />
     <input type="hidden" id="Pre" value="@Model.Pre" />
     <div id="container">
-        <div class="top">
-            <h3>@ViewBag.LongCaption</h3>
-        </div>
         @{
             Html.RenderAction("_Header", "Partial", new { lCode = ViewContext.RouteData.Values["language"] });
         }
         <div id="main">
-            <div id=message>
-                @foreach (var msg in messages)
-                {
-                    <div class="division boxBlue" style="overflow: hidden; MARGIN: 0px">
-                        <div class="fl commentMain">
-                            <div class="fl commentAsk">留言</div><span style="color: #f90;">@msg.Client</span>&nbsp;&nbsp;说： <span style="color:#666;">@msg.CreateDate.ToString("yyyy-MM-dd HH:mm:ss")</span>
-                            <div class="fc"></div>
-                            <div class=commentText><pre>@msg.Text</pre></div>
+            <div class="lcbox">
+                <div class="top">
+                    <h3>您现在的位置是：首页 > 客户留言</h3>
+                </div>
+                <div id=message>
+                    @foreach (var msg in messages)
+                    {
+                        <div class="division boxBlue" style="overflow: hidden; MARGIN: 0px">
+                            <div class="fl commentMain">
+                                <div class="fl commentAsk">留言</div><span style="color: #f90;">@msg.Client</span>&nbsp;&nbsp;说： <span style="color:#666;">@msg.CreateDate.ToString("yyyy-MM-dd HH:mm:ss")</span>
+                                <div class="fc"></div>
+                                <div class=commentText><pre>@msg.Text</pre></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class=commentReply>
-                        <div class="division item " style="MARGIN: 0px">
-                            <div class="fl commentReply-admin">回复</div><span style="color: #f90;">新创印馆</span>&nbsp;&nbsp;回复： <span style="color:#666;">@Convert.ToDateTime(msg.ReplyDate).ToString("yyyy-MM-dd HH:mm:ss")</span>
-                            <div class="fc"></div>
-                            <div class=commentText><pre>@msg.Reply</pre></div>
+                        <div class=commentReply>
+                            <div class="division item " style="MARGIN: 0px">
+                                <div class="fl commentReply-admin">回复</div><span style="color: #f90;">新创印馆</span>&nbsp;&nbsp;回复： <span style="color:#666;">@Convert.ToDateTime(msg.ReplyDate).ToString("yyyy-MM-dd HH:mm:ss")</span>
+                                <div class="fc"></div>
+                                <div class=commentText><pre>@msg.Reply</pre></div>
+                            </div>
                         </div>
-                    </div>
-                }
-            </div>
-            <div class="pagebox" style="display:none; margin:0px;">
-                【<a href="@Url.Action("Index", "Message", new { language = ViewContext.RouteData.Values["language"], c3 = 1 })" id="gotoFirst">@Model.FirstText</a>】
-                【<a href="@Url.Action("Index", "Message", new { language = ViewContext.RouteData.Values["language"], c3 = pre })" id="gotoPre">@Model.PreText</a>】
-                【<a href="@Url.Action("Index", "Message", new { language = ViewContext.RouteData.Values["language"], c3 = next })" id="gotoNext">@Model.NextText</a>】
-                【<a href="@Url.Action("Index", "Message", new { language = ViewContext.RouteData.Values["language"], c3 = last })" id="gotoLast">@Model.LastText</a>】
-            </div>
-            <div style="background-color:#ccc; height:2px; margin:5px 0px;"></div>
-            <div class="neicontent">
-                <div style="width:100%; background-color:#fff;">
-                    <div class="content_notebook">
-                        <table border="0" cellspacing="0" cellpadding="0" class="notebook_table">
-                            <tr>
-                                <td width="15%" align="right" valign="top">名称：</td>
-                                <td width="30%"><input name="i_name" type="text" class="input001" id="i_name" /></td>
-                                <td width="10%" align="right" valign="top">联系方式：</td>
-                                <td><input type="text" class="input001" id="Contact" /></td>
-                                @*标题：<input type="text" name="Title"><br />*@
-                            </tr>
-                            <tr>
-                                <td align="right" valign="top"><span class="font_red">*</span>内容：</td>
-                                <td colspan="3">
-                                    <label for="textarea"></label>
-                                    <textarea class="note_textarea" cols="60" rows="7" id="Text"></textarea>
-                                </td>
-                            </tr>
-                        </table>
-                        <div class="notebook_ant_box">
-                            <button id="btnSubmit" type="button" class="ant_notebook">提 交</button>
+                    }
+                </div>
+                <div class="pagebox" style="display:none; margin:0px;">
+                    【<a href="@Url.Action("Index", "Message", new { language = ViewContext.RouteData.Values["language"], c3 = 1 })" id="gotoFirst">@Model.FirstText</a>】
+                    【<a href="@Url.Action("Index", "Message", new { language = ViewContext.RouteData.Values["language"], c3 = pre })" id="gotoPre">@Model.PreText</a>】
+                    【<a href="@Url.Action("Index", "Message", new { language = ViewContext.RouteData.Values["language"], c3 = next })" id="gotoNext">@Model.NextText</a>】
+                    【<a href="@Url.Action("Index", "Message", new { language = ViewContext.RouteData.Values["language"], c3 = last })" id="gotoLast">@Model.LastText</a>】
+                </div>
+                <div style="background-color:#ccc; height:2px; margin:5px 0px;"></div>
+                <div class="neicontent">
+                    <div style="width:100%; background-color:#fff;">
+                        <div class="content_notebook">
+                            <table border="0" cellspacing="0" cellpadding="0" class="notebook_table">
+                                <tr>
+                                    <td width="15%" align="right" valign="top"><span style="color:red;">*</span>客户名称：</td>
+                                    <td width="30%"><input name="Client" type="text" class="input001" id="Client" /></td>
+                                    <td width="10%" align="right" valign="top">联系方式：</td>
+                                    <td><input type="text" class="input001" id="Contact" /></td>
+                                    @*标题：<input type="text" name="Title"><br />*@
+                                </tr>
+                                <tr>
+                                    <td align="right" valign="top"><span style="color:red;">*</span>留言内容：</td>
+                                    <td colspan="3">
+                                        <label for="textarea"></label>
+                                        <textarea class="note_textarea" cols="60" rows="7" id="Text"></textarea>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="notebook_ant_box">
+                                <button id="btnSubmit" type="button" class="ant_notebook">提 交</button>
+                            </div>
                         </div>
                     </div>
                 </div>

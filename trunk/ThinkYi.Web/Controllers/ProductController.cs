@@ -164,11 +164,16 @@ namespace ThinkYi.Web.Controllers
             return View("~/Views/Product/Index.cshtml", pi);
         }
 
-        public ActionResult Detail(int c1, int id)
+        public ActionResult Detail(int id)
         {
-            int categoryID = c1;
+
+            ProductDetail pd = new ProductDetail();
+            pd.Product = ProductService.GetProducts().Include("ProductType").Where(p => p.ProductID == id).First();
+            pd.NextProduct = ProductService.GetProducts().Where(p => p.ProductType.LanguageID == pd.Product.ProductType.LanguageID && p.ProductType.CategoryID == pd.Product.ProductType.CategoryID && p.ProductTypeID == pd.Product.ProductTypeID && p.ProductID < pd.Product.ProductID).OrderByDescending(p => p.ProductID).FirstOrDefault();
+            pd.PreProduct = ProductService.GetProducts().Where(p => p.ProductType.LanguageID == pd.Product.ProductType.LanguageID && p.ProductType.CategoryID == pd.Product.ProductType.CategoryID && p.ProductTypeID == pd.Product.ProductTypeID && p.ProductID > pd.Product.ProductID).OrderBy(p => p.ProductID).FirstOrDefault();
+
             string code = "display";
-            switch (categoryID)
+            switch (pd.Product.ProductType.CategoryID)
             {
                 case 2:
                     code = "advert";
@@ -181,15 +186,37 @@ namespace ThinkYi.Web.Controllers
                     break;
             }
 
-            ProductDetail pd = new ProductDetail();
-            pd.Product = ProductService.GetProducts().Include("ProductType").Where(p => p.ProductID == id).First();
-            var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.LanguageID == pd.Product.ProductType.LanguageID && (i.Code.Equals(code) || i.Code.Equals("ntprefix") || i.Code.Equals("wstitle"))).ToList();
+            if (pd.NextProduct == null)
+            {
+                pd.NextProduct = ProductService.GetProducts().Where(p => p.ProductType.LanguageID == pd.Product.ProductType.LanguageID && p.ProductType.CategoryID == pd.Product.ProductType.CategoryID && p.ProductTypeID > pd.Product.ProductTypeID).OrderBy(p => p.ProductTypeID).ThenByDescending(p => p.ProductID).FirstOrDefault();
+            }
+            if (pd.PreProduct == null)
+            {
+                pd.PreProduct = ProductService.GetProducts().Where(p => p.ProductType.LanguageID == pd.Product.ProductType.LanguageID && p.ProductType.CategoryID == pd.Product.ProductType.CategoryID && p.ProductTypeID < pd.Product.ProductTypeID).OrderBy(p => p.ProductTypeID).ThenBy(p => p.ProductID).FirstOrDefault();
+            }
+            var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.LanguageID == pd.Product.ProductType.LanguageID && (i.Code.Equals(code) || i.I18NType.Code.Equals("pager") || i.Code.Equals("ntprefix") || i.Code.Equals("wstitle"))).ToList();
             var data = i18ns.OrderBy(i => i.Code).ToList();
             ViewBag.Title = data[0].Name + " - " + data[2].Name;
             ViewBag.LongCaption = data[1].Name + " > " + data[0].Name;
             ViewBag.ShortCaption = data[0].Name;
             ViewBag.Remark = data[0].Remark;
             pd.Post = PostService.GetPosts().Where(i => i.Language.LanguageID == pd.Product.ProductType.LanguageID && i.Code.Equals(code)).FirstOrDefault();
+
+            var data2 = i18ns.Where(i => i.I18NType.Code.Equals("pager")).ToList();
+            foreach (var item in data2)
+            {
+                string pText = item.Name;
+                switch (item.Code)
+                {
+                    case "preproduct":
+                        pd.PreText = pText;
+                        break;
+                    case "nextproduct":
+                        pd.NextText = pText;
+                        break;
+                }
+            }
+
             return View("~/Views/Product/Detail.cshtml", pd);
         }
     }

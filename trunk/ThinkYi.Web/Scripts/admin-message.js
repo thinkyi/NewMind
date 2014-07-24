@@ -15,9 +15,9 @@ jQuery(document).ready(function () {
    		            { name: 'Contact', index: 'Contact', width: 80 },
    		            { name: 'IP', index: 'IP', width: 80 },
                     //{ name: 'Title', index: 'Title' },
-                    { name: 'Text', index: 'Text', editable: true, edittype: 'textarea', editoptions: { rows: "5", cols: "85" } },
+                    { name: 'Text', index: 'Text', editable: true, edittype: 'textarea', editoptions: { rows: "5", cols: "80" } },
                     { name: 'CreateDate', index: 'CreateDate', width: 85 },
-                    { name: 'Reply', index: 'Reply', editable: true, edittype: 'textarea', editoptions: { rows: "5", cols: "85" } },
+                    { name: 'Reply', index: 'Reply', editable: true, edittype: 'textarea', editoptions: { rows: "5", cols: "80" } },
                     { name: 'ReplyDate', index: 'ReplyDate', width: 85 }
         ],
         height: parent.g_layoutCenterHeight - 86,

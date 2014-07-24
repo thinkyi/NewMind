@@ -6,6 +6,49 @@
 
     Post post = Model.Post;
     Product product = Model.Product;
+    Product preProduct = Model.PreProduct;
+    Product nextProduct = Model.NextProduct;
+
+    int preCategoryID = 0;
+    int nextCategoryID = 0;
+    int preID = 0;
+    int nextID = 0;
+    string preCName = "Display";
+    string nextCName = "Display";
+    if (preProduct != null)
+    {
+        preID = preProduct.ProductID;
+        preCategoryID = preProduct.ProductType.CategoryID;
+        switch (preCategoryID)
+        {
+            case 2:
+                preCName = "Advert";
+                break;
+            case 3:
+                preCName = "Leaflet";
+                break;
+            default:
+                preCName = "Display";
+                break;
+        }
+    }
+    if (nextProduct != null)
+    {
+        nextID = nextProduct.ProductID;
+        nextCategoryID = nextProduct.ProductType.CategoryID;
+        switch (nextCategoryID)
+        {
+            case 2:
+                nextCName = "Advert";
+                break;
+            case 3:
+                nextCName = "Leaflet";
+                break;
+            default:
+                nextCName = "Display";
+                break;
+        }
+    }
 }
 @section javascript{
     <script src="@Url.Content("~/Scripts/product-detail.js")" type="text/javascript"></script>
@@ -15,8 +58,6 @@
         <img src="@post.BannerPic" alt="@post.Code" width="995" height="204">
     </div>
 }
-<input type="hidden" id="ProductTypeID" value="@product.ProductTypeID" />
-<input type="hidden" id="ParentTypeID" value="@product.ProductType.ParentTypeID" />
 <div class="rightbar">
     <div class="neibox">
         <div class="top">
@@ -24,19 +65,25 @@
         </div>
         <div class="mid">
             @*<div class="navbox" style="background:url(@post.TitlePic) no-repeat left center;">
-                <b>
-                    @ViewBag.ShortCaption
-                    <br />
-                </b>
-                <b class="c_hui">
-                    @ViewBag.Remark
-                </b>
-            </div>*@
+                    <b>
+                        @ViewBag.ShortCaption
+                        <br />
+                    </b>
+                    <b class="c_hui">
+                        @ViewBag.Remark
+                    </b>
+                </div>*@
             <h3 class="title productTitle">@product.Name</h3>
             <div class="neicontent">
                 @Html.Raw(product.Text)
             </div>
         </div>
         <div class="di"></div>
+        <div class="pagebox">
+            <input id="preID" type="hidden" value="@preID" />
+            <input id="nextID" type="hidden" value="@nextID" />
+            【<a href="@Url.Action("Detail", preCName, new { language = ViewContext.RouteData.Values["language"], id = preID })" id="gotoPre">@Model.PreText</a>】
+            【<a href="@Url.Action("Detail", nextCName, new { language = ViewContext.RouteData.Values["language"], id = nextID })" id="gotoNext">@Model.NextText</a>】
+        </div>
     </div>
 </div>

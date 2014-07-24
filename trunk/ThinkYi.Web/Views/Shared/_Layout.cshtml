@@ -18,7 +18,21 @@
         <div id="main">
             <div class="leftbar">
                 @{
-                    Html.RenderAction("_TypePartial", "Product", new { lCode = ViewContext.RouteData.Values["language"], c1 = ViewContext.RouteData.Values["c1"] == null ? 1 : ViewContext.RouteData.Values["c1"] });
+                    string cName = ViewContext.RouteData.Values["controller"].ToString();
+                    int cid = 1;
+                    switch (cName.ToLower())
+                    {
+                        case "advert":
+                            cid = 2;
+                            break;
+                        case "leaflet":
+                            cid = 3;
+                            break;
+                        default:
+                            cid = 1;
+                            break;
+                    }
+                    Html.RenderAction("_TypePartial", "Product", new { lCode = ViewContext.RouteData.Values["language"], c1 = cid });
                     Html.RenderPartial("_ECWidget");
                 }
             </div>
