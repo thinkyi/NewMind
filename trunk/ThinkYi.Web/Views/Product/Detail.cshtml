@@ -51,7 +51,7 @@
     }
 }
 @section javascript{
-    <script src="@Url.Content("~/Scripts/product-detail.js")" type="text/javascript"></script>
+    @*<script src="@Url.Content("~/Scripts/product-detail.js")" type="text/javascript"></script>*@
 }
 @section banner{
     <div class="banner1">
@@ -82,8 +82,20 @@
         <div class="pagebox">
             <input id="preID" type="hidden" value="@preID" />
             <input id="nextID" type="hidden" value="@nextID" />
-            【<a href="@Url.Action("Detail", preCName, new { language = ViewContext.RouteData.Values["language"], id = preID })" id="gotoPre">@Model.PreText</a>】
-            【<a href="@Url.Action("Detail", nextCName, new { language = ViewContext.RouteData.Values["language"], id = nextID })" id="gotoNext">@Model.NextText</a>】
+            【<a disabled="disabled" class="disabled" href="@Url.Action("Detail", preCName, new { language = ViewContext.RouteData.Values["language"], id = preID })" id="gotoPre">@Model.PreText</a>】
+            【<a disabled="disabled" class="disabled" href="@Url.Action("Detail", nextCName, new { language = ViewContext.RouteData.Values["language"], id = nextID })" id="gotoNext">@Model.NextText</a>】
         </div>
+        <script type="text/javascript">
+            var preID = $("#preID").val();
+            var nextID = $("#nextID").val();
+            if (parseInt(preID)) {
+                $("#gotoPre").removeAttr("disabled", "disabled");
+                $("#gotoPre").removeClass("disabled");
+            }
+            if (parseInt(nextID)) {
+                $("#gotoNext").removeAttr("disabled", "disabled");
+                $("#gotoNext").removeClass("disabled");
+            }
+        </script>
     </div>
 </div>
