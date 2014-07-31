@@ -135,6 +135,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\CultureController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -147,7 +148,9 @@
     <Compile Include="IoC\CustomControllerActivator.cs" />
     <Compile Include="IoC\UnityControllerFactory .cs" />
     <Compile Include="IoC\UnityDependencyResolver.cs" />
+    <Compile Include="Models\CultureDetail.cs" />
     <Compile Include="Models\InformationDetail.cs" />
+    <Compile Include="Models\CultureIndex.cs" />
     <Compile Include="Models\MessageIndex.cs" />
     <Compile Include="Models\ProductDetail.cs" />
     <Compile Include="Models\InformationIndex.cs" />
@@ -183,10 +186,15 @@
     <Content Include="Content\images\icon_nav.jpg" />
     <Content Include="Content\images\icon_news.jpg" />
     <Content Include="Content\images\jt.png" />
+    <Content Include="Content\images\left_contact.jpg" />
+    <Content Include="Content\images\listbg.jpg" />
     <Content Include="Content\images\lmbg3.png" />
     <Content Include="Content\images\lmdi3.png" />
     <Content Include="Content\images\zfb.jpg" />
+    <Content Include="Scripts\admin-culture.js" />
+    <Content Include="Scripts\admin-cultureedit.js" />
     <Content Include="Scripts\admin-message.js" />
+    <Content Include="Scripts\admin-cultureadd.js" />
     <Content Include="Scripts\admin-titlepic.js" />
     <Content Include="Scripts\admin-information.js" />
     <Content Include="Scripts\admin-informationadd.js" />
@@ -633,7 +641,12 @@
     <Content Include="Views\Leaflet\Index.cshtml" />
     <Content Include="Views\Advert\Index.cshtml" />
     <Content Include="Views\Admin\Message.cshtml" />
+    <Content Include="Views\Shared\_LeftMenu.cshtml" />
     <Content Include="Views\Culture\Index.cshtml" />
+    <Content Include="Views\Culture\Detail.cshtml" />
+    <Content Include="Views\Admin\Culture.cshtml" />
+    <Content Include="Views\Admin\CultureAdd.cshtml" />
+    <Content Include="Views\Admin\CultureEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

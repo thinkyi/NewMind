@@ -171,3 +171,8 @@ pre{white-space: pre-wrap; word-wrap: break-word;}
 .notebook_table .note_textarea{padding:10px; color:#666;background:#f1f1f1; background:#F3FDD5;border:1px solid #89C113;}
 .notebook_table input{color:#666; padding:0 5px; background:#F3FDD5;border:1px solid #89C113; height:20px; line-height:20px;}
 .notebook_ant_box{margin:10px auto; text-align:center;}
+
+.lm_list{ padding-top:10px;}
+.lm_list ul li{background:url(../images/listbg.jpg) no-repeat; margin-bottom:10px; width:186px; height:29px; line-height:29px; color:#fff;}
+.lm_list ul li a{padding-left:30px; font-weight:bold; color:#fff; text-decoration:none;}
+.lm_list ul li a:hover{color:#F90; text-decoration:none;}

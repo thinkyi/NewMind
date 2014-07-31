@@ -22,7 +22,7 @@ namespace ThinkYi.Web.Controllers
         [Dependency]
         public IPostService PostService { get; set; }
 
-        public ActionResult _TypePartial(string lCode, int c1)
+        public ActionResult _TypePartial(string language, int c1)
         {
             int categoryID = c1;
             ViewContext vc = new ViewContext();
@@ -31,16 +31,16 @@ namespace ThinkYi.Web.Controllers
             switch (categoryID)
             {
                 case 2:
-                    title = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(lCode) && i.Code.Equals("atype")).FirstOrDefault().Name;
+                    title = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(language) && i.Code.Equals("atype")).FirstOrDefault().Name;
                     break;
                 case 3:
-                    title = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(lCode) && i.Code.Equals("ltype")).FirstOrDefault().Name;
+                    title = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(language) && i.Code.Equals("ltype")).FirstOrDefault().Name;
                     break;
                 default:
-                    title = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(lCode) && i.Code.Equals("ptype")).FirstOrDefault().Name;
+                    title = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(language) && i.Code.Equals("ptype")).FirstOrDefault().Name;
                     break;
             }
-            ppt.ProductTypes = ProductTypeService.GetProductTypes(lCode).Where(p => p.CategoryID == categoryID).ToList();
+            ppt.ProductTypes = ProductTypeService.GetProductTypes(language).Where(p => p.CategoryID == categoryID).ToList();
             ppt.title = title;
             return PartialView(ppt);
         }

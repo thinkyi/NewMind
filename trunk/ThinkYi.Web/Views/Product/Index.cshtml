@@ -70,10 +70,10 @@
             </ul>
             <div style="clear:both;"></div>
             <div class="pagebox" style="display:none;">
-                【<a href="@Url.Action("Index", cName, new { language = ViewContext.RouteData.Values["language"], c1 = categoryID, c2 = ViewContext.RouteData.Values["c2"], c3 = 1 })" id="gotoFirst">@Model.FirstText</a>】
-                【<a href="@Url.Action("Index", cName, new { language = ViewContext.RouteData.Values["language"], c1 = categoryID, c2 = ViewContext.RouteData.Values["c2"], c3 = pre })" id="gotoPre">@Model.PreText</a>】
-                【<a href="@Url.Action("Index", cName, new { language = ViewContext.RouteData.Values["language"], c1 = categoryID, c2 = ViewContext.RouteData.Values["c2"], c3 = next })" id="gotoNext">@Model.NextText</a>】
-                【<a href="@Url.Action("Index", cName, new { language = ViewContext.RouteData.Values["language"], c1 = categoryID, c2 = ViewContext.RouteData.Values["c2"], c3 = last })" id="gotoLast">@Model.LastText</a>】
+                【<a href="@Url.Action("Index", cName, new { c1 = categoryID, c3 = 1 })" id="gotoFirst">@Model.FirstText</a>】
+                【<a href="@Url.Action("Index", cName, new { c1 = categoryID, c3 = pre })" id="gotoPre">@Model.PreText</a>】
+                【<a href="@Url.Action("Index", cName, new { c1 = categoryID, c3 = next })" id="gotoNext">@Model.NextText</a>】
+                【<a href="@Url.Action("Index", cName, new { c1 = categoryID, c3 = last })" id="gotoLast">@Model.LastText</a>】
             </div>
         </div>
         <div class="di"></div>

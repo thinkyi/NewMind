@@ -55,6 +55,7 @@
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="NewMindContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CultureRepository.cs" />
     <Compile Include="Repositories\MessageRepository.cs" />
     <Compile Include="Repositories\LanguageRepository.cs" />
     <Compile Include="Repositories\I18NRepository.cs" />

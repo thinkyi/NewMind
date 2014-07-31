@@ -17,19 +17,26 @@ namespace ThinkYi.Web.Controllers
         [Dependency]
         public IPostService PostService { get; set; }
 
-        public ActionResult _Header(string lCode)
+        public ActionResult _Header(string language)
         {
-            var menus = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(lCode) && i.I18NType.Code.Equals("menu") && !i.IsHidden).OrderBy(i => i.OrderID).ToList();
+            var menus = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(language) && i.I18NType.Code.Equals("menu") && !i.IsHidden).OrderBy(i => i.OrderID).ToList();
             return PartialView(menus);
         }
 
-        public ActionResult _Footer(string lCode)
+        public ActionResult _Footer(string language)
         {
             PartialFooter pf = new PartialFooter();
-            var menus = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(lCode) && i.I18NType.Code.Equals("menu") && !i.IsHidden).OrderBy(i => i.OrderID).ToList();
+            var menus = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(language) && i.I18NType.Code.Equals("menu") && !i.IsHidden).OrderBy(i => i.OrderID).ToList();
             pf.Menus = menus;
-            pf.Footer = PostService.GetPosts().Where(i => i.Language.Code.Equals(lCode) && i.Code.Equals("footer")).FirstOrDefault().Text;
+            pf.Footer = PostService.GetPosts().Where(i => i.Language.Code.Equals(language) && i.Code.Equals("footer")).FirstOrDefault().Text;
             return PartialView(pf);
         }
+
+        public ActionResult _LeftMenu(string language)
+        {
+            List<I18N> i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(language) && (i.Code.Equals("about") || i.Code.Equals("brief") || i.Code.Equals("culture") || i.Code.Equals("recuit"))).OrderBy(i => i.Code).ToList();
+            return PartialView(i18ns);
+        }
+
     }
 }

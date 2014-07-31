@@ -51,19 +51,19 @@
                                 categoryID = 1;
                                 break;
                         }
-                        <li><a href="@Url.Action("Index", Model[i].Code, new { language = ViewContext.RouteData.Values["language"], c1 = categoryID, c2 = 0, c3 = 0 })">@Model[i].Name</a></li>
+                        <li><a href="@Url.Action("Index", Model[i].Code, new { c1 = categoryID, c2 = 0, c3 = 0 })">@Model[i].Name</a></li>
                     }
                     else if (code.Equals("information"))
                     {
-                        <li><a href="@Url.Action("Index", Model[i].Code, new { language = ViewContext.RouteData.Values["language"], c1= 1, c2 = 14, c3 = 0 })">@Model[i].Name</a></li>
+                        <li><a href="@Url.Action("Index", Model[i].Code, new { c1= 1, c2 = 14, c3 = 0 })">@Model[i].Name</a></li>
                     }
                     else if (code.Equals("message"))
                     {
-                        <li><a href="@Url.Action("Index", Model[i].Code, new { language = ViewContext.RouteData.Values["language"], c1 = 1, c2 = 15, c3 = 0 })">@Model[i].Name</a></li>
+                        <li><a href="@Url.Action("Index", Model[i].Code, new { c1 = 1, c2 = 15, c3 = 0 })">@Model[i].Name</a></li>
                     }
                     else
                     {
-                        <li><a href="@Url.Action("Index", Model[i].Code, new { language = ViewContext.RouteData.Values["language"]})">@Model[i].Name</a></li>
+                        <li><a href="@Url.Action("Index", Model[i].Code)">@Model[i].Name</a></li>
                     }
                     if (i < count - 1)
                     {

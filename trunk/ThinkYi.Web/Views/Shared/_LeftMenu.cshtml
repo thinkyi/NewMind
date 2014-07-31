@@ -1,0 +1,28 @@
+﻿@using ThinkYi.Domain
+@model List<I18N>
+
+<div class="probox">
+    <div class="protop"><h3>@Model[1].Name</h3></div>
+    <div class="promid">
+        <div class="lm_list">
+            <ul>
+                <li>
+                    <a href="@Url.Action("Index", "About")">@Model[0].Name</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Culture", new { c2=3, c3=0 })">@Model[2].Name</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Recuit")">@Model[3].Name</a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <img src="~/Content/images/left_contact.jpg" width="186" height="48" /> 联系人：马经理     <br />
+            电话：0769-3321 8944 <br />
+            传真：0769-8275 0856<br />
+            QQ：1750581057   2403374632   283927870<br />
+            地址:东莞市长安镇厦岗福海路华盛大厦五楼 <br />
+        </div>
+    </div>
+</div>

@@ -11,10 +11,10 @@ using ThinkYi.Web.Models;
 
 namespace ThinkYi.Web.Controllers
 {
-    public class InformationController : Controller
+    public class CultureController : Controller
     {
         [Dependency]
-        public IInformationService InformationService { get; set; }
+        public ICultureService CultureService { get; set; }
         [Dependency]
         public II18NService I18NService { get; set; }
         [Dependency]
@@ -25,9 +25,9 @@ namespace ThinkYi.Web.Controllers
             int pageSize = c2;
             int pageIndex = c3;
             pageIndex = pageIndex == 0 ? 1 : pageIndex;
-            InformationIndex ii = new InformationIndex();
-            ii.Size = pageSize;
-            var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(language) && (i.I18NType.Code.Equals("pager") || i.Code.Equals("information") || i.Code.Equals("ntprefix") || i.Code.Equals("wstitle"))).ToList();
+            CultureIndex ci = new CultureIndex();
+            ci.Size = pageSize;
+            var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.Language.Code.Equals(language) && (i.I18NType.Code.Equals("pager") || i.Code.Equals("culture") || i.Code.Equals("ntprefix") || i.Code.Equals("wstitle"))).ToList();
             var data1 = i18ns.Where(i => !i.I18NType.Code.Equals("pager")).OrderBy(i => i.Code).ToList();
             ViewBag.Title = data1[0].Name + " - " + data1[2].Name;
             ViewBag.LongCaption = data1[1].Name + " > " + data1[0].Name;
@@ -41,61 +41,61 @@ namespace ThinkYi.Web.Controllers
                 switch (item.Code)
                 {
                     case "firstpage":
-                        ii.FirstText = pText;
+                        ci.FirstText = pText;
                         break;
                     case "prepage":
-                        ii.PreText = pText;
+                        ci.PreText = pText;
                         break;
                     case "nextpage":
-                        ii.NextText = pText;
+                        ci.NextText = pText;
                         break;
                     case "lastpage":
-                        ii.LastText = pText;
+                        ci.LastText = pText;
                         break;
                 }
             }
-            ii.Post = PostService.GetPosts().Where(p => p.Language.Code.Equals(language) && p.Code.Equals("information")).FirstOrDefault();
-            IQueryable<Information> qi = InformationService.GetInformations().Where(i => i.Language.Code.Equals(language)).OrderByDescending(i => i.Date);
+            ci.Post = PostService.GetPosts().Where(p => p.Language.Code.Equals(language) && p.Code.Equals("culture")).FirstOrDefault();
+            IQueryable<Culture> qi = CultureService.GetCultures().Where(c => c.Language.Code.Equals(language)).OrderByDescending(c => c.CultureID);
             int total = qi.Count();
-            ii.Curr = pageIndex;
+            ci.Curr = pageIndex;
             if (total > pageSize)
             {
                 int totalPage = total % pageSize == 0 ? total / pageSize : total / pageSize + 1;
                 if (totalPage > pageIndex)
                 {
-                    ii.Next = true;
+                    ci.Next = true;
                 }
                 else
                 {
-                    ii.Next = false;
+                    ci.Next = false;
                 }
 
                 if (pageIndex > 1)
                 {
-                    ii.Pre = true;
+                    ci.Pre = true;
                 }
                 else
                 {
-                    ii.Pre = false;
+                    ci.Pre = false;
                 }
             }
-            ii.Total = total;
-            ii.Informations = qi.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
-            return View(ii);
+            ci.Total = total;
+            ci.Cultures = qi.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+            return View(ci);
         }
 
         public ActionResult Detail(int id)
         {
-            InformationDetail idetail = new InformationDetail();
-            idetail.Information = InformationService.GetInformations().Where(i => i.InformationID == id).First();
-            var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.LanguageID == idetail.Information.LanguageID && (i.Code.Equals("information") || i.Code.Equals("ntprefix") || i.Code.Equals("wstitle"))).ToList();
+            CultureDetail cd = new CultureDetail();
+            cd.Culture = CultureService.GetCultures().Where(c => c.CultureID == id).First();
+            var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.LanguageID == cd.Culture.LanguageID && (i.Code.Equals("culture") || i.Code.Equals("ntprefix") || i.Code.Equals("wstitle"))).ToList();
             var data = i18ns.OrderBy(i => i.Code).ToList();
             ViewBag.Title = data[0].Name + " - " + data[2].Name;
             ViewBag.LongCaption = data[1].Name + " > " + data[0].Name;
             ViewBag.ShortCaption = data[0].Name;
             ViewBag.Remark = data[0].Remark;
-            idetail.Post = PostService.GetPosts().Where(p => p.Language.LanguageID == idetail.Information.LanguageID && p.Code.Equals("information")).FirstOrDefault();
-            return View(idetail);
+            cd.Post = PostService.GetPosts().Where(c => c.Language.LanguageID == cd.Culture.LanguageID && c.Code.Equals("culture")).FirstOrDefault();
+            return View(cd);
         }
     }
 }

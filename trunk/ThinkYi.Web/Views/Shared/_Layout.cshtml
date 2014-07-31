@@ -21,11 +21,7 @@
                     string cName = ViewContext.RouteData.Values["controller"].ToString().ToLower();
                     if (cName.Equals("recuit") || cName.Equals("about") || cName.Equals("culture"))
                     {
-                        <ul>
-                            <li>关于新创</li>
-                            <li>招聘信息</li>
-                            <li>企业文化</li>
-                        </ul>
+                        Html.RenderAction("_LeftMenu", "Partial");
                     }
                     else
                     {
@@ -42,9 +38,9 @@
                                 cid = 1;
                                 break;
                         }
-                        Html.RenderAction("_TypePartial", "Product", new { lCode = ViewContext.RouteData.Values["language"], c1 = cid });
-                        Html.RenderPartial("_ECWidget");
+                        Html.RenderAction("_TypePartial", "Product", new { c1 = cid });
                     }
+                    Html.RenderPartial("_ECWidget");
                 }
             </div>
             @RenderBody()
@@ -52,7 +48,7 @@
         </div>
         @RenderSection("cooperation", false)
         @{
-            Html.RenderAction("_Footer", "Partial", new { lCode = ViewContext.RouteData.Values["language"] });
+            Html.RenderAction("_Footer", "Partial");
         }
     </div>
 </body>

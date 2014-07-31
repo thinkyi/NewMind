@@ -57,7 +57,9 @@ namespace ThinkYi.Web
                 .RegisterType<IMessageRepository, MessageRepository>(new HttpContextLifetimeManager<IMessageRepository>())
                 .RegisterType<IMessageService, MessageService>(new HttpContextLifetimeManager<IMessageService>())
                 .RegisterType<IUserRepository, UserRepository>(new HttpContextLifetimeManager<IUserRepository>())
-                .RegisterType<IUserService, UserService>(new HttpContextLifetimeManager<IUserService>());
+                .RegisterType<IUserService, UserService>(new HttpContextLifetimeManager<IUserService>())
+                .RegisterType<ICultureRepository, CultureRepository>(new HttpContextLifetimeManager<ICultureRepository>())
+                .RegisterType<ICultureService, CultureService>(new HttpContextLifetimeManager<ICultureService>());
             return container;
         }
     }

@@ -11,7 +11,6 @@
 @section javascript{
     <script src="@Url.Content("~/Scripts/home-index.js")" type="text/javascript"></script>
 }
-<input type="hidden" id="lCode" value="@ViewContext.RouteData.Values["language"]" />
 <div class="rightbar">
     <div class="bannerbox">
         <div class="top">
@@ -61,16 +60,16 @@
     </div>
     <div class="productbox">
         <div class="top">
-            <h3>@pi.PDisplay</h3><span><a href="@Url.Action("Index", "Display", new { language = ViewContext.RouteData.Values["language"], ProductTypeID = 0, PageIndex = 0 })" class="a_white">@pi.PMore</a>>></span>
+            <h3>@pi.PDisplay</h3><span><a href="@Url.Action("Index", "Display", new { c1=1, c2 = 0, c3 = 0 })" class="a_white">@pi.PMore</a>>></span>
         </div>
         <div class="mid">
             <div class="marquee">
                 <ul class="pick">
                     @foreach (var product in Model.Displays)
                     {
-                        <li pid="@product.ProductID">
-                            <a href="javascript:void(0);" class="pick_img"><img src="@product.SmallPic" width="164" height="164" /></a>
-                            <p class="pick_name"><a href="javascript:void(0);">@product.Name</a></p>
+                        <li>
+                            <a href="@Url.Action("Detail", "Display", new { id = product.ProductID })" class="pick_img"><img src="@product.SmallPic" width="164" height="164" /></a>
+                            <p class="pick_name"><a href="@Url.Action("Detail", "Display", new { id = product.ProductID})">@product.Name</a></p>
                         </li>
                     }
                 </ul>

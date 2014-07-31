@@ -33,6 +33,8 @@ namespace ThinkYi.Web.Controllers
         public IUserService UserService { get; set; }
         [Dependency]
         public IMessageService MessageService { get; set; }
+        [Dependency]
+        public ICultureService CultureService { get; set; }
 
         public ActionResult Index()
         {
@@ -465,6 +467,101 @@ namespace ThinkYi.Web.Controllers
             m.ReplyDate = DateTime.Now;
 
             MessageService.EditMessage(m);
+        }
+
+        public ActionResult CultureGrid(JqGridParam jgp)
+        {
+            string sidx = jgp.sidx;
+            var data = CultureService.GetCultures().Where(c => c.Language.Code.Equals(jgp.lCode));
+            var lq = from d in data
+                     select new
+                     {
+                         CultureID = d.CultureID,
+                         Code = d.Code,
+                         Name = d.Name,
+                         Describe = d.Describe,
+                         Pic = d.Pic
+                     };
+
+            var jsonData = lq.GetJson(jgp, JsonRequestBehavior.AllowGet, null);
+            return jsonData;
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public string CultureAdd(Culture culture, string lCode, bool isClone)
+        {
+            string result = "s";
+            try
+            {
+                List<Language> languages = LanguageService.GetLanguages().ToList();
+                if (culture.Pic.Contains("/Content/images/admin/temp.png"))
+                {
+                    culture.Pic = null;
+                }
+                culture.LanguageID = languages.Where(l => l.Code.Equals(lCode)).First().LanguageID;
+                CultureService.AddCulture(culture);
+
+                if (isClone && !lCode.Equals("en"))
+                {
+                    switch (lCode)
+                    {
+                        case "cn":
+                            culture.LanguageID = languages.Where(l => l.Code.Equals("big5")).First().LanguageID;
+                            culture.Describe = VB.Strings.StrConv(culture.Describe, VB.VbStrConv.TraditionalChinese, 0);
+                            culture.Text = VB.Strings.StrConv(culture.Text, VB.VbStrConv.TraditionalChinese, 0);
+                            break;
+                        case "big5":
+                            culture.LanguageID = languages.Where(l => l.Code.Equals("cn")).First().LanguageID;
+                            culture.Describe = VB.Strings.StrConv(culture.Describe, VB.VbStrConv.SimplifiedChinese, 0);
+                            culture.Text = VB.Strings.StrConv(culture.Text, VB.VbStrConv.SimplifiedChinese, 0);
+                            break;
+                    }
+                    CultureService.AddCulture(culture);
+                }
+            }
+            catch (Exception e)
+            {
+                result = e.Message;
+            }
+            return result;
+        }
+
+        public ActionResult CultureEdit(int cultureID)
+        {
+            Culture culture = CultureService.GetCulture(cultureID);
+            return View(culture);
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public string CultureEdit(Culture culture)
+        {
+            string result = "s";
+            try
+            {
+                Culture oc = CultureService.GetCulture(culture.CultureID);
+                oc.Code = culture.Code;
+                oc.Describe = culture.Describe;
+                oc.Text = culture.Text;
+                if (culture.Pic.Contains("/Content/images/admin/temp.png"))
+                {
+                    culture.Pic = null;
+                }
+                oc.Pic = culture.Pic;
+                CultureService.EditCulture(oc);
+            }
+            catch (Exception e)
+            {
+                result = e.Message;
+            }
+            return result;
+        }
+
+        [HttpPost]
+        public void CultureDel(int cid)
+        {
+            CultureService.DelCulture(cid);
         }
     }
 }

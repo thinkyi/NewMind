@@ -58,10 +58,10 @@
                     }
                 </div>
                 <div class="pagebox" style="display:none; margin:0px;">
-                    【<a href="@Url.Action("Index", "Message", new { language = ViewContext.RouteData.Values["language"], c3 = 1 })" id="gotoFirst">@Model.FirstText</a>】
-                    【<a href="@Url.Action("Index", "Message", new { language = ViewContext.RouteData.Values["language"], c3 = pre })" id="gotoPre">@Model.PreText</a>】
-                    【<a href="@Url.Action("Index", "Message", new { language = ViewContext.RouteData.Values["language"], c3 = next })" id="gotoNext">@Model.NextText</a>】
-                    【<a href="@Url.Action("Index", "Message", new { language = ViewContext.RouteData.Values["language"], c3 = last })" id="gotoLast">@Model.LastText</a>】
+                    【<a href="@Url.Action("Index", "Message", new { c2 = 15, c3 = 1 })" id="gotoFirst">@Model.FirstText</a>】
+                    【<a href="@Url.Action("Index", "Message", new { c2 = 15, c3 = pre })" id="gotoPre">@Model.PreText</a>】
+                    【<a href="@Url.Action("Index", "Message", new { c2 = 15, c3 = next })" id="gotoNext">@Model.NextText</a>】
+                    【<a href="@Url.Action("Index", "Message", new { c2 = 15, c3 = last })" id="gotoLast">@Model.LastText</a>】
                 </div>
                 <div style="background-color:#ccc; height:2px; margin:5px 0px;"></div>
                 <div class="neicontent">
