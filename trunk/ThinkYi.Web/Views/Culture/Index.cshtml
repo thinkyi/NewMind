@@ -51,7 +51,7 @@
                         {
                             <tr>
                                 <td width="200" align="left" valign="top"><img src="@item.Pic" width="200" height="150" /></td>
-                                <td align="left" valign="top">@item.Describe</td>
+                                <td align="left" valign="top"><a href="@Url.Action("Detail", new { id = item.CultureID })">@item.Describe</a></td>
                             </tr>
                         }
                     </table>
