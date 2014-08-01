@@ -8,11 +8,11 @@ jQuery(document).ready(function () {
         datatype: 'json',
         sortname: 'CultureID',
         sortorder: 'desc',
-        colNames: ['序号', '语言', '编码', '概述', '小图'],
+        colNames: ['序号', '语言', '编码', '标题', '小图'],
         colModel: [
    		            { name: 'CultureID', index: 'CultureID', hidden: true },
    		            { name: 'LanguageID', index: 'LanguageID', hidden: true },
-   		            { name: 'Code', index: 'Code' },
+   		            { name: 'Name', index: 'Name' },
    		            { name: 'Describe', index: 'Describe' },
                     { name: 'Pic', index: 'Pic', formatter: ImageIcoFormatter }
         ],

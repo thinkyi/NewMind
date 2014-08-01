@@ -50,8 +50,13 @@
                         @foreach (var item in cultures)
                         {
                             <tr>
-                                <td width="200" align="left" valign="top"><img src="@item.Pic" width="200" height="150" /></td>
-                                <td align="left" valign="top"><a href="@Url.Action("Detail", new { id = item.CultureID })">@item.Describe</a></td>
+                                <td width="200" align="left" valign="top">
+                                    <img src="@item.Pic" width="200" height="150" />
+                                </td>
+                                <td align="left" valign="top">
+                                    标题：@item.Name<br />
+                                    概述： <a href="@Url.Action("Detail", new { id = item.CultureID })">@item.Describe</a>
+                                </td>
                             </tr>
                         }
                     </table>

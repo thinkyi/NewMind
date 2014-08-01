@@ -542,6 +542,7 @@ namespace ThinkYi.Web.Controllers
             {
                 Culture oc = CultureService.GetCulture(culture.CultureID);
                 oc.Code = culture.Code;
+                oc.Name = culture.Name;
                 oc.Describe = culture.Describe;
                 oc.Text = culture.Text;
                 if (culture.Pic.Contains("/Content/images/admin/temp.png"))

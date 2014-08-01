@@ -40,6 +40,7 @@ jQuery(document).ready(function () {
 function CultureAdd() {
     var ce = {
         Code: $("#Code").val(),
+        Name: $("#Name").val(),
         Describe: $("#Describe").val(),
         Text: editor.getContent(),
         Pic: $("#PicPreview").attr("src"),
