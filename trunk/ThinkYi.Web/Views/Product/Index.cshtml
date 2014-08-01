@@ -57,7 +57,7 @@
                 @foreach (Product p in products)
                 {
                     <li style="margin:10px 13px 10px 13px;">
-                        <a href="javascript:void(0);" class="pick_img">
+                        <a href="@Url.Action("Detail", cName, new { id = p.ProductID })" class="pick_img">
                             <img src="@p.SmallPic" width="164" height="164" />
                         </a>
                         <p class="pick_name">
