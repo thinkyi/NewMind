@@ -49,7 +49,7 @@
                 break;
         }
     }
-    string tempSrc = "../Content/images/admin/temp.png";
+    string tempSrc = "../../../Content/images/NoPic.jpg";
     string sPic = string.IsNullOrEmpty(product.SmallPic) ? tempSrc : product.SmallPic;
 }
 @section javascript{
@@ -79,9 +79,9 @@
             <input id="preID" type="hidden" value="@preID" />
             <input id="nextID" type="hidden" value="@nextID" />
             <div class="pCenter">
-                <table>
+                <table style="width:100%;">
                     <tr>
-                        <td><a disabled="disabled" class="disabled" href="@Url.Action("Detail", preCName, new { id = preID })" id="gotoPre"><img src="~/Content/images/arr_l.gif" style /></a></td>
+                        <td class="pCenter"><a disabled="disabled" class="disabled" href="@Url.Action("Detail", preCName, new { id = preID })" id="gotoPre"><img src="~/Content/images/arr_l.gif" style /></a></td>
                         <td><img id="SmallPicPreview" src="@sPic" style="max-height:660px;" title="@product.Name" /></td>
                         <td><a disabled="disabled" class="disabled" href="@Url.Action("Detail", nextCName, new { id = nextID })" id="gotoNext"><img src="~/Content/images/arr_r.gif" /></a></td>
                     </tr>
