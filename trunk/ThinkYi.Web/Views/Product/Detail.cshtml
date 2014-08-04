@@ -90,8 +90,9 @@
             </div>
             <h3 class="title productTitle">@product.Name</h3>
             <div class="pagebox">
-                【<a disabled="disabled" class="disabled" href="@Url.Action("Detail", preCName, new { id = preID })" id="gotoPre">@Model.PreText</a>】
-                【<a disabled="disabled" class="disabled" href="@Url.Action("Detail", nextCName, new { id = nextID })" id="gotoNext">@Model.NextText</a>】
+                @*disabled="disabled" class="disabled"*@ 
+                【<a href="@Url.Action("Detail", preCName, new { id = preID })" id="gotoPre">@Model.PreText</a>】
+                【<a href="@Url.Action("Detail", nextCName, new { id = nextID })" id="gotoNext">@Model.NextText</a>】
             </div>
             <div class="neicontent">
                 @Html.Raw(product.Text)
