@@ -75,28 +75,30 @@
                         @ViewBag.Remark
                     </b>
                 </div>*@
-            <h3 class="title productTitle">@product.Name</h3>
+
             <input id="preID" type="hidden" value="@preID" />
             <input id="nextID" type="hidden" value="@nextID" />
             <div class="pCenter">
-                <table style="width:100%;">
-                    <tr>
-                        <td class="pCenter"><a href="@Url.Action("Detail", preCName, new { id = preID })" id="gotoPre"><img src="~/Content/images/arr_l.gif" /></a></td>
-                        <td><img id="SmallPicPreview" src="@sPic" style="max-width:660px;" title="@product.Name" /></td>
-                        <td><a href="@Url.Action("Detail", nextCName, new { id = nextID })" id="gotoNext"><img src="~/Content/images/arr_r.gif" /></a></td>
-                    </tr>
-                </table>
+                <img id="SmallPicPreview" src="@sPic" style="max-width:660px;" title="@product.Name" />
+                @*<table style="width:100%;">
+                        <tr>
+                            <td class="pCenter"><a href="@Url.Action("Detail", preCName, new { id = preID })" id="gotoPre"><img src="~/Content/images/arr_l.gif" /></a></td>
+                            <td><img id="SmallPicPreview" src="@sPic" style="max-width:660px;" title="@product.Name" /></td>
+                            <td><a href="@Url.Action("Detail", nextCName, new { id = nextID })" id="gotoNext"><img src="~/Content/images/arr_r.gif" /></a></td>
+                        </tr>
+                    </table>*@
+            </div>
+            <h3 class="title productTitle">@product.Name</h3>
+            <div class="pagebox">
+                【<a disabled="disabled" class="disabled" href="@Url.Action("Detail", preCName, new { id = preID })" id="gotoPre">@Model.PreText</a>】
+                【<a disabled="disabled" class="disabled" href="@Url.Action("Detail", nextCName, new { id = nextID })" id="gotoNext">@Model.NextText</a>】
             </div>
             <div class="neicontent">
                 @Html.Raw(product.Text)
             </div>
         </div>
         <div class="di"></div>
-        @*<div class="pagebox">
-
-                【<a disabled="disabled" class="disabled" href="@Url.Action("Detail", preCName, new { id = preID })" id="gotoPre">@Model.PreText</a>】
-                【<a disabled="disabled" class="disabled" href="@Url.Action("Detail", nextCName, new { id = nextID })" id="gotoNext">@Model.NextText</a>】
-            </div>*@
+        
         <script type="text/javascript">
             var preID = $("#preID").val();
             var nextID = $("#nextID").val();
