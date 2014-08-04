@@ -195,7 +195,7 @@ namespace ThinkYi.Web.Controllers
                 pd.PreProduct = ProductService.GetProducts().Where(p => p.ProductType.LanguageID == pd.Product.ProductType.LanguageID && p.ProductType.CategoryID == pd.Product.ProductType.CategoryID && p.ProductTypeID < pd.Product.ProductTypeID).OrderBy(p => p.ProductTypeID).ThenBy(p => p.ProductID).FirstOrDefault();
             }
             var i18ns = I18NService.GetI18Ns().Where(i => i.I18NType.LanguageID == pd.Product.ProductType.LanguageID && (i.Code.Equals(code) || i.I18NType.Code.Equals("pager") || i.Code.Equals("ntprefix") || i.Code.Equals("wstitle"))).ToList();
-            var data = i18ns.OrderBy(i => i.Code).ToList();
+            var data = i18ns.Where(i => !i.I18NType.Code.Equals("pager")).OrderBy(i => i.Code).ToList();
             ViewBag.Title = data[0].Name + " - " + data[2].Name;
             ViewBag.LongCaption = data[1].Name + " > " + data[0].Name;
             ViewBag.ShortCaption = data[0].Name;
