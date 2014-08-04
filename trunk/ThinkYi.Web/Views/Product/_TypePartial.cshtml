@@ -33,10 +33,10 @@
                             <ul>
                                 <li>
                                     @for (int i = 0; i < count; i++)
-                                    {
-                                        <a href="@Url.Action("Index", controllerName, new { c1 = categoryID, c2 = childTypes[i].ProductTypeID, c3 = 0 })">@childTypes[i].Name</a>
-                                        if (i < count - 1)
-                                        {
+{
+    <span class="notbreak"><a href="@Url.Action("Index", controllerName, new { c1 = categoryID, c2 = childTypes[i].ProductTypeID, c3 = 0 })">@childTypes[i].Name</a></span>
+    if (i < count - 1)
+    {
                                             <span>·</span>
                                         }
                                     }

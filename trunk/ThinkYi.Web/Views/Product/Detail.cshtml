@@ -49,6 +49,8 @@
                 break;
         }
     }
+    string tempSrc = "../Content/images/admin/temp.png";
+    string sPic = string.IsNullOrEmpty(product.SmallPic) ? tempSrc : product.SmallPic;
 }
 @section javascript{
     @*<script src="@Url.Content("~/Scripts/product-detail.js")" type="text/javascript"></script>*@
@@ -74,17 +76,27 @@
                     </b>
                 </div>*@
             <h3 class="title productTitle">@product.Name</h3>
+            <input id="preID" type="hidden" value="@preID" />
+            <input id="nextID" type="hidden" value="@nextID" />
+            <div class="pCenter">
+                <table>
+                    <tr>
+                        <td><a disabled="disabled" class="disabled" href="@Url.Action("Detail", preCName, new { id = preID })" id="gotoPre"><img src="~/Content/images/arr_l.gif" style /></a></td>
+                        <td><img id="SmallPicPreview" src="@sPic" style="max-height:660px;" title="@product.Name" /></td>
+                        <td><a disabled="disabled" class="disabled" href="@Url.Action("Detail", nextCName, new { id = nextID })" id="gotoNext"><img src="~/Content/images/arr_r.gif" /></a></td>
+                    </tr>
+                </table>
+            </div>
             <div class="neicontent">
                 @Html.Raw(product.Text)
             </div>
         </div>
         <div class="di"></div>
-        <div class="pagebox">
-            <input id="preID" type="hidden" value="@preID" />
-            <input id="nextID" type="hidden" value="@nextID" />
-            【<a disabled="disabled" class="disabled" href="@Url.Action("Detail", preCName, new { id = preID })" id="gotoPre">@Model.PreText</a>】
-            【<a disabled="disabled" class="disabled" href="@Url.Action("Detail", nextCName, new { id = nextID })" id="gotoNext">@Model.NextText</a>】
-        </div>
+        @*<div class="pagebox">
+
+                【<a disabled="disabled" class="disabled" href="@Url.Action("Detail", preCName, new { id = preID })" id="gotoPre">@Model.PreText</a>】
+                【<a disabled="disabled" class="disabled" href="@Url.Action("Detail", nextCName, new { id = nextID })" id="gotoNext">@Model.NextText</a>】
+            </div>*@
         <script type="text/javascript">
             var preID = $("#preID").val();
             var nextID = $("#nextID").val();

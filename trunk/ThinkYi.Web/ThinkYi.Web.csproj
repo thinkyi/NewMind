@@ -163,6 +163,8 @@
     <Content Include="Content\images\29.gif" />
     <Content Include="Content\images\admin\image_ico.png" />
     <Content Include="Content\images\admin\temp.png" />
+    <Content Include="Content\images\arr_l.gif" />
+    <Content Include="Content\images\arr_r.gif" />
     <Content Include="Content\images\ask-bg-green.gif" />
     <Content Include="Content\images\ask-bg-orange.gif" />
     <Content Include="Content\images\bank1.jpg" />
