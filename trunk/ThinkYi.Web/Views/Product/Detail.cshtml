@@ -81,9 +81,9 @@
             <div class="pCenter">
                 <table style="width:100%;">
                     <tr>
-                        <td class="pCenter"><a disabled="disabled" class="disabled" href="@Url.Action("Detail", preCName, new { id = preID })" id="gotoPre"><img src="~/Content/images/arr_l.gif" style /></a></td>
+                        <td class="pCenter"><a href="@Url.Action("Detail", preCName, new { id = preID })" id="gotoPre"><img src="~/Content/images/arr_l.gif" /></a></td>
                         <td><img id="SmallPicPreview" src="@sPic" style="max-height:660px;" title="@product.Name" /></td>
-                        <td><a disabled="disabled" class="disabled" href="@Url.Action("Detail", nextCName, new { id = nextID })" id="gotoNext"><img src="~/Content/images/arr_r.gif" /></a></td>
+                        <td><a href="@Url.Action("Detail", nextCName, new { id = nextID })" id="gotoNext"><img src="~/Content/images/arr_r.gif" /></a></td>
                     </tr>
                 </table>
             </div>
@@ -100,13 +100,11 @@
         <script type="text/javascript">
             var preID = $("#preID").val();
             var nextID = $("#nextID").val();
-            if (parseInt(preID)) {
-                $("#gotoPre").removeAttr("disabled", "disabled");
-                $("#gotoPre").removeClass("disabled");
+            if (!parseInt(preID)) {
+                $("#gotoPre").attr("href", "javascript:void(0);");
             }
-            if (parseInt(nextID)) {
-                $("#gotoNext").removeAttr("disabled", "disabled");
-                $("#gotoNext").removeClass("disabled");
+            if (!parseInt(nextID)) {
+                $("#gotoNext").attr("href", "javascript:void(0);");
             }
         </script>
     </div>
