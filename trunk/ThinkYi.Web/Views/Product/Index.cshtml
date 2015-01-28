@@ -52,12 +52,12 @@
                     @ViewBag.Remark
                 </b>*@
             </div>
-            <ul class="pick" style="padding:10px 0px 0px 0px;">
+            <ul class="pickProduct" style="padding:10px 0px 0px 0px;">
                 @foreach (Product p in products)
                 {
                     <li style="margin:10px 13px 10px 13px;">
                         <a href="@Url.Action("Detail", cName, new { id = p.ProductID })" class="pick_img">
-                            <img src="@p.SmallPic" width="164" height="164" />
+                            <img src="@p.SmallPic" width="225" height="150" />
                         </a>
                         <p class="pick_name">
                             <a href="@Url.Action("Detail", cName, new { id = p.ProductID })">@p.Name</a>

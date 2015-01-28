@@ -68,7 +68,7 @@
                     @foreach (var product in Model.Displays)
                     {
                         <li>
-                            <a href="@Url.Action("Detail", "Display", new { id = product.ProductID })" class="pick_img"><img src="@product.SmallPic" width="164" height="164" /></a>
+                            <a href="@Url.Action("Detail", "Display", new { id = product.ProductID })" class="pick_img"><img src="@product.SmallPic" width="246" height="164" /></a>
                             <p class="pick_name"><a href="@Url.Action("Detail", "Display", new { id = product.ProductID})">@product.Name</a></p>
                         </li>
                     }
