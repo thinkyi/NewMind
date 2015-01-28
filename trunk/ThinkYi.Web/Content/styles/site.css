@@ -84,7 +84,7 @@ text-transform:uppercase;/*全部大写*/
 .pick li .pick_img{border:1px solid #ccc; display:block; float:left; height:164px;}
 .pick li .pick_name{height:40px; line-height:30px; text-align:center;}
 
-/*Index Product*/
+/*Page Product*/
 .pickProduct{}
 .pickProduct li{margin:0px 6px; width:225px; display:block; float:left; height:187px;}
 .pickProduct li .pick_img{border:1px solid #ccc; display:block; float:left; height:150px;}
