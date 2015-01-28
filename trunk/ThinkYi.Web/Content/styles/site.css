@@ -37,7 +37,7 @@ text-transform:uppercase;/*全部大写*/
 #header .menu ul li a:hover{color:#ff0; text-decoration:none;}*/
 #header .menu ul li.menu_fg{width:4px; display:block; margin:0;}
 
-#header .menu ul li{float:left; text-align:center; font-size:14px; font-weight:bold; margin:0 24px; color:#ff0;}
+#header .menu ul li{float:left; text-align:center; font-size:14px; font-weight:bold; margin:0 18px; color:#ff0;}
 #header .menu ul li a{color:#ff0; text-decoration:none;}
 #header .menu ul li a:hover{color:#FC0; text-decoration:none;}
 
@@ -109,7 +109,7 @@ text-transform:uppercase;/*全部大写*/
 .neibox .mid{ background:url(../images/lmbg2.png) repeat-y; padding:10px; min-height:565px;}
 .neibox .di{ background:url(../images/lmdi2.png) no-repeat; height:12px; width:782px; overflow:hidden; margin-bottom:10px;}
 
-.navbox{height:54px; padding-left:85px; padding-bottom:10px; padding-top:10px; border-bottom:1px solid #62ab00;}
+.navbox{height:35px; padding-left:85px; padding-bottom:10px; padding-top:10px; border-bottom:1px solid #62ab00;}
 .navbox b{font-family:"微软雅黑"; font-size:18px; line-height:28px; font-weight:normal; }
 .newsbox{ margin-bottom:10px;}
 .newsbox ul li{border-bottom:1px dashed #ccc; height:30px; line-height:30px; background:url(../images/icon_news.jpg) no-repeat left center; padding-left:20px;}
