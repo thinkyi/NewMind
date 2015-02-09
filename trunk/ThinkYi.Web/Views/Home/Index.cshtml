@@ -25,16 +25,33 @@
                 <div class="slideImg">
                     @for (int i = 0; i < cpCount; i++)
                     {
-                        if (i == cpCount - 1)
+                        if (!string.IsNullOrEmpty(recommends[i].CustomURL))
                         {
-                            <a href="@Url.Action("Detail", "Display", new { id = recommends[i].ProductID })" index="@i" style="z-index: 1; display: block;">
-                                <img src="@recommends[i].BigPic" alt="@recommends[i].Name" width="782" height="339">
-                            </a>}
+                            if (i == cpCount - 1)
+                            {
+                                <a href="@recommends[i].CustomURL" index="@i" style="z-index: 1; display: block;">
+                                    <img src="@recommends[i].BigPic" alt="@recommends[i].Name" width="782" height="339">
+                                </a>}
+                            else
+                            {
+                                <a href="@recommends[i].CustomURL" index="@i" style="z-index: 1; display: none;">
+                                    <img src="@recommends[i].BigPic" alt="@recommends[i].Name" width="782" height="339">
+                                </a>
+                            }
+                        }
                         else
                         {
-                            <a href="@Url.Action("Detail", "Display", new { id = recommends[i].ProductID })" index="@i" style="z-index: 1; display: none;">
-                                <img src="@recommends[i].BigPic" alt="@recommends[i].Name" width="782" height="339">
-                            </a>
+                            if (i == cpCount - 1)
+                            {
+                                <a href="@Url.Action("Detail", "Display", new { id = recommends[i].ProductID })" index="@i" style="z-index: 1; display: block;">
+                                    <img src="@recommends[i].BigPic" alt="@recommends[i].Name" width="782" height="339">
+                                </a>}
+                            else
+                            {
+                                <a href="@Url.Action("Detail", "Display", new { id = recommends[i].ProductID })" index="@i" style="z-index: 1; display: none;">
+                                    <img src="@recommends[i].BigPic" alt="@recommends[i].Name" width="782" height="339">
+                                </a>
+                            }
                         }
                     }
                 </div>

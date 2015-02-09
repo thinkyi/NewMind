@@ -210,6 +210,7 @@ namespace ThinkYi.Web.Controllers
                 op.ProductTypeID = product.ProductTypeID;
                 op.Name = product.Name;
                 op.Text = product.Text;
+                op.CustomURL = product.CustomURL;
                 if (product.BigPic.Contains("/Content/images/admin/temp.png"))
                 {
                     product.BigPic = null;

@@ -17,6 +17,7 @@ namespace ThinkYi.Domain
         public string BigPic { get; set; }
         public bool IsRecommend { get; set; }
         public bool IsShow { get; set; }
+        public string CustomURL { get; set; }
 
         public virtual ProductType ProductType { get; set; }
     }

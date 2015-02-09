@@ -12,6 +12,7 @@ jQuery(document).ready(function () {
         $(".liBigPic").show();
         $("#liShow").show();
         $("#liBigShow").show();
+        $("#liCustomURL").show();
     }
 
     editor = UE.getEditor('Text');
@@ -47,8 +48,7 @@ jQuery(document).ready(function () {
 });
 
 function ProductEdit() {
-    if (!$("#PType2").val())
-    {
+    if (!$("#PType2").val()) {
         alert("产品小类不能为空");
         return;
     }
@@ -62,7 +62,8 @@ function ProductEdit() {
         SmallPic: $("#SmallPicPreview").attr("src"),
         IsRecommend: $("#IsRecommend").prop("checked"),
         IsShow: $("#IsShow").prop("checked"),
-        lCode: languageCode
+        lCode: languageCode,
+        CustomURL: $("#CustomURL").val()
     }
 
     $.ajax({

@@ -12,6 +12,7 @@ jQuery(document).ready(function () {
         $(".liBigPic").show();
         $("#liShow").show();
         $("#liBigShow").show();
+        $("#liCustomURL").show();
     }
 
     editor = UE.getEditor('Text');
@@ -68,6 +69,7 @@ function ProductAdd() {
         IsRecommend: $("#IsRecommend").prop("checked"),
         IsShow: $("#IsShow").prop("checked"),
         lCode: languageCode,
+        CustomURL: $("#CustomURL").val(),
         isClone: $("#IsClone").prop("checked")
     }
 
