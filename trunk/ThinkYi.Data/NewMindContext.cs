@@ -23,6 +23,7 @@ namespace ThinkYi.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Culture> Cultures { get; set; }
+        public DbSet<Slide> Slides { get; set; }
 
         public virtual void Commit()
         {

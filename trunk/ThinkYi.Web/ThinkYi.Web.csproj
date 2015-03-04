@@ -198,6 +198,7 @@
     <Content Include="Scripts\admin-cultureedit.js" />
     <Content Include="Scripts\admin-message.js" />
     <Content Include="Scripts\admin-cultureadd.js" />
+    <Content Include="Scripts\admin-slide.js" />
     <Content Include="Scripts\admin-titlepic.js" />
     <Content Include="Scripts\admin-information.js" />
     <Content Include="Scripts\admin-informationadd.js" />
@@ -205,6 +206,8 @@
     <Content Include="Scripts\admin-productedit.js" />
     <Content Include="Scripts\account-index.js" />
     <Content Include="Scripts\information-detail.js" />
+    <Content Include="Scripts\json2.js" />
+    <Content Include="Scripts\json2.min.js" />
     <Content Include="Scripts\product-detail.js" />
     <Content Include="Scripts\pager.js" />
     <Content Include="Scripts\message-index.js" />
@@ -650,6 +653,7 @@
     <Content Include="Views\Admin\Culture.cshtml" />
     <Content Include="Views\Admin\CultureAdd.cshtml" />
     <Content Include="Views\Admin\CultureEdit.cshtml" />
+    <Content Include="Views\Admin\Slide.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

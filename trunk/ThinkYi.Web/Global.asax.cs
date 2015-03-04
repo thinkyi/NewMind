@@ -58,6 +58,8 @@ namespace ThinkYi.Web
                 .RegisterType<IMessageService, MessageService>(new HttpContextLifetimeManager<IMessageService>())
                 .RegisterType<IUserRepository, UserRepository>(new HttpContextLifetimeManager<IUserRepository>())
                 .RegisterType<IUserService, UserService>(new HttpContextLifetimeManager<IUserService>())
+                .RegisterType<ISlideRepository, SlideRepository>(new HttpContextLifetimeManager<ISlideRepository>())
+                .RegisterType<ISlideService, SlideService>(new HttpContextLifetimeManager<ISlideService>())
                 .RegisterType<ICultureRepository, CultureRepository>(new HttpContextLifetimeManager<ICultureRepository>())
                 .RegisterType<ICultureService, CultureService>(new HttpContextLifetimeManager<ICultureService>());
             return container;

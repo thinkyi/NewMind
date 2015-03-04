@@ -10,7 +10,7 @@ namespace ThinkYi.Web.Models
     {
         public PageI18N PageI18N { get; set; }
         public List<I18N> Cooperations { get; set; }
-        public List<Product> Recommends { get; set; }
+        public List<Slide> Slides { get; set; }
         public List<Product> Displays { get; set; }
     }
 }

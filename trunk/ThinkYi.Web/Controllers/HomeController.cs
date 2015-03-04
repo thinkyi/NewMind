@@ -16,6 +16,8 @@ namespace ThinkYi.Web.Controllers
         [Dependency]
         public II18NService I18NService { get; set; }
         [Dependency]
+        public ISlideService SlideService { get; set; }
+        [Dependency]
         public IProductService ProductService { get; set; }
 
         Common common = new Common();
@@ -27,7 +29,7 @@ namespace ThinkYi.Web.Controllers
             hi.PageI18N = common.GetPageI18N(i18ns.Where(i => i.I18NType.Code.Equals("title") || i.I18NType.Code.Equals("other")).ToList());
             hi.Cooperations = i18ns.Where(i => i.I18NType.Code.Equals("cooperation")).OrderBy(i => i.OrderID).ToList();
 
-            hi.Recommends = ProductService.GetProducts().Where(p => p.ProductType.Language.Code.Equals(language) && p.IsRecommend).ToList();
+            hi.Slides = SlideService.GetSlides().Where(s => !string.IsNullOrEmpty(s.Image) && !string.IsNullOrEmpty(s.Title) && !string.IsNullOrEmpty(s.Url)).ToList();
             hi.Displays = ProductService.GetProducts().Where(p => p.ProductType.Language.Code.Equals(language) && p.IsShow).Take(20).ToList();
 
             return View(hi);

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using Newtonsoft.Json;
 using Microsoft.Practices.Unity;
 using VB = Microsoft.VisualBasic;
 using ThinkYi.Domain;
@@ -35,6 +36,8 @@ namespace ThinkYi.Web.Controllers
         public IMessageService MessageService { get; set; }
         [Dependency]
         public ICultureService CultureService { get; set; }
+        [Dependency]
+        public ISlideService SlideService { get; set; }
 
         public ActionResult Index()
         {
@@ -564,6 +567,26 @@ namespace ThinkYi.Web.Controllers
         public void CultureDel(int cid)
         {
             CultureService.DelCulture(cid);
+        }
+
+        public JsonResult GetSlides()
+        {
+            List<Slide> slides = SlideService.GetSlides().ToList();
+            JsonResult json = new JsonResult();
+            json.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+            json.Data = slides;
+            return json;
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public void SlideUpdate(string jsonData)
+        {
+            List<Slide> slides = JsonConvert.DeserializeObject<List<Slide>>(jsonData);
+            foreach (Slide s in slides)
+            {
+                SlideService.EditSlide(s);
+            }
         }
     }
 }
